@@ -4,6 +4,11 @@ import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
 import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
+import e45tm3d.pit.api.events.PlayerEnchanceEvent;
+import e45tm3d.pit.api.events.PlayerEquipBuffEvent;
+import e45tm3d.pit.api.events.PlayerEquipCurseEvent;
+import e45tm3d.pit.api.events.PlayerObtainWeaponEvent;
+import e45tm3d.pit.modules.enchance.EnchanceType;
 import e45tm3d.pit.modules.listeners.ListenerModule;
 import e45tm3d.pit.utils.functions.InventoryFunction;
 import e45tm3d.pit.utils.functions.ItemFunction;
@@ -13,6 +18,7 @@ import e45tm3d.pit.utils.maps.PlayerMaps;
 import e45tm3d.pit.utils.maps.WeaponMaps;
 import e45tm3d.pit.utils.menus.*;
 import e45tm3d.pit.utils.menus.second_menus.WeaponUpdateMenu;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -207,6 +213,7 @@ public class MenuManager extends ListenerModule {
                                 if (User.getWeaponLevel(p, item) >= 1) {
                                     if (!Objects.isNull(WeaponMaps.weapon_items.get(item))) {
                                         if (!ItemFunction.hasItemAtLease(p, 1, item)) {
+                                            Bukkit.getPluginManager().callEvent(new PlayerObtainWeaponEvent(p, item, ItemFunction.searchItem(item)));
                                             p.getInventory().addItem(ItemFunction.addNBTTag(WeaponMaps.weapon_items.get(item), item));
                                             p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 1, 1);
                                         } else {
@@ -227,6 +234,7 @@ public class MenuManager extends ListenerModule {
                             case 49 -> p.closeInventory();
                             case 39, 40, 41 -> {
                                 if (PlayerMaps.selected_curse.containsKey(uuid)) {
+                                    Bukkit.getPluginManager().callEvent(new PlayerEquipCurseEvent(p, PlayerMaps.selected_curse.get(uuid), e.getSlot() - 38));
                                     User.setEquipCurse(p, "slot_" + (e.getSlot() - 38), PlayerMaps.selected_curse.get(uuid));
                                     Messages.CURSE_EQUIP.sendMessage(p);
                                     p.playSound(p.getLocation(), Sound.WITHER_SPAWN, 1, 1);
@@ -302,6 +310,7 @@ public class MenuManager extends ListenerModule {
                             case 49 -> p.closeInventory();
                             case 38, 39, 40, 41, 42 -> {
                                 if (PlayerMaps.selected_buff.containsKey(uuid)) {
+                                    Bukkit.getPluginManager().callEvent(new PlayerEquipBuffEvent(p, PlayerMaps.selected_buff.get(uuid), e.getSlot() - 37));
                                     User.setEquipBuff(p, "slot_" + (e.getSlot() - 37), PlayerMaps.selected_buff.get(uuid));
                                     Messages.BUFF_EQUIP.sendMessage(p);
                                     p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -386,6 +395,7 @@ public class MenuManager extends ListenerModule {
                                                 && ItemFunction.hasItemAtLease(p, Integer.parseInt(parts[1]), parts[0].toLowerCase())) {
                                             Random none = new Random();
                                             if (none.nextInt(100) < 80) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, null, "none", true));
                                                 User.setEnchance(p, "weapon", "none");
                                                 Messages.ENCHANCE_FAILURE.sendMessage(p);
                                                 p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
@@ -397,6 +407,11 @@ public class MenuManager extends ListenerModule {
                                                 Random r = new Random();
                                                 int i = r.nextInt(list.size());
                                                 String enchance = list.get(i);
+                                                if (EnchanceList.weapon_enchances.contains(enchance)) {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.WEAPON, enchance, false));
+                                                } else {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                                }
                                                 User.setEnchance(p, "weapon", enchance);
                                                 Messages.ENCHANCE_SUCCESS.sendMessage(p);
                                                 p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -413,6 +428,7 @@ public class MenuManager extends ListenerModule {
                                         ThePit.getEconomy().withdrawPlayer(p, price);
                                         Random none = new Random();
                                         if (none.nextInt(100) < 50) {
+                                            Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, null, "none", true));
                                             User.setEnchance(p, "weapon", "none");
                                             Messages.ENCHANCE_FAILURE.sendMessage(p);
                                             p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
@@ -424,6 +440,11 @@ public class MenuManager extends ListenerModule {
                                             Random r = new Random();
                                             int i = r.nextInt(list.size());
                                             String enchance = list.get(i);
+                                            if (EnchanceList.weapon_enchances.contains(enchance)) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.WEAPON, enchance, false));
+                                            } else {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                            }
                                             User.setEnchance(p, "weapon", enchance);
                                             Messages.ENCHANCE_SUCCESS.sendMessage(p);
                                             p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -448,6 +469,7 @@ public class MenuManager extends ListenerModule {
                                                 && ItemFunction.hasItemAtLease(p, Integer.parseInt(parts[1]), parts[0].toLowerCase())) {
                                             Random none = new Random();
                                             if (none.nextInt(100) < 80) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, null, "none", true));
                                                 User.setEnchance(p, "helmet", "none");
                                                 Messages.ENCHANCE_FAILURE.sendMessage(p);
                                                 p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
@@ -459,6 +481,11 @@ public class MenuManager extends ListenerModule {
                                                 Random r = new Random();
                                                 int i = r.nextInt(list.size());
                                                 String enchance = list.get(i);
+                                                if (EnchanceList.helmet_enchances.contains(enchance)) {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.HELMET, enchance, false));
+                                                } else {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                                }
                                                 User.setEnchance(p, "helmet", enchance);
                                                 Messages.ENCHANCE_SUCCESS.sendMessage(p);
                                                 p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -486,6 +513,11 @@ public class MenuManager extends ListenerModule {
                                             Random r = new Random();
                                             int i = r.nextInt(list.size());
                                             String enchance = list.get(i);
+                                            if (EnchanceList.helmet_enchances.contains(enchance)) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.HELMET, enchance, false));
+                                            } else {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                            }
                                             User.setEnchance(p, "helmet", enchance);
                                             Messages.ENCHANCE_SUCCESS.sendMessage(p);
                                             p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -510,6 +542,7 @@ public class MenuManager extends ListenerModule {
                                                 && ItemFunction.hasItemAtLease(p, Integer.parseInt(parts[1]), parts[0].toLowerCase())) {
                                             Random none = new Random();
                                             if (none.nextInt(100) < 80) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, null, "none", true));
                                                 User.setEnchance(p, "chestplate", "none");
                                                 Messages.ENCHANCE_FAILURE.sendMessage(p);
                                                 p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
@@ -521,6 +554,11 @@ public class MenuManager extends ListenerModule {
                                                 Random r = new Random();
                                                 int i = r.nextInt(list.size());
                                                 String enchance = list.get(i);
+                                                if (EnchanceList.chestplate_enchances.contains(enchance)) {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.CHESTPLATE, enchance, false));
+                                                } else {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                                }
                                                 User.setEnchance(p, "chestplate", enchance);
                                                 Messages.ENCHANCE_SUCCESS.sendMessage(p);
                                                 p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -537,6 +575,7 @@ public class MenuManager extends ListenerModule {
                                         ThePit.getEconomy().withdrawPlayer(p, price);
                                         Random none = new Random();
                                         if (none.nextInt(100) < 80) {
+                                            Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, null, "none", true));
                                             User.setEnchance(p, "chestplate", "none");
                                             Messages.ENCHANCE_FAILURE.sendMessage(p);
                                             p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
@@ -548,6 +587,11 @@ public class MenuManager extends ListenerModule {
                                             Random r = new Random();
                                             int i = r.nextInt(list.size());
                                             String enchance = list.get(i);
+                                            if (EnchanceList.chestplate_enchances.contains(enchance)) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.CHESTPLATE, enchance, false));
+                                            } else {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                            }
                                             User.setEnchance(p, "chestplate", enchance);
                                             Messages.ENCHANCE_SUCCESS.sendMessage(p);
                                             p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -572,6 +616,7 @@ public class MenuManager extends ListenerModule {
                                                 && ItemFunction.hasItemAtLease(p, Integer.parseInt(parts[1]), parts[0].toLowerCase())) {
                                             Random none = new Random();
                                             if (none.nextInt(100) < 50) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, null, "none", true));
                                                 User.setEnchance(p, "leggings", "none");
                                                 Messages.ENCHANCE_FAILURE.sendMessage(p);
                                                 p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
@@ -583,6 +628,11 @@ public class MenuManager extends ListenerModule {
                                                 Random r = new Random();
                                                 int i = r.nextInt(list.size());
                                                 String enchance = list.get(i);
+                                                if (EnchanceList.leggings_enchances.contains(enchance)) {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.LEGGINGS, enchance, false));
+                                                } else {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                                }
                                                 User.setEnchance(p, "leggings", enchance);
                                                 Messages.ENCHANCE_SUCCESS.sendMessage(p);
                                                 p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -599,6 +649,7 @@ public class MenuManager extends ListenerModule {
                                         ThePit.getEconomy().withdrawPlayer(p, price);
                                         Random none = new Random();
                                         if (none.nextInt(100) < 50) {
+                                            Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, null, "none", true));
                                             User.setEnchance(p, "leggings", "none");
                                             Messages.ENCHANCE_FAILURE.sendMessage(p);
                                             p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
@@ -610,6 +661,11 @@ public class MenuManager extends ListenerModule {
                                             Random r = new Random();
                                             int i = r.nextInt(list.size());
                                             String enchance = list.get(i);
+                                            if (EnchanceList.leggings_enchances.contains(enchance)) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.LEGGINGS, enchance, false));
+                                            } else {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                            }
                                             User.setEnchance(p, "leggings", enchance);
                                             Messages.ENCHANCE_SUCCESS.sendMessage(p);
                                             p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -634,6 +690,7 @@ public class MenuManager extends ListenerModule {
                                                 && ItemFunction.hasItemAtLease(p, Integer.parseInt(parts[1]), parts[0].toLowerCase())) {
                                             Random none = new Random();
                                             if (none.nextInt(100) < 50) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, null, "none", true));
                                                 User.setEnchance(p, "boots", "none");
                                                 Messages.ENCHANCE_FAILURE.sendMessage(p);
                                                 p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
@@ -645,6 +702,11 @@ public class MenuManager extends ListenerModule {
                                                 Random r = new Random();
                                                 int i = r.nextInt(list.size());
                                                 String enchance = list.get(i);
+                                                if (EnchanceList.boots_enchances.contains(enchance)) {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.BOOTS, enchance, false));
+                                                } else {
+                                                    Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                                }
                                                 User.setEnchance(p, "boots", enchance);
                                                 p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
                                             }
@@ -660,6 +722,7 @@ public class MenuManager extends ListenerModule {
                                         ThePit.getEconomy().withdrawPlayer(p, price);
                                         Random none = new Random();
                                         if (none.nextInt(100) < 80) {
+                                            Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, null, "none", true));
                                             User.setEnchance(p, "boots", "none");
                                             Messages.ENCHANCE_FAILURE.sendMessage(p);
                                             p.playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
@@ -671,6 +734,11 @@ public class MenuManager extends ListenerModule {
                                             Random r = new Random();
                                             int i = r.nextInt(list.size());
                                             String enchance = list.get(i);
+                                            if (EnchanceList.boots_enchances.contains(enchance)) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.BOOTS, enchance, false));
+                                            } else {
+                                                Bukkit.getPluginManager().callEvent(new PlayerEnchanceEvent(p, EnchanceType.NORMAL, enchance, false));
+                                            }
                                             User.setEnchance(p, "boots", enchance);
                                             Messages.ENCHANCE_SUCCESS.sendMessage(p);
                                             p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
