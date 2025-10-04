@@ -96,7 +96,7 @@ public enum Materials {
             // 默认返回一个安全的物品
             return createDefaultItemStack();
         } catch (Exception e) {
-            // 捕获所有���常并返回默认物品
+            // 捕获所有正常并返回默认物品
             e.printStackTrace();
             return createDefaultItemStack();
         }
@@ -109,7 +109,7 @@ public enum Materials {
             meta.setDisplayName("§cError: Invalid Material");
             defaultItem.setItemMeta(meta);
         } catch (Exception e) {
-            // 如果��置meta失败，至少返回一个基本���品
+            // 如果设置meta失败，至少返回一个基本物品
         }
         return defaultItem;
     }
