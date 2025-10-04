@@ -5,12 +5,13 @@ import java.util.Random;
 public class MathFunction {
 
     public static double randomDouble(double max, double min) {
+
         Random r = new Random();
-        // Ensure max is greater than min to avoid negative or zero range
+
         if (max <= min) {
-            return min; // or throw an appropriate exception
+            return min;
         }
-        // Use proper nextDouble implementation (returns 0.0 to 1.0) and scale to the desired range
+
         return min + (max - min) * r.nextDouble();
     }
 

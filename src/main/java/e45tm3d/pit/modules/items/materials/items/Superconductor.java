@@ -6,6 +6,7 @@ import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 
 public class Superconductor extends MaterialModule {
+
     @Override
     public String getType() {
         return "superconductor";
