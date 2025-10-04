@@ -1,0 +1,139 @@
+menu:
+  title: "Blocks Menu"
+  items:
+    vault:
+      name: "&aGold"
+      lore:
+        - "&7Money: &r%xconomy_balance%"
+    close:
+      name: "&cClose"
+      lore: []
+  custom_items:
+    white_wool:
+      price: 50
+      material: "WOOL:0"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    orange_wool:
+      price: 50
+      material: "WOOL:1"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    magenta_wool:
+      price: 50
+      material: "WOOL:2"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    light_blue_wool:
+      price: 50
+      material: "WOOL:3"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    yellow_wool:
+      price: 50
+      material: "WOOL:4"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    lime_wool:
+      price: 50
+      material: "WOOL:5"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    pink_wool:
+      price: 50
+      material: "WOOL:6"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    gray_wool:
+      price: 50
+      material: "WOOL:7"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    light_gray_wool:
+      price: 50
+      material: "WOOL:8"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    cyan_wool:
+      price: 50
+      material: "WOOL:9"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    purple_wool:
+      price: 50
+      material: "WOOL:10"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    blue_wool:
+      price: 50
+      material: "WOOL:11"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    brown_wool:
+      price: 50
+      material: "WOOL:12"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    green_wool:
+      price: 50
+      material: "WOOL:13"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    red_wool:
+      price: 50
+      material: "WOOL:14"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"
+    black_wool:
+      price: 50
+      material: "WOOL:15"
+      name: "&aWool"
+      lore:
+        - "&7A block which built with soft materials."
+        - ""
+        - "&eCost &6%price% &eto purchase!"

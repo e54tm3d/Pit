@@ -1,0 +1,46 @@
+name: ThePit
+version: '1.0-SNAPSHOT'
+main: e45tm3d.pit.ThePit
+api-version: '1.21'
+authors: [ E45t_M3d ]
+depend: [Vault, PlaceholderAPI, LevelLibrary]
+commands:
+  test:
+    description: Test command.
+    permission: pit.admin
+  spawn:
+    description: Teleport to spawn point.
+  setspawn:
+    description: Set spawn point.
+  dev:
+    description: Add or remove developer mode.
+    permission: pit.admin
+  spawnpos:
+    description: Set spawn position.
+    permission: pit.admin
+  setheight:
+    description: Set arena height limit.
+    permission: pit.admin
+  arena:
+    description: Set active arena.
+    permission: pit.admin
+  buff:
+    description: Open buff menu.
+  armor:
+    description: Open armor menu.
+  blocks:
+    description: Open blocks menu.
+  trash:
+    description: Open trash menu.
+  weapon:
+    description: Open weapon menu.
+  curse:
+    description: Open curse menu.
+  enchance:
+    description: Open enchance menu.
+  item:
+    description: obtain a item.
+    permission: pit.admin
+  addmonsterspawn:
+    description: Add a monster spawn.
+    permission: pit.admin

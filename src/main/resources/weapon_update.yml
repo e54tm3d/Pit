@@ -1,0 +1,254 @@
+menu:
+  title: "Weapon Update Menu"
+  items:
+    upgrade:
+      name: "&aUpgrade"
+      lore:
+        - "&7You can upgrade the item."
+        - ""
+        - "%cost_format%"
+    obtain:
+      name: "&aObtain"
+      lore:
+        - "&7You can obtain the item if it is unlocked."
+        - ""
+        - "&eClick to Obtain"
+    vault:
+      name: "&aGold"
+      lore:
+        - "&7Money: &r%xconomy_balance%"
+    close:
+      name: "&cClose"
+      lore: []
+upgrade:
+  artemis_bow:
+    tier_1:
+      price: 5000
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Unlock Artemis' Bow."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+    tier_2:
+      price: 7000
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Your projectile will auto aim at the target."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+    tier_3:
+      price: 10000
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Your projectile damage increase to &c150%&7."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+    tier_4:
+      price: 14000
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7The projectile will spit out two arrows."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
+  wooden_bow:
+    tier_1:
+      price: 1000
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Unlock Wooden Bow."
+      upgrade:
+        - "&eCost &6%price% &eto upgrade!"
+    tier_2:
+      price: 1500
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Your projectile speed increase to &f120%&7."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+    tier_3:
+      price: 3000
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Your projectile damage increase to &c120%&7."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+    tier_4:
+      price: 6000
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7You will get extra knockback when you are hit by a enemy."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
+  diamond_sword:
+    tier_1:
+      price: 500
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Unlock Diamond Sowrd."
+      upgrade:
+        - "&eCost &6%price% &eto upgrade!"
+    tier_2:
+      price: 1000
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Your diamond sword damage increase by 1."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+    tier_3:
+      price: 1500
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7You gain 2 &c❤&7 when you killed a player."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+    tier_4:
+      price: 2000
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7You got &fSpeed II&7 when the sword is in your hand."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
+  golden_sword:
+    tier_1:
+      price: 5000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - gold_ingot:3
+      lore:
+        - "&7Unlock Golden Sowrd."
+      upgrade:
+        - "&eCost &f3 &6Gold Ingot &eand &6%price% &eto upgrade!"
+    tier_2:
+      price: 10000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - gold_ingot:1
+      lore:
+        - "&7You gain 2 &c❤&7 when you killed a player."
+        - "&7The player who was slained by you will drop golds."
+      upgrade: "&eCost &f1 &6Gold Ingot &e and &6%price% &eto upgrade!"
+    tier_3:
+      price: 30000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - gold_ingot:2
+      lore:
+        - "&7You increase 50% damage for 5s when pick gold up."
+      upgrade: "&eCost &f2 &6Gold Ingot &e and &6%price% &eto upgrade!"
+    tier_4:
+      price: 50000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - gold_ingot:3
+      lore:
+        - "&7You got &fSpeed II&7 for 10s when pick gold up."
+      upgrade: "&eCost &f3 &6Gold Ingot &e and &6%price% &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
+  ice_sword:
+    tier_1:
+      price: 8000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - ice_block:4
+      lore:
+        - "&7Unlock Ice Sowrd."
+      upgrade:
+        - "&eCost &f4 &bIce Block &eand &6%price% &eto upgrade!"
+    tier_2:
+      price: 16000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - ice_block:3
+      lore:
+        - "&7You have 10% change to freeze a enemy."
+        - "&7You will regen 0.5 &c❤&7when you freeze a enemy."
+      upgrade: "&eCost &f3 &bIce Block &eand &6%price% &eto upgrade!"
+    tier_3:
+      price: 32000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - ice_block:3
+      lore:
+        - "&7You increase 20% damage when you are using it."
+      upgrade: "&eCost &f3 &bIce Block &eand &6%price% &eto upgrade!"
+    tier_4:
+      price: 64000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - ice_block:5
+      lore:
+        - "&7You increase 100% damage when the enemy was frozen."
+      upgrade: "&eCost &f5 &bIce Block &eand &6%price% &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
+  lightning_sword:
+    tier_1:
+      price: 10000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - superconductor:4
+      lore:
+        - "&7Unlock Lightning Sowrd."
+      upgrade:
+        - "&eCost &f4 &eSuperconductor &eand &6%price% &eto upgrade!"
+    tier_2:
+      price: 20000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - superconductor:1
+      lore:
+        - "&7You have 10% change to lightning a enemy."
+        - "&7Enemies hit by lightning take 50% extra damage and gain &eElectrified&7."
+      upgrade: "&eCost &f1 &eSuperconductor &eand &6%price% &eto upgrade!"
+    tier_3:
+      price: 30000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - superconductor:2
+      lore:
+        - "&7When enemies are &eElectrified&7, your damage increases by 50%."
+      upgrade: "&eCost &f2 &eSuperconductor &eand &6%price% &eto upgrade!"
+    tier_4:
+      price: 40000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - superconductor:3
+      lore:
+        - "&7When &eElectrified&7 enemies take damage, nearby enemies also take 20% damage."
+      upgrade: "&eCost &f3 &eSuperconductor &eand &6%price% &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
+  wooden_sword:
+    tier_1:
+      price: 0
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Unlock Wooden Sowrd"
+      upgrade:
+        - "&eCost &6%price% &eto upgrade!"
+    tier_2:
+      price: 100
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Your wooden sword damage increase by 1."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+    tier_3:
+      price: 200
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Your wooden sword damage increase by 1."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+    tier_4:
+      price: 300
+      name: "&aTier: &f%tier%"
+      consume_items: []
+      lore:
+        - "&7Yoou got &fSpeed I&7 when the sword is in your hand."
+      upgrade: "&eCost &6%price% &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
