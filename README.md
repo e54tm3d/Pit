@@ -371,14 +371,26 @@ Regarding various API classes
 
 ### Basic Commands
 
+| Commands | Description |
+| ------------- | ------------- |
+| /arena  | Set a world as a arena |
+| /dev  | Enter and exit developer mode |
+| /item <item> <amount>  | Get a specified number of items |
+| /monsterspawn <monster>  | Set a spawn point for a monster |
+| /setheight <height>  | Set a max build height for a arena |
+| /setspawn  | Set the player's respawn point |
+| /spawn  | Teleport to the spawn point (Unavailable in combat) |
+| /spawnpos <1|2>  | Select a region and set it as the spawn area |
+
+
+### Menu Commands
 
 | Commands | Description |
 | ------------- | ------------- |
-| /arena  |  |
-| /dev  |  |
-| /item <item> <amount>  |  |
-| /monsterspawn <monster>  |  |
-| /setheight <height>  |  |
-| /setspawn  |  |
-| /spawn  |  |
-| /spawnpos <1|2>  |  |
+| /armor  | Open armor menu in order to strengthen and upgrade equipment |
+| /blocks  | Open blocks menu in order to purchase blocks which can build in arena |
+| /buff  | Open buff menu in order to unlock and equip buffs |
+| /curse  | Open curse menu in order to unlock and curse buffs |
+| /enchance  | Open curse menu in order to enchant equipment |
+| /trash  | Open trash menu in order to discard useless items |
+| /weapon  | Open weapon menu in order to strengthen and upgrade weapon |
