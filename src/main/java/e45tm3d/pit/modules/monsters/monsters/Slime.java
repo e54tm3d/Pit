@@ -49,6 +49,9 @@ public class Slime extends MonsterModule {
                 if (r.nextInt(100) <= 10) {
                     Bukkit.getWorld(VariableFunction.getActiveArena()).dropItem(e.getEntity().getLocation(), ItemFunction.searchItem("promethean_fire"));
                 }
+                if (r.nextInt(100) <= 5) {
+                    Bukkit.getWorld(VariableFunction.getActiveArena()).dropItem(e.getEntity().getLocation(), ItemFunction.searchItem("slime_ball"));
+                }
             }
         }
     }

@@ -28,10 +28,10 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\buff\buffs\WolfTrainer.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\CommandModule.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\Commands.java
-F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\commands\CMDAddMonesterSpawn.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\commands\CMDArena.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\commands\CMDDev.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\commands\CMDItem.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\commands\CMDMonesterSpawn.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\commands\CMDSetHeight.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\commands\CMDSetSpawn.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\commands\commands\CMDSpawn.java
@@ -62,10 +62,12 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\enchances\weapon\Berserker.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\enchances\weapon\LifeSteal.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\EnchanceType.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\Bone.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\GoldIngot.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\IceBlock.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\PrometheanFire.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\ResentfulHead.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\SlimeBall.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\Superconductor.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\MaterialModule.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\Materials.java

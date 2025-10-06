@@ -87,6 +87,7 @@ e45tm3d\pit\api\events\EntityLightningEvent.class
 e45tm3d\pit\modules\tasks\player\Tablist.class
 e45tm3d\pit\modules\buff\buffs\WolfTrainer.class
 e45tm3d\pit\modules\enchance\enchances\chestplate\DamageAbsorption.class
+e45tm3d\pit\modules\items\materials\items\SlimeBall.class
 e45tm3d\pit\api\events\PlayerUnlockCurseEvent.class
 e45tm3d\pit\utils\menus\BlocksMenu.class
 e45tm3d\pit\modules\listeners\player\Dead.class
@@ -95,12 +96,12 @@ e45tm3d\pit\modules\listeners\player\Saturation.class
 e45tm3d\pit\modules\commands\commands\menus\CMDBuff.class
 e45tm3d\pit\utils\maps\CurseMaps.class
 e45tm3d\pit\modules\buff\buffs\Regeneration.class
+e45tm3d\pit\modules\items\materials\items\Bone.class
 e45tm3d\pit\modules\monsters\MonsterModule.class
 e45tm3d\pit\modules\listeners\player\ArmorSlotLock.class
 e45tm3d\pit\utils\functions\EntityFunction.class
 e45tm3d\pit\modules\curse\curses\ImpregnableFortress.class
 e45tm3d\pit\api\events\PlayerPurchaseEvent.class
-e45tm3d\pit\modules\commands\commands\CMDAddMonesterSpawn.class
 e45tm3d\pit\modules\commands\commands\CMDSpawn.class
 e45tm3d\pit\modules\items\weapon\items\swords\LightningSword.class
 e45tm3d\pit\modules\items\materials\items\PrometheanFire.class
@@ -126,6 +127,7 @@ e45tm3d\pit\api\events\PlayerEnchanceEvent.class
 e45tm3d\pit\modules\listeners\player\ArmorLoader$ArmorType$4.class
 e45tm3d\pit\modules\items\weapon\items\swords\DiamondSword.class
 e45tm3d\pit\api\enums\Messages$MessageSender.class
+e45tm3d\pit\modules\commands\commands\CMDMonesterSpawn.class
 e45tm3d\pit\modules\commands\commands\menus\CMDTrash.class
 e45tm3d\pit\utils\nms\nms1_8_R3\Minecraft1_8_R3.class
 e45tm3d\pit\modules\listeners\player\ArmorLoader$ArmorType$1.class

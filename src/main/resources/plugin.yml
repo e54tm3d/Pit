@@ -41,6 +41,6 @@ commands:
   item:
     description: obtain a item.
     permission: pit.admin
-  addmonsterspawn:
+  monsterspawn:
     description: Add a monster spawn.
     permission: pit.admin

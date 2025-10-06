@@ -16,6 +16,8 @@ public enum Materials {
     ICE_BLOCK("ice_block"),
     SUPERCONDUCTOR("superconductor"),
     RESENTFUL_HEAD("resentful_head"),
+    BONE("bone"),
+    SLIME_BALL("slime_ball"),
     PROMETHEAN_FIRE("promethean_fire"),;
 
     String type;

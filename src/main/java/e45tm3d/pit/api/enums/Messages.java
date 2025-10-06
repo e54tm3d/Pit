@@ -28,9 +28,9 @@ public enum Messages {
     CMD_ARENA_SET("cmd_arena_set"),
     CMD_ITEM_USAGE("cmd_item_usage"),
     CMD_ITEM_NOT_FOUND("cmd_item_not_found"),
-    CMD_ADDMONSTERSPAWN_USAGE("cmd_addmonsterspawn_usage"),
-    CMD_ADDMONSTERSPAWN("cmd_addmonsterspawn"),
-    CMD_ADDMONSTERSPAWN_INVALID_MOB("cmd_addmonsterspawn_invalid_mob"),
+    CMD_MONSTERSPAWN_USAGE("cmd_monsterspawn_usage"),
+    CMD_MONSTERSPAWN("cmd_monsterspawn"),
+    CMD_MONSTERSPAWN_INVALID_MOB("cmd_monsterspawn_invalid_mob"),
     WEAPON_LOCKED("weapon_locked"),
     CURSE_LOCKED("curse_locked"),
     CURSE_UNLOCKED("curse_unlocked"),
@@ -92,7 +92,7 @@ public enum Messages {
                         .replaceAll("%player%", Murder.killer.getName())
                         .replaceAll("&", "§");
             }
-            case CMD_ADDMONSTERSPAWN_INVALID_MOB -> {
+            case CMD_MONSTERSPAWN_INVALID_MOB -> {
                 return Yaml.MESSAGES.getConfig().getString(msg)
                         .replaceAll("%monsters%", String.join(", ", MonsterLists.entityTypes))
                         .replaceAll("&", "§");
@@ -160,7 +160,7 @@ public enum Messages {
                     .replaceAll("%killstreak%", String.valueOf(Murder.killstreak))
                     .replaceAll("%player%", Murder.killer.getName())
                     .replaceAll("&", "§"));
-            case CMD_ADDMONSTERSPAWN_INVALID_MOB -> p.sendMessage(getMessage()
+            case CMD_MONSTERSPAWN_INVALID_MOB -> p.sendMessage(getMessage()
                     .replaceAll("%monsters%", String.join(", ", MonsterLists.entityTypes))
                     .replaceAll("&", "§"));
             case CMD_ITEM_NOT_FOUND -> p.sendMessage(getMessage()
@@ -184,7 +184,7 @@ public enum Messages {
             case KILLSTREAK -> PlayerFunction.sendActionBar(p, getMessage()
                     .replaceAll("%killstreak%", String.valueOf(Murder.killstreak))
                     .replaceAll("%player%", Murder.killer.getName()));
-            case CMD_ADDMONSTERSPAWN_INVALID_MOB -> PlayerFunction.sendActionBar(p, getMessage()
+            case CMD_MONSTERSPAWN_INVALID_MOB -> PlayerFunction.sendActionBar(p, getMessage()
                     .replaceAll("%monsters%", String.join(", ", MonsterLists.entityTypes))
                     .replaceAll("&", "§"));
             case CMD_ITEM_NOT_FOUND -> PlayerFunction.sendActionBar(p, getMessage()

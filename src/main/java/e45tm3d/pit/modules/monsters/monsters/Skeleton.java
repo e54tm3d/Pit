@@ -47,6 +47,9 @@ public class Skeleton extends MonsterModule {
                 if (r.nextInt(100) <= 5) {
                     Bukkit.getWorld(VariableFunction.getActiveArena()).dropItem(e.getEntity().getLocation(), ItemFunction.searchItem("promethean_fire"));
                 }
+                if (r.nextInt(100) <= 5) {
+                    Bukkit.getWorld(VariableFunction.getActiveArena()).dropItem(e.getEntity().getLocation(), ItemFunction.searchItem("bone"));
+                }
             }
         }
     }

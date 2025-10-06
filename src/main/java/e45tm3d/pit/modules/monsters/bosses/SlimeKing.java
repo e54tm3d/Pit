@@ -64,12 +64,13 @@ public class SlimeKing extends MonsterModule {
                     Item item = loc.getWorld().dropItem(loc, new ItemStack(Material.FIREBALL));
 
                     item.setItemStack(ItemFunction.addNBTTag(item.getItemStack(), String.valueOf(UUID.randomUUID())));
-                    item.setItemStack(ItemFunction.addNBTTag(item.getItemStack(), "promethean_fire"));
+                    item.setItemStack(ItemFunction.addNBTTag(item.getItemStack(), "drop_promethean_fire"));
 
                     Vector v = new Vector(r.nextDouble() * 0.5 - 0.4, 0.42, r.nextDouble() * 0.5 - 0.4);
                     item.setPickupDelay(40);
                     item.setVelocity(v);
                 }
+
                 for (int i = 0; i <  MathFunction.randomDouble(25, 16); i++) {
 
                     Random r = new Random();
@@ -81,14 +82,15 @@ public class SlimeKing extends MonsterModule {
                     item.setPickupDelay(40);
                     item.setVelocity(v);
                 }
+
                 for (int i = 0; i <  MathFunction.randomDouble(5, 3); i++) {
 
                     Random r = new Random();
 
-                    Item item = loc.getWorld().dropItem(loc, new ItemStack(Material.SKULL_ITEM));
+                    Item item = loc.getWorld().dropItem(loc, new ItemStack(Material.SLIME_BALL));
 
                     item.setItemStack(ItemFunction.addNBTTag(item.getItemStack(), String.valueOf(UUID.randomUUID())));
-                    item.setItemStack(ItemFunction.addNBTTag(item.getItemStack(), "promethean_fire"));
+                    item.setItemStack(ItemFunction.addNBTTag(item.getItemStack(), "drop_slime_ball"));
 
                     Vector v = new Vector(r.nextDouble() * 0.5 - 0.4, 0.42, r.nextDouble() * 0.5 - 0.4);
                     item.setPickupDelay(40);
@@ -97,14 +99,14 @@ public class SlimeKing extends MonsterModule {
             }
 
         } else if (event instanceof PlayerPickupItemEvent e) {
-            if (ItemFunction.hasNBTTag(e.getItem().getItemStack(), "promethean_fire")) {
+            if (ItemFunction.hasNBTTag(e.getItem().getItemStack(), "drop_promethean_fire")) {
                 e.setCancelled(true);
                 e.getPlayer().getInventory().addItem(ItemFunction.searchItem("promethean_fire"));
                 e.getItem().remove();
                 e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ITEM_PICKUP, 1, 1);
-            } else if (ItemFunction.hasNBTTag(e.getItem().getItemStack(), "promethean_fire")) {
+            } else if (ItemFunction.hasNBTTag(e.getItem().getItemStack(), "drop_slime_ball")) {
                 e.setCancelled(true);
-                e.getPlayer().getInventory().addItem(ItemFunction.searchItem("promethean_fire"));
+                e.getPlayer().getInventory().addItem(ItemFunction.searchItem("slime_ball"));
                 e.getItem().remove();
                 e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ITEM_PICKUP, 1, 1);
             }
@@ -155,7 +157,7 @@ public class SlimeKing extends MonsterModule {
                     slime.setRemoveWhenFarAway(false);
                 }
             }
-        }, 0, MathFunction.time(0, 30, 0));
+        }, 0, MathFunction.time(0, 0, 20));
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
             if (!getMonsters().isEmpty()) {
@@ -172,7 +174,7 @@ public class SlimeKing extends MonsterModule {
                     }
                 }
             }
-        }, 0, MathFunction.time(0, 0, 20));
+        }, 0, MathFunction.time(0, 30, 0));
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {

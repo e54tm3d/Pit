@@ -7,7 +7,6 @@ import e45tm3d.pit.utils.functions.VariableFunction;
 import e45tm3d.pit.utils.lists.MonsterLists;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
@@ -17,11 +16,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class CMDAddMonesterSpawn extends CommandModule implements TabCompleter {
+public class CMDMonesterSpawn extends CommandModule implements TabCompleter {
 
     @Override
     public String getCommand() {
-        return "addmonsterspawn";
+        return "monsterspawn";
     }
 
     @Override
@@ -50,12 +49,12 @@ public class CMDAddMonesterSpawn extends CommandModule implements TabCompleter {
                             Yaml.CONFIG.saveConfig();
 
                         }
-                        Messages.CMD_ADDMONSTERSPAWN.sendMessage(p);
+                        Messages.CMD_MONSTERSPAWN.sendMessage(p);
                     } else {
-                        Messages.CMD_ADDMONSTERSPAWN_INVALID_MOB.sendMessage(p);
+                        Messages.CMD_MONSTERSPAWN_INVALID_MOB.sendMessage(p);
                     }
             } else {
-                Messages.CMD_ADDMONSTERSPAWN_USAGE.sendMessage(p);
+                Messages.CMD_MONSTERSPAWN_USAGE.sendMessage(p);
             }
         } else {
             sender.sendMessage(Messages.CMD_ONLY_PLAYER.getMessage());

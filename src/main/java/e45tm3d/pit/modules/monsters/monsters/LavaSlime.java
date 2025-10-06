@@ -4,6 +4,7 @@ import e45tm3d.pit.ThePit;
 import e45tm3d.pit.modules.monsters.MonsterModule;
 import e45tm3d.pit.utils.functions.ItemFunction;
 import e45tm3d.pit.utils.functions.MathFunction;
+import e45tm3d.pit.utils.functions.VariableFunction;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.MagmaCube;
@@ -48,6 +49,9 @@ public class LavaSlime extends MonsterModule {
                 Random r = new Random();
                 if (r.nextInt(100) < 40) {
                     e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), ItemFunction.searchItem("promethean_fire"));
+                }
+                if (r.nextInt(100) <= 5) {
+                    Bukkit.getWorld(VariableFunction.getActiveArena()).dropItem(e.getEntity().getLocation(), ItemFunction.searchItem("slime_ball"));
                 }
             }
         }
