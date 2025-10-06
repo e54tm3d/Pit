@@ -1,0 +1,83 @@
+menu:
+  title: "Enchance Menu"
+  items:
+    weapon:
+      price: 10000
+      consume: []
+      name: "&fWeapon"
+      lore:
+        - "%enchance%"
+        - ""
+        - "&eCost &6%price% &eto refresh."
+    helmet:
+      price: 10000
+      consume: []
+      name: "&fHelmet"
+      lore:
+        - "%enchance%"
+        - ""
+        - "&eCost &6%price% &eto refresh."
+    chestplate:
+      price: 10000
+      consume: []
+      name: "&fChestplate"
+      lore:
+        - "%enchance%"
+        - ""
+        - "&eCost &6%price% &eto refresh."
+    leggings:
+      price: 10000
+      consume: []
+      name: "&fLeggings"
+      lore:
+        - "%enchance%"
+        - ""
+        - "&eCost &6%price% &eto refresh."
+    boots:
+      price: 10000
+      name: "&fBoots"
+      lore:
+        - "%enchance%"
+        - ""
+        - "&eCost &6%price% &eto refresh."
+    close:
+      name: "&cClose"
+      lore: []
+    vault:
+      name: "&aGold"
+      lore:
+        - "&7Money: &r%xconomy_balance%"
+enchance:
+  none:
+    description:
+      - "&cYou don't have any enchance"
+      - "&cPlease cost gold to get enchance!"
+  speed:
+    description:
+      - "&7Your feet got boosted."
+      - "&7Your got &fSpeed I &7when moving."
+  damage_absorption:
+    description:
+      - "&7Your defense will be increased."
+      - "&7The maximum damage you take is 75% of your maximum HP."
+  shield:
+    description:
+      - "&7Your survival ability got boosted."
+      - "&7You have chance to got &6Absorption III&7 when hit a enemy!"
+  jump_boost:
+    description:
+      - "&7Your jump ability will be increased."
+      - "&7You got &fJump Boost II&7!"
+  regeneration:
+    description:
+      - "&7Your regeneration got forged!"
+      - "&7You received &dRegeneration I."
+  berserker:
+    description:
+      - "&7You feel more power when combat."
+      - "&7You will get &fSpeed II &7when hit a enemy."
+      - "&7You will get &cStrength I &7when hit by a enemy."
+  life_steal:
+    description:
+      - "&7You crave more blood..."
+      - "&7You have 10% chance to gain 2 &c❤ &7when hit a enemy."

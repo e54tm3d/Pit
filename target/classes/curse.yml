@@ -1,0 +1,183 @@
+equiped:
+  damage_multiply:
+    material: GLASS
+    name: "&cDamage Multiply"
+    lore:
+      - "&7You will be transformed into a glass cannon."
+      - "&7Your damage is increased to 200%."
+      - "&7The damage you take is increased to 300%."
+      - ""
+      - "&eClick to remove or override"
+  bloodthirsty:
+    material: INK_SACK:1
+    name: "&cBloodthirsty"
+    lore:
+      - "&7You feel overwhelmed by bloodlust..."
+      - "&7The closer the distance, the higher your damage."
+      - "&7The further the distance, the lower your damage."
+      - ""
+      - "&eClick to remove or override"
+  bloodyfire:
+    material: FIREBALL
+    name: "&4Bloody Fire"
+    lore:
+      - "&7You feel overwhelmed by bloodlust..."
+      - "&7You will take 0.5 damage per second."
+      - "&7You will regen 0.5 health when hit a enemy."
+      - ""
+      - "&eClick to remove or override"
+  impregnable_fortress:
+    material: BRICK
+    name: "&6Impregnable Fortress"
+    lore:
+      - "&7Your skin turns rock-hard..."
+      - "&7The maximum damage you take is 15% of your maximum HP."
+      - "&7The damage you can deal is 10% of the enemy's maximum HP."
+      - ""
+      - "&eClick to remove or override"
+  knockback_enchance:
+    material: FEATHER
+    name: "&fKnockback Enchance"
+    lore:
+      - "&7You will be knocked back when hit."
+      - "&7The knockback power is increased to &f150%&7."
+      - ""
+      - "&eClick to remove or override"
+  bloody_curse:
+    material: REDSTONE
+    name: "&cBloody Curse"
+    lore:
+      - "&7You feel a crazy power."
+      - "&7Your damage is increased to 150%."
+      - "&7You cannot regain health."
+      - ""
+      - "&eClick to remove or override"
+menu:
+  title: "Curse Menu"
+  items:
+    damage_multiply:
+      price: 120000
+      consume_items:
+        - resentful_head:30
+      cost_format:
+        lock:
+          - "&cYou don't unlock the curse!"
+          - "&eClick to cost &6%price% &eand &f30 &cResentful Head &eto Unlock"
+        unlock:
+          - "&eClick to select the curse!"
+      material: GLASS
+      name: "&cDamage Multiply"
+      lore:
+        - "&7You will be transformed into a glass cannon."
+        - "&7Your damage is increased to 200%."
+        - "&7The damage you take is increased to 300%."
+        - ""
+        - "%cost_format%"
+    bloodthirsty:
+      price: 150000
+      consume_items:
+        - resentful_head:15
+      cost_format:
+        lock:
+          - "&cYou don't unlock the curse!"
+          - "&eClick to cost &6%price% &eand &f15 &cResentful Head &eto Unlock"
+        unlock:
+          - "&eClick to select the curse!"
+      material: INK_SACK:1
+      name: "&cBloodthirsty"
+      lore:
+        - "&7You feel overwhelmed by bloodlust..."
+        - "&7The closer the distance, the higher your damage."
+        - "&7The further the distance, the lower your damage."
+        - ""
+        - "%cost_format%"
+    bloodyfire:
+      price: 150000
+      consume_items:
+        - resentful_head:20
+      cost_format:
+        lock:
+          - "&cYou don't unlock the curse!"
+          - "&eClick to cost &6%price% &eand &f20 &cResentful Head &eto Unlock"
+        unlock:
+          - "&eClick to select the curse!"
+      material: FIREBALL
+      name: "&4Bloody Fire"
+      lore:
+        - "&7You feel overwhelmed by bloodlust..."
+        - "&7You will take 0.5 damage per second."
+        - "&7You will regen 0.5 health when hit a enemy."
+        - ""
+        - "%cost_format%"
+    impregnable_fortress:
+      price: 200000
+      consume_items:
+        - resentful_head:30
+      cost_format:
+        lock:
+          - "&cYou don't unlock the curse!"
+          - "&eClick to cost &6%price% &eand &f30 &cResentful Head &eto Unlock"
+        unlock:
+          - "&eClick to select the curse!"
+      material: BRICK
+      name: "&6Impregnable Fortress"
+      lore:
+        - "&7Your skin turns rock-hard..."
+        - "&7The maximum damage you take is 15% of your maximum HP."
+        - "&7The damage you can deal is 10% of the enemy's maximum HP."
+        - ""
+        - "%cost_format%"
+    knockback_enchance:
+      price: 100000
+      consume_items:
+        - resentful_head:5
+      cost_format:
+        lock:
+          - "&cYou don't unlock the curse!"
+          - "&eClick to cost &6%price% &eand &f5 &cResentful Head &eto Unlock"
+        unlock:
+          - "&eClick to select the curse!"
+      material: FEATHER
+      name: "&fKnockback Enchance"
+      lore:
+        - "&7You will be knocked back when hit."
+        - "&7The knockback power is increased to &f150%&7."
+        - ""
+        - "%cost_format%"
+    bloody_curse:
+      price: 120000
+      consume_items:
+        - resentful_head:15
+      cost_format:
+        lock:
+          - "&cYou don't unlock the curse!"
+          - "&eClick to cost &6%price% &eand &f15 &cResentful Head &eto Unlock"
+        unlock:
+          - "&eClick to select the curse!"
+      material: REDSTONE
+      name: "&cBloody Curse"
+      lore:
+        - "&7You feel a crazy power."
+        - "&7Your damage is increased to 150%."
+        - "&7You cannot regain health."
+        - ""
+        - "%cost_format%"
+    vault:
+      name: "&aGold"
+      lore:
+        - "&7Money: &r%xconomy_balance%"
+    close:
+      name: "&cClose"
+      lore: []
+    slot_1:
+      name: "&cSlot#1"
+      lore:
+        - "&7The slot you can equip the curse."
+    slot_2:
+      name: "&cSlot#2"
+      lore:
+        - "&7The slot you can equip the curse."
+    slot_3:
+      name: "&cSlot#3"
+      lore:
+        - "&7The slot you can equip the curse."

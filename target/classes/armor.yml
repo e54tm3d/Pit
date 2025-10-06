@@ -1,0 +1,77 @@
+menu:
+  title: "Armor Menu"
+  settings:
+    cost_format:
+      level_max: "&cYou have reached the max level!"
+      price: "&eCost &6%price% &eto upgrade!"
+  items:
+    armor_characteristics:
+      name: "&aArmor Characteristics"
+      lore:
+        - "&7Here are the armor characteristics."
+        - "&7The armor will influence your combat."
+        - ""
+        - "&eClick to browse"
+    close:
+      name: "&cClose"
+      lore: []
+    vault:
+      name: "&aGold"
+      lore:
+        - "&7Money: &r%xconomy_balance%"
+    helmet:
+      costs:
+        tier_1: 500
+        tier_2: 1000
+        tier_3: 1500
+        tier_4: 5000
+        tier_5: 10000
+        level_max: "You have reached the max level!"
+      name: "&aHelmet"
+      lore:
+        - "&7Helmet level can improve your defense."
+        - "&7Your helmet level: &r%level%"
+        - ""
+        - "%cost_format%"
+    chestplate:
+      costs:
+        tier_1: 800
+        tier_2: 1600
+        tier_3: 2400
+        tier_4: 8000
+        tier_5: 16000
+        level_max: "You have reached the max level!"
+      name: "&aChestplate"
+      lore:
+        - "&7Chestplate level can improve your defense."
+        - "&7Your chestplate level: &r%level%"
+        - ""
+        - "%cost_format%"
+    leggings:
+      costs:
+        tier_1: 700
+        tier_2: 1400
+        tier_3: 2100
+        tier_4: 7000
+        tier_5: 14000
+        level_max: "You have reached the max level!"
+      name: "&aLeggings"
+      lore:
+        - "&7Leggings level can improve your defense."
+        - "&7Your leggings level: &r%level%"
+        - ""
+        - "%cost_format%"
+    boots:
+      costs:
+        tier_1: 400
+        tier_2: 800
+        tier_3: 1200
+        tier_4: 4000
+        tier_5: 8000
+        level_max: "You have reached the max level!"
+      name: "&aBoots"
+      lore:
+        - "&7Boots level can improve your defense."
+        - "&7Your boots level: &r%level%"
+        - ""
+        - "%cost_format%"
