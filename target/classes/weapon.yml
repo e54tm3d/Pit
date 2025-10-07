@@ -59,6 +59,16 @@ menu:
         - "&7Its edge crackling with electric light when wielded."
         - ""
         - "&eClick to Browse"
+    bone_sword:
+      attributes:
+        attackDamage: 6
+      material: IRON_SWORD
+      name: "&fBone Sword"
+      lore:
+        - "&7It has an extremely light weight."
+        - "&7Its hardness seems to be able to cause damage to the enemy's bones as well..."
+        - ""
+        - "&eClick to Browse"
     close:
       name: "&cClose"
       lore: []
@@ -103,6 +113,14 @@ items:
     lore:
       - "&7A blade pulsing with lightning energy."
       - "&7Its edge crackling with electric light when wielded."
+  bone_sword:
+    attributes:
+      attackDamage: 6
+    material: IRON_SWORD
+    name: "&fBone Sword"
+    lore:
+      - "&7It has an extremely light weight."
+      - "&7Its hardness seems to be able to cause damage to the enemy's bones as well..."
   wooden_bow:
     material: BOW
     name: "&aWooden Bow"

@@ -16,6 +16,7 @@ public enum WeaponMenuItems {
     DIAMOND_SWORD("diamond_sword"),
     ICE_SWORD("ice_sword"),
     LIGHTNING_SWORD("lightning_sword"),
+    BONE_SWORD("bone_sword"),
     WOODEN_BOW("wooden_bow"),
     ARTEMIS_BOW("artemis_bow");
 

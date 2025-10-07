@@ -33,7 +33,7 @@ public class Weapons implements Listener {
 	public Weapons() {
         ThePit.getInstance().getLogger().info("Loading weapon module...");
 
-        swords = Lists.newArrayList(new WoodenSword(), new GoldenSword(), new DiamondSword(), new IceSword(), new LightningSword());
+        swords = Lists.newArrayList(new WoodenSword(), new GoldenSword(), new DiamondSword(), new IceSword(), new LightningSword(), new BoneSword());
         bows = Lists.newArrayList(new WoodenBow(), new ArtemisBow());
 
 		Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());

@@ -33,7 +33,7 @@ public class GoldSpawn extends TaskModule {
                         org.bukkit.entity.Item gold = loc.getWorld().dropItem(loc, gold_nugget);
                         gold.setTicksLived(6000);
                     } else {
-                        loc.getWorld().dropItem(loc, ItemFunction.searchItem("golden_ingot"));
+                        loc.getWorld().dropItem(loc, ItemFunction.searchItem("gold_ingot"));
                     }
                 }
             }

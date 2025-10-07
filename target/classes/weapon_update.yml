@@ -249,6 +249,43 @@ upgrade:
       name: "&aTier: &f%tier%"
       consume_items: []
       lore:
-        - "&7Yoou got &fSpeed I&7 when the sword is in your hand."
+        - "&7You got &fSpeed I&7 when the sword is in your hand."
       upgrade: "&eCost &6%price% &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
+  bone_sword:
+    tier_1:
+      price: 1600
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - bone:5
+      lore:
+        - "&7Unlock Bone Sowrd"
+      upgrade:
+        - "&eCost &6%price%&eand &f5 Bone &eto upgrade!"
+    tier_2:
+      price: 5000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - bone:1
+      lore:
+        - "&7Your bone sword damage increase by 2."
+      upgrade: "&eCost &6%price% &eand &f1 Bone &eto upgrade!"
+    tier_3:
+      price: 10000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - bone:3
+      lore:
+        - "&7You swing your sword faster..."
+        - "&7You have a 10% chance of breaking an enemy bone when dealing damage."
+        - "&7When an enemy's bone is broken, they take 1 &c❤ &7damage every second for 5 seconds."
+      upgrade: "&eCost &6%price% &eand &f3 Bone &eto upgrade!"
+    tier_4:
+      price: 20000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - bone:2
+      lore:
+        - "&7You got &fSpeed II&7 when the sword is in your hand."
+      upgrade: "&eCost &6%price% &eand &f2 Bone &eto upgrade!"
       levelmax: "&cYou have reached the max level!"

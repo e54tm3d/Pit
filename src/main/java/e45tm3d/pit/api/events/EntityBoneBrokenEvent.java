@@ -5,14 +5,14 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class EntityFrozenEvent extends Event implements Cancellable {
+public class EntityBoneBrokenEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
     private boolean cancelled = false;
     public Entity entity;
     public Entity damager;
 
-    public EntityFrozenEvent(Entity entity, Entity damager) {
+    public EntityBoneBrokenEvent(Entity entity, Entity damager) {
         this.entity = entity;
         this.damager = damager;
     }

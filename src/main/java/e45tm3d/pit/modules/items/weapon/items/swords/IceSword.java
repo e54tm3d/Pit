@@ -171,7 +171,7 @@ public class IceSword extends WeaponModule {
                         if (User.getWeaponLevel(damager, getType()) >= 2) {
                             Random r = new Random();
                             if (r.nextInt(100) < 10) {
-                                Bukkit.getPluginManager().callEvent(new EntityFrozenEvent(entity));
+                                Bukkit.getPluginManager().callEvent(new EntityFrozenEvent(entity, damager));
                                 entity.addPotionEffect(PotionEffectType.SLOW.createEffect(40, 1));
                                 forzen.put(uuid, System.currentTimeMillis());
                                 entity.setHealth(Math.min(entity.getHealth() + 1, entity.getMaxHealth()));

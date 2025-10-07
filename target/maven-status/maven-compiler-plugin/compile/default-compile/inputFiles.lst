@@ -1,5 +1,6 @@
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\enums\Messages.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\enums\Yaml.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\EntityBoneBrokenEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\EntityFrozenEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\EntityLightningEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\MonsterSpawnEvent.java
@@ -73,6 +74,7 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\Materials.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\bows\ArtemisBow.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\bows\WoodenBow.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\swords\BoneSword.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\swords\DiamondSword.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\swords\GoldenSword.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\swords\IceSword.java
