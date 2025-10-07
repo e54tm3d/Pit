@@ -380,7 +380,7 @@ Regarding various API classes
 | /setheight <height>  | Set a max build height for a arena |
 | /setspawn  | Set the player's respawn point |
 | /spawn  | Teleport to the spawn point (Unavailable in combat) |
-| /spawnpos <1|2>  | Select a region and set it as the spawn area |
+| /spawnpos <1/2>  | Select a region and set it as the spawn area |
 
 
 ### Menu Commands
