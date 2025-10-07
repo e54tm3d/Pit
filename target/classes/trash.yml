@@ -1,6 +1,0 @@
-menu:
-  title: "Trash Menu"
-  items:
-    close:
-      name: "&cClose"
-      lore: []
