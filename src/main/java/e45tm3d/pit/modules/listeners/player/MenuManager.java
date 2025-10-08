@@ -10,6 +10,7 @@ import e45tm3d.pit.modules.listeners.ListenerModule;
 import e45tm3d.pit.utils.functions.InventoryFunction;
 import e45tm3d.pit.utils.functions.ItemFunction;
 import e45tm3d.pit.utils.lists.EnchanceList;
+import e45tm3d.pit.utils.maps.BuffMaps;
 import e45tm3d.pit.utils.maps.CurseMaps;
 import e45tm3d.pit.utils.maps.PlayerMaps;
 import e45tm3d.pit.utils.maps.WeaponMaps;
@@ -332,8 +333,8 @@ public class MenuManager extends ListenerModule {
 
                                             String slot = BuffMenu.buffs[e.getSlot()];
 
-                                            List<String> consume_items = Yaml.BUFF.getConfig().getStringList("menu.items." + slot + ".consume_items");
-                                            double price = Yaml.BUFF.getConfig().getDouble("menu.items." + slot + ".price");
+                                            List<String> consume_items = BuffMaps.consume_items.get(slot);
+                                            double price = BuffMaps.price.get(slot);
 
                                             if (!Objects.isNull(slot)) {
                                                 if (!User.getBuffStat(p, slot)) {

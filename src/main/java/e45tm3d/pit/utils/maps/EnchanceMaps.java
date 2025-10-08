@@ -8,4 +8,7 @@ public class EnchanceMaps {
 
     public static Map<String, List<String>> enchances = new HashMap<>();
 
+    public static Map<String, List<String>> consume_items = new HashMap<>();
+    public static Map<String, Integer> price = new HashMap<>();
+
 }
