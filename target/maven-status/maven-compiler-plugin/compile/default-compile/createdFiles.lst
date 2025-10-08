@@ -103,7 +103,6 @@ e45tm3d\pit\modules\listeners\player\ArmorSlotLock.class
 e45tm3d\pit\utils\functions\EntityFunction.class
 e45tm3d\pit\modules\curse\curses\ImpregnableFortress.class
 e45tm3d\pit\modules\items\weapon\items\swords\BoneSword.class
-e45tm3d\pit\api\events\PlayerPurchaseEvent.class
 e45tm3d\pit\modules\commands\commands\CMDSpawn.class
 e45tm3d\pit\modules\items\weapon\items\swords\LightningSword.class
 e45tm3d\pit\modules\items\materials\items\PrometheanFire.class
