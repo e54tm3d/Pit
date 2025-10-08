@@ -9,7 +9,7 @@ menu:
       lore:
         - "%enchance%"
         - ""
-        - "&eCost &6%price% &eto refresh."
+        - "&eCost &6%price%&eand &f1 &dEnchancement Book &eto refresh."
     helmet:
       price: 10000
       consume_items:
@@ -18,7 +18,7 @@ menu:
       lore:
         - "%enchance%"
         - ""
-        - "&eCost &6%price% &eto refresh."
+        - "&eCost &6%price% &eand &f1 &dEnchancement Book &eto refresh."
     chestplate:
       price: 10000
       consume_items:
@@ -27,7 +27,7 @@ menu:
       lore:
         - "%enchance%"
         - ""
-        - "&eCost &6%price% &eto refresh."
+        - "&eCost &6%price% &eand &f1 &dEnchancement Book &eto refresh."
     leggings:
       price: 10000
       consume_items:
@@ -36,7 +36,7 @@ menu:
       lore:
         - "%enchance%"
         - ""
-        - "&eCost &6%price% &eto refresh."
+        - "&eCost &6%price% &eand &f1 &dEnchancement Book &eto refresh."
     boots:
       price: 10000
       consume_items:
@@ -45,7 +45,7 @@ menu:
       lore:
         - "%enchance%"
         - ""
-        - "&eCost &6%price% &eto refresh."
+        - "&eCost &6%price% &eand &f1 &dEnchancement Book &eto refresh."
     close:
       name: "&cClose"
       lore: []

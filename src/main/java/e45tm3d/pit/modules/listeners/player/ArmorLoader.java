@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -28,6 +29,8 @@ public class ArmorLoader extends ListenerModule {
             handleInventoryClose(e);
         } else if (event instanceof PlayerJoinEvent e) {
             handlePlayerJoin(e);
+        } else if (event instanceof PlayerPickupItemEvent e) {
+            handlePlayerPickupItem(e);
         }
     }
 
@@ -249,6 +252,59 @@ public class ArmorLoader extends ListenerModule {
         }
     }
 
+    // 新增方法：处理玩家捡起物品事件，只更新捡起的盔甲
+    private void handlePlayerPickupItem(PlayerPickupItemEvent event) {
+        ItemStack item = event.getItem().getItemStack();
+        Player player = event.getPlayer();
+
+        // 判断是否为盔甲
+        if (isArmor(item.getType())) {
+            updateArmorLoreAndEnchant(player, item);
+        }
+    }
+
+    // 判断物品类型是否为盔甲
+    private boolean isArmor(Material material) {
+        return material.name().endsWith("_HELMET")
+                || material.name().endsWith("_CHESTPLATE")
+                || material.name().endsWith("_LEGGINGS")
+                || material.name().endsWith("_BOOTS");
+    }
+
+    // 只更新捡起的盔甲的lore和附魔
+    private void updateArmorLoreAndEnchant(Player player, ItemStack armorPiece) {
+        if (armorPiece == null) return;
+        String slot = getArmorSlot(armorPiece.getType());
+        if (slot == null) return;
+
+        boolean hasEnchant = !User.getEnchance(player, slot).equals("none");
+        applyArmorEnchant(armorPiece, hasEnchant);
+
+        if (hasEnchant) {
+            String enchantType = User.getEnchance(player, slot);
+            ItemMeta meta = armorPiece.getItemMeta();
+            boolean empty = !EnchanceList.enchances.contains(enchantType);
+            if (empty) User.setEnchance(player, slot, "none");
+            if (enchantType != null && EnchanceMaps.enchances.containsKey(enchantType)) {
+                List<String> lore = meta.getLore() != null ? meta.getLore() : new ArrayList<>();
+                for (String enchance : EnchanceMaps.enchances.get(enchantType)) {
+                    lore.add(enchance.replaceAll("&", "§"));
+                }
+                meta.setLore(lore);
+            }
+            armorPiece.setItemMeta(meta);
+        }
+    }
+
+    // 根据物品类型获取盔甲槽位字符串
+    private String getArmorSlot(Material material) {
+        if (material.name().endsWith("_HELMET")) return "helmet";
+        if (material.name().endsWith("_CHESTPLATE")) return "chestplate";
+        if (material.name().endsWith("_LEGGINGS")) return "leggings";
+        if (material.name().endsWith("_BOOTS")) return "boots";
+        return null;
+    }
+
     private enum ArmorType {
         HELMET {
             @Override
@@ -302,3 +358,5 @@ public class ArmorLoader extends ListenerModule {
         public abstract Material getMaterialByLevel(int level);
     }
 }
+
+

@@ -34,8 +34,13 @@ public class WeaponLoader extends ListenerModule {
             Bukkit.getScheduler().runTaskLater(ThePit.getInstance(), () -> {
                 updateLore(e.getPlayer());
             }, 10);
+        } else if (event instanceof PlayerPickupItemEvent e) {
+            Player player = e.getPlayer();
+            ItemStack item = e.getItem().getItemStack();
+            updatePickupItemLore(player, item);
         }
     }
+
     private void updateLore(Player p) {
         ItemStack[] contents = p.getInventory().getContents();
         for (int i = 0; i < contents.length; i++) {
@@ -69,5 +74,32 @@ public class WeaponLoader extends ListenerModule {
             }
         }
         p.getInventory().setContents(contents);
+    }
+
+    private void updatePickupItemLore(Player p, ItemStack item) {
+        if (item == null) return;
+        for (String weapons : ItemLists.weapons) {
+            if (ItemFunction.hasNBTTag(item, weapons)) {
+                ItemMeta meta = ItemFunction.searchItem(weapons).getItemMeta();
+                if (meta == null) continue;
+                List<String> normal = meta.getLore();
+                if (normal == null) normal = new ArrayList<>();
+                String enchancement = User.getEnchance(p, "weapon");
+                List<String> enchance = EnchanceMaps.enchances.get(enchancement);
+                if (enchance != null && !enchancement.equals("none")) {
+                    normal.add("");
+                    for (String enchances : enchance) {
+                        normal.add(enchances.replaceAll("&", "§"));
+                    }
+                    meta.setLore(normal);
+                    meta.addEnchant(Enchantment.DURABILITY, 1, false);
+                    meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                    item.setItemMeta(meta);
+                } else if (enchancement.equals("none")) {
+                    meta.removeEnchant(Enchantment.DURABILITY);
+                    item.setItemMeta(meta);
+                }
+            }
+        }
     }
 }
