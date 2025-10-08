@@ -17,7 +17,7 @@ Only using in bungeecord mode.
 
 ## API Usage
 
-ListenerModule Exapmle
+### ListenerModule Exapmle
 ```java
 public class Example extends ListenerModule {//Load ListenerModule
 
@@ -30,7 +30,7 @@ public class Example extends ListenerModule {//Load ListenerModule
 }
 ```
 
-TaskModule Exapmle
+### TaskModule Exapmle
 ```java
 public class Example extends TaskModule {//Load TaskModule
 
@@ -44,7 +44,7 @@ public class Example extends TaskModule {//Load TaskModule
 }
 ```
 
-CommandModule Exapmle
+### CommandModule Exapmle
 ```java
 public class Example extends CommandModule {//Load CommandModule
 
@@ -61,7 +61,7 @@ public class Example extends CommandModule {//Load CommandModule
 }
 ```
 
-MonsterModule Exapmle
+### MonsterModule Exapmle
 ```java
 public class Example extends MonsterModule {//Load MonsterModule
 
@@ -109,7 +109,7 @@ public class Example extends MonsterModule {//Load MonsterModule
     }
 ```
 
-EnchanceModule Exapmle
+### EnchanceModule Exapmle
 ```java
 public class Example extends EnchanceModule {//Load EnchanceModule
 
@@ -136,7 +136,7 @@ public class Example extends EnchanceModule {//Load EnchanceModule
     public void run(EnchanceModule task) {}
 ```
 
-WeaponModule Exapmle
+### WeaponModule Exapmle
 ```java
 public class WoodenSword extends WeaponModule {//Load WeaponModule
 
@@ -235,7 +235,7 @@ public class WoodenSword extends WeaponModule {//Load WeaponModule
     public void run(WeaponModule task) {}
 ```
 
-MaterialModule Example
+### MaterialModule Example
 ```java
 public class Example extends MaterialModule {//Load MaterialModule
 
@@ -256,7 +256,7 @@ public class Example extends MaterialModule {//Load MaterialModule
     public void run(MaterialModule task) {}
 ```
 
-BuffModule Example
+### BuffModule Example
 ```java
 public class Example extends BuffModule {//Load BuffModule
 
@@ -302,7 +302,7 @@ public class Example extends BuffModule {//Load BuffModule
     public void run(BuffModule task) {}
 ```
 
-CurseModule Example
+### CurseModule Example
 ```java
 public class Example extends CurseModule {//Load CurseModule
 
@@ -348,7 +348,7 @@ public class Example extends CurseModule {//Load CurseModule
     public void run(BuffModule task) {}
 ```
 
-Module Register
+### Module Register
 ```java
 public class Example extends JavaPlugin {
 
@@ -359,7 +359,7 @@ public class Example extends JavaPlugin {
 }
 ```
 
-Regarding various API classes
+### Regarding various API classes
 
 | Class | Description |
 | ------------- | ------------- |
