@@ -3,6 +3,8 @@ A simple plugin for the pit game in Minecraft 1.8.
 
 Only using in bungeecord mode.
 
+Share Mode Will coming soon...
+
 ## Modules
 | Modules | Description |
 | ------------- | ------------- |
