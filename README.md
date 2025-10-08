@@ -20,6 +20,13 @@ Share Mode Will coming soon...
 ## API Usage
 
 ### ListenerModule Exapmle
+
+Here is the usage of the ListenerModule.
+
+It is usually used to register various listeners.
+
+Listeners are generally used to monitor various special events.
+
 ```java
 public class Example extends ListenerModule {//Load ListenerModule
 
@@ -33,6 +40,15 @@ public class Example extends ListenerModule {//Load ListenerModule
 ```
 
 ### TaskModule Exapmle
+
+Here is the usage of the TaskModule.
+
+It is usually used to register various scheduled tasks.
+
+Scheduled tasks are generally used to handle various data updates.
+
+For example, updates to the Tablist and Scoreboards.
+
 ```java
 public class Example extends TaskModule {//Load TaskModule
 
@@ -47,6 +63,15 @@ public class Example extends TaskModule {//Load TaskModule
 ```
 
 ### CommandModule Exapmle
+
+Here is the usage of the CommandModule.
+
+It is usually used to register various commands.
+
+Commands are generally used to set various variables or for player activities.
+
+For example, setting the spawn point area of a certain arena, and players entering ```/spawn``` to return to the spawn point.
+
 ```java
 public class Example extends CommandModule {//Load CommandModule
 
@@ -64,6 +89,17 @@ public class Example extends CommandModule {//Load CommandModule
 ```
 
 ### MonsterModule Exapmle
+
+Here is the usage of the MonsterModule.
+
+It is usually used to create various creatures.
+
+The MonsterModule is generally used to spawn various ordinary monsters and Bosses.
+
+For example, setting up a Boss named Slime King.
+
+If it's an ordinary monster, the Bossbar can be omitted.
+
 ```java
 public class Example extends MonsterModule {//Load MonsterModule
 
@@ -112,6 +148,15 @@ public class Example extends MonsterModule {//Load MonsterModule
 ```
 
 ### EnchanceModule Exapmle
+
+Here is the usage of the EnchanceModule.
+
+It is usually used to create various custom enchantments.
+
+These enchantments are usually different from Vanilla enchantments.
+
+The enchantments here require the consumption of materials and coins (Vault API).
+
 ```java
 public class Example extends EnchanceModule {//Load EnchanceModule
 
@@ -139,6 +184,17 @@ public class Example extends EnchanceModule {//Load EnchanceModule
 ```
 
 ### WeaponModule Exapmle
+
+Here is the usage of the WeaponModule.
+
+It is usually used to create various custom weapons.
+
+These weapons are often accompanied by special effects.
+
+You can set various materials required for upgrades here.
+
+The maximum level of a Weapon is 4, and levels above 4 usually won't be displayed.
+
 ```java
 public class WoodenSword extends WeaponModule {//Load WeaponModule
 
@@ -238,6 +294,15 @@ public class WoodenSword extends WeaponModule {//Load WeaponModule
 ```
 
 ### MaterialModule Example
+
+Here is the usage of the MaterialModule.
+
+It is usually used to create various custom Materials.
+
+You can set various special events in it.
+
+For example, if the original item of a Material is a certain block, you can prevent players from placing that block.
+
 ```java
 public class Example extends MaterialModule {//Load MaterialModule
 
@@ -259,6 +324,17 @@ public class Example extends MaterialModule {//Load MaterialModule
 ```
 
 ### BuffModule Example
+
+Here is the usage of the BuffModule.
+
+It is usually used to create various custom Buffs.
+
+You can customize the buffs you want in it.
+
+Generally speaking, players can only equip 5 buffs.
+
+These buffs are usually not particularly powerful and there are no debuffs.
+
 ```java
 public class Example extends BuffModule {//Load BuffModule
 
@@ -305,6 +381,19 @@ public class Example extends BuffModule {//Load BuffModule
 ```
 
 ### CurseModule Example
+
+Here is the usage of the CurseModule.
+
+It is usually used to create various custom curses.
+
+You can customize the curses you want in it.
+
+Generally speaking, players can only equip 3 curses.
+
+These curses are usually accompanied by powerful buffs and some debuffs.
+
+For example, the greater the distance, the higher the player's damage to enemies, and vice versa (from ```Calamity Mod``` for ```Terraria```).
+
 ```java
 public class Example extends CurseModule {//Load CurseModule
 
@@ -351,6 +440,9 @@ public class Example extends CurseModule {//Load CurseModule
 ```
 
 ### Module Register
+
+The registration format for each module is generally as follows.
+
 ```java
 public class Example extends JavaPlugin {
 
@@ -363,6 +455,8 @@ public class Example extends JavaPlugin {
 
 ### Regarding various API classes
 
+Here are multiple API-related Classes provided, which are usually used to handle various variables and data.
+
 | Class | Description |
 | ------------- | ------------- |
 | User  | Obtain various data information of players, such as kills |
@@ -371,7 +465,13 @@ public class Example extends JavaPlugin {
 
 # Commands
 
+The usage of various commands will be introduced here.
+
 ### Basic Commands
+
+Here is the usage of Basic Commands.
+
+They are generally used to handle player data or player activities.
 
 | Commands | Description |
 | ------------- | ------------- |
@@ -386,6 +486,10 @@ public class Example extends JavaPlugin {
 
 
 ### Menu Commands
+
+Here is the usage of Menu Commands.
+
+They are generally used to handle events where players open menus.
 
 | Commands | Description |
 | ------------- | ------------- |
