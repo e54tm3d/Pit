@@ -3,7 +3,8 @@ menu:
   items:
     weapon:
       price: 10000
-      consume: []
+      consume_items:
+        - "enchancement_book:1"
       name: "&fWeapon"
       lore:
         - "%enchance%"
@@ -11,7 +12,8 @@ menu:
         - "&eCost &6%price% &eto refresh."
     helmet:
       price: 10000
-      consume: []
+      consume_items:
+        - "enchancement_book:1"
       name: "&fHelmet"
       lore:
         - "%enchance%"
@@ -19,7 +21,8 @@ menu:
         - "&eCost &6%price% &eto refresh."
     chestplate:
       price: 10000
-      consume: []
+      consume_items:
+        - "enchancement_book:1"
       name: "&fChestplate"
       lore:
         - "%enchance%"
@@ -27,7 +30,8 @@ menu:
         - "&eCost &6%price% &eto refresh."
     leggings:
       price: 10000
-      consume: []
+      consume_items:
+        - "enchancement_book:1"
       name: "&fLeggings"
       lore:
         - "%enchance%"
@@ -35,6 +39,8 @@ menu:
         - "&eCost &6%price% &eto refresh."
     boots:
       price: 10000
+      consume_items:
+        - "enchancement_book:1"
       name: "&fBoots"
       lore:
         - "%enchance%"
