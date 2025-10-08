@@ -182,6 +182,7 @@ public class MenuManager extends ListenerModule {
                                             String[] parts = str.split(":");
                                             if (ThePit.getEconomy().getBalance(p) >= price
                                                     && ItemFunction.hasItemAtLease(p, Integer.parseInt(parts[1]), parts[0].toLowerCase())) {
+                                                Bukkit.getPluginManager().callEvent(new PlayerUpgradeWeaponEvent(p, item, level + 1, level));
                                                 ThePit.getEconomy().withdrawPlayer(p, price);
                                                 ItemFunction.consumeItem(p, Integer.parseInt(parts[1]), parts[0].toLowerCase());
                                                 User.setWeaponLevel(p, item, level + 1);
@@ -267,6 +268,7 @@ public class MenuManager extends ListenerModule {
                                                             String[] parts = str.split(":");
                                                             if (ThePit.getEconomy().getBalance(p) >= price
                                                                     && ItemFunction.hasItemAtLease(p, Integer.parseInt(parts[1]), parts[0].toLowerCase())) {
+                                                                Bukkit.getPluginManager().callEvent(new PlayerUnlockCurseEvent(p, slot));
                                                                 ThePit.getEconomy().withdrawPlayer(p, price);
                                                                 ItemFunction.consumeItem(p, Integer.parseInt(parts[1]), parts[0].toLowerCase());
                                                                 User.setCurseStat(p, slot, true);
