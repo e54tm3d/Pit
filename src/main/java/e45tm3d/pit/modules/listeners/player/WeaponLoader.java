@@ -1,10 +1,15 @@
 package e45tm3d.pit.modules.listeners.player;
 
+import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
+import e45tm3d.pit.api.events.PlayerEnchanceEvent;
+import e45tm3d.pit.modules.enchance.EnchanceType;
 import e45tm3d.pit.modules.listeners.ListenerModule;
 import e45tm3d.pit.utils.functions.ItemFunction;
+import e45tm3d.pit.utils.lists.BuffLists;
 import e45tm3d.pit.utils.lists.ItemLists;
 import e45tm3d.pit.utils.maps.EnchanceMaps;
+import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -25,10 +30,10 @@ public class WeaponLoader extends ListenerModule {
     public void listen(Event event) {
         if (event instanceof PlayerJoinEvent e) {
             updateLore(e.getPlayer());
-        } else if (event instanceof InventoryCloseEvent e) {
-            if (e.getPlayer() instanceof Player p) {
-                updateLore(p);
-            }
+        } else if (event instanceof PlayerEnchanceEvent e) {
+            Bukkit.getScheduler().runTaskLater(ThePit.getInstance(), () -> {
+                updateLore(e.getPlayer());
+            }, 10);
         }
     }
     private void updateLore(Player p) {

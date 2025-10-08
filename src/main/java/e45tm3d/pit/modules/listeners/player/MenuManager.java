@@ -381,7 +381,6 @@ public class MenuManager extends ListenerModule {
                             }
                         }
                     } else if (PlayerMaps.menu.get(uuid).equals("enchance")) {
-                        //consume_items和price没写完 后面接着写
                         e.setCancelled(true);
                         switch (e.getSlot()) {
                             case 13 -> p.closeInventory();

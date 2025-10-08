@@ -5,6 +5,7 @@ import java.util.List;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.events.PlayerDeadEvent;
+import e45tm3d.pit.api.events.PlayerEnchanceEvent;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
 import e45tm3d.pit.modules.listeners.player.*;
 import e45tm3d.pit.modules.listeners.world.*;
@@ -41,6 +42,14 @@ public class Listeners implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
+        listen(e);
+    }
+
+    @EventHandler
+    public void onEnchance(PlayerEnchanceEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
         listen(e);
     }
 
