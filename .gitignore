@@ -24,4 +24,4 @@ hs_err_pid*
 replay_pid*
 
 # 忽略target文件夹
-target/
+/target/
