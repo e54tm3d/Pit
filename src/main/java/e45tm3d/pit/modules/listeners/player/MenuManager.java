@@ -4,10 +4,7 @@ import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
 import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
-import e45tm3d.pit.api.events.PlayerEnchanceEvent;
-import e45tm3d.pit.api.events.PlayerEquipBuffEvent;
-import e45tm3d.pit.api.events.PlayerEquipCurseEvent;
-import e45tm3d.pit.api.events.PlayerObtainWeaponEvent;
+import e45tm3d.pit.api.events.*;
 import e45tm3d.pit.modules.enchance.EnchanceType;
 import e45tm3d.pit.modules.listeners.ListenerModule;
 import e45tm3d.pit.utils.functions.InventoryFunction;
@@ -55,7 +52,7 @@ public class MenuManager extends ListenerModule {
                         switch (e.getSlot()) {
                             case 10 -> {
                                 if (level_helmet < 5) {
-                                    if (money > Yaml.ARMOR.getConfig().getDouble("menu.items.helmet.costs.tier_" + (level_helmet + 1))) {
+                                    if (money > Yaml.ARMOR.getConfig().getDouble("menu.items.helmet.costs.tier_" + (level_helmet + 1)) ) {
                                         ThePit.getEconomy().withdrawPlayer(p, Yaml.ARMOR.getConfig().getDouble("menu.items.helmet.costs.tier_" + (level_helmet + 1)));
                                         User.setHelmetLevel(p, level_helmet + 1);
                                         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -305,6 +302,7 @@ public class MenuManager extends ListenerModule {
                             }
                         }
                     } else if (PlayerMaps.menu.get(uuid).equals("buff")) {
+                        //consume_items和price没写完 后面接着写
                         e.setCancelled(true);
                         switch (e.getSlot()) {
                             case 49 -> p.closeInventory();
@@ -345,6 +343,7 @@ public class MenuManager extends ListenerModule {
                                                             String[] parts = str.split(":");
                                                             if (ThePit.getEconomy().getBalance(p) >= price
                                                                     && ItemFunction.hasItemAtLease(p, Integer.parseInt(parts[1]), parts[0].toLowerCase())) {
+                                                                Bukkit.getPluginManager().callEvent(new PlayerUnlockBuffEvent(p, slot));
                                                                 ThePit.getEconomy().withdrawPlayer(p, price);
                                                                 ItemFunction.consumeItem(p, Integer.parseInt(parts[1]), parts[0].toLowerCase());
                                                                 User.setBuffStat(p, slot, true);
@@ -379,6 +378,7 @@ public class MenuManager extends ListenerModule {
                             }
                         }
                     } else if (PlayerMaps.menu.get(uuid).equals("enchance")) {
+                        //consume_items和price没写完 后面接着写
                         e.setCancelled(true);
                         switch (e.getSlot()) {
                             case 13 -> p.closeInventory();
@@ -762,22 +762,14 @@ public class MenuManager extends ListenerModule {
 
                 UUID uuid = p.getUniqueId();
 
-                if (PlayerMaps.menu.containsKey(uuid)) {
-                    PlayerMaps.menu.put(uuid, "none");
-                } else {
-                    PlayerMaps.menu.put(uuid, "none");
-                }
+                PlayerMaps.menu.put(uuid, "none");
             }
         } else if (event instanceof PlayerQuitEvent e) {
 
             Player p = e.getPlayer();
             UUID uuid = p.getUniqueId();
 
-            if (PlayerMaps.menu.containsKey(uuid)) {
-                PlayerMaps.menu.put(uuid, "none");
-            } else {
-                PlayerMaps.menu.put(uuid, "none");
-            }
+            PlayerMaps.menu.put(uuid, "none");
         }
     }
 }

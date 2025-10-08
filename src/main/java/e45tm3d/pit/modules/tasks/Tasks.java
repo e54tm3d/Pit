@@ -31,8 +31,4 @@ public class Tasks {
     private void register(TaskModule task) {
         task.register();
     }
-
-    protected static void registerTask(TaskModule task) {
-        tasks.add(task);
-    }
 }

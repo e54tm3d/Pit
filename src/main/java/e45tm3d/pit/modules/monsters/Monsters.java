@@ -259,5 +259,4 @@ public class Monsters implements Listener {
     public static void registerMonster(MonsterModule monster) {
         monsters.add(monster);
     }
-
 }

@@ -10,6 +10,5 @@ public abstract class TaskModule {
 
     public void register() {
         run(this);
-        Tasks.registerTask(this);
     }
 }

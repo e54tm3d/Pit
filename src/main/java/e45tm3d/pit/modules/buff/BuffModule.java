@@ -54,5 +54,4 @@ public abstract class BuffModule {
         BuffMaps.lock.put(getType(), getLockedCostFormat());
         BuffMaps.unlock.put(getType(), getUnlockedCostFormat());
     }
-
 }

@@ -104,6 +104,7 @@ public abstract class WeaponModule {
 
             run(this);
 
+            Weapons.registerWeapon(this);
         } else {
             ThePit.getInstance().getLogger().warning("Weapon slot is out of range (0 ~ 44)!");
         }

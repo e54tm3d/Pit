@@ -27,19 +27,19 @@ import java.util.List;
 
 public class Weapons implements Listener {
 
-	private static List<WeaponModule> swords = new ArrayList<>();
-    private static List<WeaponModule> bows = new ArrayList<>();
+	private static List<WeaponModule> weapons = new ArrayList<>();
 
 	public Weapons() {
         ThePit.getInstance().getLogger().info("Loading weapon module...");
 
-        swords = Lists.newArrayList(new WoodenSword(), new GoldenSword(), new DiamondSword(), new IceSword(), new LightningSword(), new BoneSword());
-        bows = Lists.newArrayList(new WoodenBow(), new ArtemisBow());
+        weapons = Lists.newArrayList(new WoodenSword(), new GoldenSword(), new DiamondSword(), new IceSword(), new LightningSword(), new BoneSword(),
+
+
+                new WoodenBow(), new ArtemisBow());
 
 		Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
 
-        swords.forEach(this::register);
-        bows.forEach(this::register);
+        weapons.forEach(this::register);
 
         ThePit.getInstance().getLogger().info("Weapon module loaded successfully!");
 	}
@@ -225,10 +225,7 @@ public class Weapons implements Listener {
 	}
 
 	private void listen(Event event) {
-		for (WeaponModule item : swords) {
-            item.listen(event);
-		}
-        for (WeaponModule item : bows) {
+		for (WeaponModule item : weapons) {
             item.listen(event);
 		}
 	}
@@ -237,12 +234,9 @@ public class Weapons implements Listener {
         objects.register();
     }
 
-    public static void registerSword(WeaponModule item) {
-        swords.add(item);
+    public static void registerWeapon(WeaponModule item) {
+        weapons.add(item);
     }
 
-    public static void registerBow(WeaponModule item) {
-        bows.add(item);
-    }
 
 }
