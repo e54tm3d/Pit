@@ -32,7 +32,7 @@ public class Materials implements Listener {
         ThePit.getInstance().getLogger().info("Loading material module...");
 
         materials = Lists.newArrayList(new GoldIngot(), new IceBlock(), new PrometheanFire(), new ResentfulHead(), new Superconductor(), new Bone(),
-                new SlimeBall());
+                new SlimeBall(), new EnchancementBook());
 
         materials.forEach(this::register);
 

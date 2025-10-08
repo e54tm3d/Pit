@@ -31,7 +31,7 @@ public class GoldSpawn extends TaskModule {
                     gold_nugget = ItemFunction.addNBTTag(gold_nugget, UUID.randomUUID().toString());
                     if (i > 25) {
                         org.bukkit.entity.Item gold = loc.getWorld().dropItem(loc, gold_nugget);
-                        gold.setTicksLived(6000);
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(ThePit.getInstance(), gold::remove, 6000);
                     } else {
                         loc.getWorld().dropItem(loc, ItemFunction.searchItem("gold_ingot"));
                     }

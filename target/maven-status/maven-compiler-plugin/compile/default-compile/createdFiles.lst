@@ -88,6 +88,7 @@ e45tm3d\pit\api\events\EntityLightningEvent.class
 e45tm3d\pit\modules\tasks\player\Tablist.class
 e45tm3d\pit\modules\buff\buffs\WolfTrainer.class
 e45tm3d\pit\modules\enchance\enchances\chestplate\DamageAbsorption.class
+e45tm3d\pit\modules\items\materials\items\EnchancementBook.class
 e45tm3d\pit\modules\items\materials\items\SlimeBall.class
 e45tm3d\pit\api\events\PlayerUnlockCurseEvent.class
 e45tm3d\pit\utils\menus\BlocksMenu.class
@@ -166,7 +167,6 @@ e45tm3d\pit\api\events\PlayerUpgradeWeaponEvent.class
 e45tm3d\pit\modules\tasks\player\LevelUpdate.class
 e45tm3d\pit\api\Variables.class
 e45tm3d\pit\modules\tasks\player\DevelopMode.class
-e45tm3d\pit\api\events\PlayerUseTrashEvent.class
 e45tm3d\pit\storage\MySQL.class
 e45tm3d\pit\modules\curse\curses\BloodyFire.class
 e45tm3d\pit\utils\functions\DatabaseFunction.class
@@ -176,6 +176,7 @@ e45tm3d\pit\api\events\PlayerUnlockBuffEvent.class
 e45tm3d\pit\modules\commands\CommandModule.class
 e45tm3d\pit\modules\listeners\player\DevelopMode.class
 e45tm3d\pit\modules\listeners\Listeners.class
+e45tm3d\pit\modules\listeners\player\WeaponLoader.class
 e45tm3d\pit\utils\maps\BlocksMaps.class
 e45tm3d\pit\ThePit.class
 e45tm3d\pit\utils\enums\materials\Materials.class

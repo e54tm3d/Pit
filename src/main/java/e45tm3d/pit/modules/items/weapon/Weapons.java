@@ -8,6 +8,7 @@ import e45tm3d.pit.api.events.PlayerMurderEvent;
 import e45tm3d.pit.modules.items.weapon.items.bows.ArtemisBow;
 import e45tm3d.pit.modules.items.weapon.items.bows.WoodenBow;
 import e45tm3d.pit.modules.items.weapon.items.swords.*;
+import e45tm3d.pit.modules.monsters.MonsterModule;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -39,7 +40,8 @@ public class Weapons implements Listener {
 
 		Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
 
-        weapons.forEach(this::register);
+        List<WeaponModule> copy = Lists.newArrayList(weapons);
+        copy.forEach(this::register);
 
         ThePit.getInstance().getLogger().info("Weapon module loaded successfully!");
 	}

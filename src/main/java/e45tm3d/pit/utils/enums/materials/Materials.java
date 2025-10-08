@@ -18,6 +18,7 @@ public enum Materials {
     RESENTFUL_HEAD("resentful_head"),
     BONE("bone"),
     SLIME_BALL("slime_ball"),
+    ENCHANCEMENT_BOOK("enchancement_book"),
     PROMETHEAN_FIRE("promethean_fire"),;
 
     String type;

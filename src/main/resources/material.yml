@@ -34,3 +34,8 @@ items:
     name: "&aSlime Ball"
     lore:
       - "&7It feels sticky to the touch..."
+  enchancement_book:
+    material: ENCHANTED_BOOK
+    name: "&dEnchancement Book"
+    lore:
+      - "&7A book which can be used to enchant items."

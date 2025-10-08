@@ -15,7 +15,6 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerUnlockBuffEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerUnlockCurseEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerUpgradeWeaponEvent.java
-F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerUseTrashEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\Items.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\User.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\Variables.java
@@ -63,6 +62,7 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\enchances\weapon\LifeSteal.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\EnchanceType.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\Bone.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\EnchancementBook.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\GoldIngot.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\IceBlock.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\PrometheanFire.java
@@ -102,6 +102,7 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\ScoreboardRemove.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\SpawnProtect.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\TpLogin.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\WeaponLoader.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\world\ArenaProtect.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\world\WeatherChange.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\monsters\bosses\SlimeKing.java
