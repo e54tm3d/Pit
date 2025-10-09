@@ -160,12 +160,9 @@ public class DiamondSword extends WeaponModule {
 
                 if (usingItem(p)) {
 
-                    if (User.getWeaponLevel(p, getType()) < 1) {
-                        Messages.WEAPON_LOCKED.sendMessage(p).cooldown(5000);
-                        e.setDamage(1);
+                    if (User.getWeaponLevel(p, getType()) >= 2)  {
+                        e.setDamage(e.getDamage() + 1);
                     }
-
-                    if (User.getWeaponLevel(p, getType()) >= 2) e.setDamage(e.getDamage() + 1);
                 }
             }
         } else if (event instanceof PlayerMurderEvent e) {

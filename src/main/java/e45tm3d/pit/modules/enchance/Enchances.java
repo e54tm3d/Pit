@@ -5,7 +5,11 @@ import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.events.PlayerDeadEvent;
 import e45tm3d.pit.api.events.PlayerGainGoldEvent;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
+import e45tm3d.pit.modules.buff.BuffModule;
+import e45tm3d.pit.modules.buff.buffs.Bulldozer;
+import e45tm3d.pit.modules.buff.buffs.ForgeGoldApple;
 import e45tm3d.pit.modules.buff.buffs.StabilizedProjectile;
+import e45tm3d.pit.modules.buff.buffs.WolfTrainer;
 import e45tm3d.pit.modules.enchance.enchances.boots.Speed;
 import e45tm3d.pit.modules.enchance.enchances.chestplate.DamageAbsorption;
 import e45tm3d.pit.modules.enchance.enchances.helmet.Shield;
@@ -18,6 +22,7 @@ import e45tm3d.pit.modules.tasks.TaskModule;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -33,20 +38,29 @@ import java.util.List;
 public class Enchances implements Listener {
 
 	private static List<EnchanceModule> enchances = new ArrayList<>();
+    private static boolean registered = false;
 
-	public Enchances() {
+    public Enchances() {
         ThePit.getInstance().getLogger().info("Loading enchance module...");
+
+        if (registered) {
+            HandlerList.unregisterAll(this);
+            registered = false;
+        }
+
+        enchances.clear();
 
         enchances = Lists.newArrayList(new None(), new Regeneration(), new DamageAbsorption(), new JumpBoost(), new Shield(), new Berserker(),
                 new LifeSteal(), new Speed());
 
-		Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
+        Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
+        registered = true;
 
         List<EnchanceModule> copy = Lists.newArrayList(enchances);
         copy.forEach(this::register);
 
         ThePit.getInstance().getLogger().info("Enchance module loaded successfully!");
-	}
+    }
 
     @EventHandler
     public void onPlayerGainGold(final PlayerGainGoldEvent e) {
@@ -239,6 +253,8 @@ public class Enchances implements Listener {
     }
 
     protected static void registerEnchcance(EnchanceModule enchance) {
-        enchances.add(enchance);
+        if (!enchances.contains(enchance)) {
+            enchances.add(enchance);
+        }
     }
 }

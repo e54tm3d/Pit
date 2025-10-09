@@ -38,10 +38,14 @@ public class CMDItem extends CommandModule implements TabCompleter {
                 if (args[1].matches("-?\\d+")) {
                     if (!Objects.isNull(ItemFunction.searchItem(args[0]))) {
                         int amount = Integer.parseInt(args[1]);
-                        ItemStack item = new ItemStack(ItemFunction.searchItem(args[0]));
-                        item.setAmount(amount);
-                        p.getInventory().addItem(item);
-                        p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 1, 1);
+                        if (amount <= 64) {
+                            ItemStack item = new ItemStack(ItemFunction.searchItem(args[0]));
+                            item.setAmount(amount);
+                            p.getInventory().addItem(item);
+                            p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 1, 1);
+                        } else {
+                            Messages.CMD_ITEM_USAGE.sendMessage(p);
+                        }
                     } else {
                         Messages.CMD_ITEM_NOT_FOUND.sendMessage(p);
                         p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);

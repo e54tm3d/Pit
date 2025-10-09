@@ -27,6 +27,7 @@ public abstract class MaterialModule {
         item.setItemMeta(meta);
 
         ItemFunction.registerMaterial(getType().toLowerCase(), item);
+        Materials.registerEnchcance(this);
         run(this);
     }
 }

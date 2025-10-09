@@ -162,11 +162,6 @@ public class WoodenBow extends WeaponModule {
 
                 if (usingItem(p)) {
 
-                    if (User.getWeaponLevel(p, getType()) < 1) {
-                        Messages.WEAPON_LOCKED.sendMessage(p).cooldown(5000);
-                        e.setCancelled(true);
-                    }
-
                     if (User.getWeaponLevel(p, getType()) == 2) {
                         e.getProjectile().setVelocity(e.getProjectile().getVelocity().multiply(1.2));
                     } else if (User.getWeaponLevel(p, getType()) >= 3) {

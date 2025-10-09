@@ -25,31 +25,35 @@ upgrade:
     tier_1:
       price: 5000
       name: "&aTier: &f%tier%"
-      consume_items: []
+      consume_items:
+        - "enchancement_book:1"
       lore:
         - "&7Unlock Artemis' Bow."
-      upgrade: "&eCost &6%price% &eto upgrade!"
+      upgrade: "&eCost &6%price% &eand &f 1 &dEnchancement Book &eto upgrade!"
     tier_2:
       price: 7000
       name: "&aTier: &f%tier%"
-      consume_items: []
+      consume_items:
+        - "enchancement_book:3"
       lore:
         - "&7Your projectile will auto aim at the target."
-      upgrade: "&eCost &6%price% &eto upgrade!"
+      upgrade: "&eCost &6%price% &eand &f 3 &dEnchancement Book &eto upgrade!"
     tier_3:
       price: 10000
       name: "&aTier: &f%tier%"
-      consume_items: []
+      consume_items:
+        - "enchancement_book:2"
       lore:
         - "&7Your projectile damage increase to &c150%&7."
-      upgrade: "&eCost &6%price% &eto upgrade!"
+      upgrade: "&eCost &6%price% &eand &f 2 &dEnchancement Book &eto upgrade!"
     tier_4:
       price: 14000
       name: "&aTier: &f%tier%"
-      consume_items: []
+      consume_items:
+        - "enchancement_book:3"
       lore:
         - "&7The projectile will spit out two arrows."
-      upgrade: "&eCost &6%price% &eto upgrade!"
+      upgrade: "&eCost &6%price% &eand &f 3 &dEnchancement Book &eto upgrade!"
       levelmax: "&cYou have reached the max level!"
   wooden_bow:
     tier_1:

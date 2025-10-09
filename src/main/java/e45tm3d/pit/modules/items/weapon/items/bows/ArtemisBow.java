@@ -161,11 +161,6 @@ public class ArtemisBow extends WeaponModule {
                 if (usingItem(p)) {
                     int weaponLevel = User.getWeaponLevel(p, getType());
 
-                    if (weaponLevel < 1) {
-                        Messages.WEAPON_LOCKED.sendMessage(p).cooldown(5000);
-                        e.setCancelled(true);
-                    }
-
                     if (weaponLevel >= 2) {
                         e.getProjectile().setMetadata("AUTO_AIM", new FixedMetadataValue(ThePit.getInstance(), true));
                     }

@@ -6,12 +6,16 @@ import e45tm3d.pit.api.events.PlayerDeadEvent;
 import e45tm3d.pit.api.events.PlayerGainGoldEvent;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
 import e45tm3d.pit.modules.enchance.EnchanceModule;
+import e45tm3d.pit.modules.listeners.player.*;
+import e45tm3d.pit.modules.listeners.world.ArenaProtect;
+import e45tm3d.pit.modules.listeners.world.WeatherChange;
 import e45tm3d.pit.modules.monsters.bosses.SlimeKing;
 import e45tm3d.pit.modules.monsters.monsters.*;
 import e45tm3d.pit.utils.lists.MonsterLists;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -27,19 +31,28 @@ import java.util.List;
 public class Monsters implements Listener {
 
 	private static List<MonsterModule> monsters = new ArrayList<>();
+    private static boolean registered = false;
 
-	public Monsters() {
+    public Monsters() {
         ThePit.getInstance().getLogger().info("Loading monster module...");
+
+        if (registered) {
+            HandlerList.unregisterAll(this);
+            registered = false;
+        }
+
+        monsters.clear();
 
         monsters = Lists.newArrayList(new LavaSlime(), new Slime(), new LightningCreeper(), new SlimeKing(), new Skeleton());
 
-		Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
+        Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
+        registered = true;
 
         List<MonsterModule> copy = Lists.newArrayList(monsters);
         copy.forEach(this::register);
 
         ThePit.getInstance().getLogger().info("Monster module loaded successfully!");
-	}
+    }
 
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent e) {
@@ -257,6 +270,8 @@ public class Monsters implements Listener {
     }
 
     public static void registerMonster(MonsterModule monster) {
-        monsters.add(monster);
+        if (!monsters.contains(monster)) {
+            monsters.add(monster);
+        }
     }
 }

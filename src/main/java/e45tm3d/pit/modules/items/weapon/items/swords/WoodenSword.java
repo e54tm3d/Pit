@@ -161,19 +161,20 @@ public class WoodenSword extends WeaponModule {
             if (!p.hasPlayedBefore()) {
                 if (!hasItem(p)) {
                     p.getInventory().addItem(ItemFunction.searchItem(getType()));
+                    User.setWeaponLevel(p, getType(), 1);
                 }
             }
         } else if (event instanceof EntityDamageByEntityEvent e) {
             if (e.getDamager() instanceof Player p) {
+
                 if (usingItem(p)) {
 
-                    if (User.getWeaponLevel(p, getType()) < 1) {
-                        Messages.WEAPON_LOCKED.sendMessage(p).cooldown(5000);
-                        e.setDamage(1);
+                    if (User.getWeaponLevel(p, getType()) >= 2)  {
+                        e.setDamage(e.getDamage() + 1);
                     }
-
-                    if (User.getWeaponLevel(p, getType()) >= 2) e.setDamage(e.getDamage() + 1);
-                    if (User.getWeaponLevel(p, getType()) >= 3) e.setDamage(e.getDamage() + 1);
+                    if (User.getWeaponLevel(p, getType()) >= 3)  {
+                        e.setDamage(e.getDamage() + 1);
+                    }
                 }
             }
         }

@@ -2,9 +2,16 @@ package e45tm3d.pit.modules.tasks;
 
 import com.google.common.collect.Lists;
 import e45tm3d.pit.ThePit;
+import e45tm3d.pit.modules.monsters.MonsterModule;
+import e45tm3d.pit.modules.monsters.bosses.SlimeKing;
+import e45tm3d.pit.modules.monsters.monsters.LavaSlime;
+import e45tm3d.pit.modules.monsters.monsters.LightningCreeper;
+import e45tm3d.pit.modules.monsters.monsters.Skeleton;
+import e45tm3d.pit.modules.monsters.monsters.Slime;
 import e45tm3d.pit.modules.tasks.player.*;
 import e45tm3d.pit.modules.tasks.world.*;
 import org.bukkit.Bukkit;
+import org.bukkit.event.HandlerList;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +25,8 @@ public class Tasks {
 
 	public Tasks() {
         ThePit.getInstance().getLogger().info("Loading task module...");
+
+        tasks.clear();
 
         tasks = Lists.newArrayList(new BlockBreak(), new GoldSpawn(), new DevelopMode(), new Tablist(), new Scoreboard(), new LevelUpdate(),
                 new ArrowsClear(), new TimeLock(), new WeatherLock());

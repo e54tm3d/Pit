@@ -23,7 +23,7 @@ public abstract class EnchanceModule {
 
     public abstract List<String> getDescription();
 
-    public void register() {
+    protected void register() {
 
         run(this);
         Enchances.registerEnchcance(this);

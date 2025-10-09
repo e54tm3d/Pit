@@ -5,6 +5,7 @@ import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.events.PlayerDeadEvent;
 import e45tm3d.pit.api.events.PlayerGainGoldEvent;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
+import e45tm3d.pit.modules.enchance.EnchanceModule;
 import e45tm3d.pit.modules.items.materials.items.*;
 import e45tm3d.pit.utils.functions.ItemFunction;
 import org.bukkit.Bukkit;
@@ -22,19 +23,23 @@ import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Materials implements Listener {
 
-    List<MaterialModule> materials;
+    private static List<MaterialModule> materials = new ArrayList<>();
 
     public Materials() {
         ThePit.getInstance().getLogger().info("Loading material module...");
 
+        materials.clear();
+
         materials = Lists.newArrayList(new GoldIngot(), new IceBlock(), new PrometheanFire(), new ResentfulHead(), new Superconductor(), new Bone(),
                 new SlimeBall(), new EnchancementBook());
 
-        materials.forEach(this::register);
+        List<MaterialModule> copy = Lists.newArrayList(materials);
+        copy.forEach(this::register);
 
         Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
 
@@ -238,5 +243,8 @@ public class Materials implements Listener {
         for (MaterialModule item : materials) {
             item.listen(event);
         }
+    }
+    protected static void registerEnchcance(MaterialModule material) {
+        materials.add(material);
     }
 }

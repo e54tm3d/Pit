@@ -19,7 +19,7 @@ import java.util.*;
 
 public class IceSword extends WeaponModule {
 
-    private Map<UUID, Long> forzen = new HashMap<>();
+    private final Map<UUID, Long> forzen = new HashMap<>();
 
     @Override
     public int getTierPrice(int tier) {
@@ -161,11 +161,6 @@ public class IceSword extends WeaponModule {
 
                 if (usingItem(damager)) {
 
-                    if (User.getWeaponLevel(damager, getType()) < 1) {
-                        Messages.WEAPON_LOCKED.sendMessage(damager).cooldown(5000);
-                        e.setDamage(1);
-                    }
-
                     if (e.getEntity() instanceof LivingEntity entity) {
                         UUID uuid = entity.getUniqueId();
                         if (User.getWeaponLevel(damager, getType()) >= 2) {
@@ -196,6 +191,10 @@ public class IceSword extends WeaponModule {
     @Override
     public void run(WeaponModule task) {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
+
+            long currentTime = System.currentTimeMillis();
+            forzen.entrySet().removeIf(entry -> currentTime - entry.getValue() > 3000);
+
             for (Entity entity : Bukkit.getWorlds().get(0).getEntitiesByClass(Entity.class)) {
                 UUID uuid = entity.getUniqueId();
                 if (forzen.containsKey(uuid)) {

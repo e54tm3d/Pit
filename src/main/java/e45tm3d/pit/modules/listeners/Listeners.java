@@ -7,11 +7,17 @@ import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.events.PlayerDeadEvent;
 import e45tm3d.pit.api.events.PlayerEnchanceEvent;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
+import e45tm3d.pit.api.events.PlayerObtainWeaponEvent;
+import e45tm3d.pit.modules.items.weapon.WeaponModule;
+import e45tm3d.pit.modules.items.weapon.items.bows.ArtemisBow;
+import e45tm3d.pit.modules.items.weapon.items.bows.WoodenBow;
+import e45tm3d.pit.modules.items.weapon.items.swords.*;
 import e45tm3d.pit.modules.listeners.player.*;
 import e45tm3d.pit.modules.listeners.world.*;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -26,19 +32,30 @@ import com.google.common.collect.Lists;
 public class Listeners implements Listener {
 
 	private static List<ListenerModule> listeners = new ArrayList<>();
+    private static boolean registered = false;
 
-	public Listeners() {
+    public Listeners() {
         ThePit.getInstance().getLogger().info("Loading listener module...");
+
+        if (registered) {
+            HandlerList.unregisterAll(this);
+            registered = false;
+        }
+
+        listeners.clear();
+
         listeners = Lists.newArrayList(new ArmorLoader(), new ArmorSlotLock(), new ArrowLoader(), new DatabaseLoader(), new Dead(), new DevelopMode(),
                 new Fighting(), new Saturation(), new GainGold(), new JumpPad(), new LevelLoader(), new MenuManager(), new Murder(),
-                new NoArrowPickUp(), new NoFallDamage(), new ScoreboardRemove(), new SpawnProtect(), new TpLogin(), new EnchanceTable(), new WeaponLoader()
+                new NoArrowPickUp(), new NoFallDamage(), new ScoreboardRemove(), new SpawnProtect(), new TpLogin(), new EnchanceTable(), new WeaponLoader(),
+                new DataClear()
 
-        , new ArenaProtect(), new WeatherChange());
+                , new ArenaProtect(), new WeatherChange());
 
-		Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
+        Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
+        registered = true;
 
         ThePit.getInstance().getLogger().info("Listener module loaded successfully!");
-	}
+    }
 
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
@@ -47,6 +64,14 @@ public class Listeners implements Listener {
 
     @EventHandler
     public void onEnchance(PlayerEnchanceEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
+        listen(e);
+    }
+
+    @EventHandler
+    public void onObtainWeapon(PlayerObtainWeaponEvent e ) {
         if (e.isCancelled()) {
             return;
         }
@@ -245,7 +270,8 @@ public class Listeners implements Listener {
 	}
 
     public static void registerListener(ListenerModule listener) {
-        listeners.add(listener);
+        if (!listeners.contains(listener)) {
+            listeners.add(listener);
+        }
     }
-
 }

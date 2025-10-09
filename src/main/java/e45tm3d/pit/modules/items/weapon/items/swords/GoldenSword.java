@@ -1,14 +1,17 @@
 package e45tm3d.pit.modules.items.weapon.items.swords;
 
+import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
 import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.api.events.PlayerGainGoldEvent;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
+import e45tm3d.pit.modules.buff.Buffs;
 import e45tm3d.pit.modules.items.weapon.WeaponModule;
 import e45tm3d.pit.utils.enums.weapon.WeaponItems;
 import e45tm3d.pit.utils.enums.weapon.WeaponMenuItems;
 import e45tm3d.pit.utils.functions.ItemFunction;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
@@ -23,7 +26,7 @@ import java.util.*;
 
 public class GoldenSword extends WeaponModule {
 
-    private Map<UUID, Long> pick_time = new HashMap<>();
+    private final Map<UUID, Long> pick_time = new HashMap<>();
 
     @Override
     public int getTierPrice(int tier) {
@@ -189,10 +192,6 @@ public class GoldenSword extends WeaponModule {
             if (e.getDamager() instanceof Player p) {
 
                 if (usingItem(p)) {
-                    if (User.getWeaponLevel(p, getType()) < 1) {
-                        Messages.WEAPON_LOCKED.sendMessage(p).cooldown(5000);
-                        e.setDamage(1);
-                    }
 
                     if (pick_time.containsKey(e.getEntity().getUniqueId())) {
                         if (System.currentTimeMillis() - pick_time.get(e.getEntity().getUniqueId()) < 5000) {
@@ -208,6 +207,9 @@ public class GoldenSword extends WeaponModule {
 
     @Override
     public void run(WeaponModule task) {
-
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
+            long currentTime = System.currentTimeMillis();
+            pick_time.entrySet().removeIf(entry -> currentTime - entry.getValue() > 5000);
+        }, 0, 20);
     }
 }

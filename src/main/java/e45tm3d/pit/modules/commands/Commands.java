@@ -16,6 +16,8 @@ public class Commands {
 
         ThePit.getInstance().getLogger().info("Loading command module...");
 
+        commands.clear();
+
         commands = Lists.newArrayList(new CMDArmor(), new CMDBlocks(), new CMDBuff(), new CMDCurse(), new CMDEnchance(), new CMDItem(), new CMDTrash()
                 , new CMDWeapon(), new CMDMonesterSpawn(), new CMDArena(), new CMDDev(), new CMDSetHeight(), new CMDSetSpawn(), new CMDSpawn()
                 , new CMDSpawnPos());

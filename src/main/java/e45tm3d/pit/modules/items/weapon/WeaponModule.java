@@ -1,6 +1,8 @@
 package e45tm3d.pit.modules.items.weapon;
 
 import e45tm3d.pit.ThePit;
+import e45tm3d.pit.api.User;
+import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.utils.functions.ItemFunction;
 import e45tm3d.pit.utils.functions.VariableFunction;
@@ -10,6 +12,8 @@ import e45tm3d.pit.utils.menus.WeaponMenu;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 

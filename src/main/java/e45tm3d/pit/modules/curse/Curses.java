@@ -5,10 +5,12 @@ import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.events.PlayerDeadEvent;
 import e45tm3d.pit.api.events.PlayerGainGoldEvent;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
+import e45tm3d.pit.modules.buff.BuffModule;
 import e45tm3d.pit.modules.curse.curses.*;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -24,19 +26,29 @@ import java.util.List;
 public class Curses implements Listener {
 
     private static List<CurseModule> curses = new ArrayList<>();
+    private static boolean registered = false;
 
-	public Curses() {
+    public Curses() {
         ThePit.getInstance().getLogger().info("Loading curse module...");
+
+        if (registered) {
+            HandlerList.unregisterAll(this);
+            registered = false;
+        }
+
+        curses.clear();
 
         curses = Lists.newArrayList(new DamageMultiply(), new BloodyFire(), new ImpregnableFortress(), new Bloodthirsty(), new KnockbackEnchance(), new BloodyCurse());
 
         Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
+        registered = true;
 
         List<CurseModule> copy = Lists.newArrayList(curses);
         copy.forEach(this::register);
 
         ThePit.getInstance().getLogger().info("Curse module loaded successfully!");
-	}
+    }
+
 
     @EventHandler
     public void onPlayerGainGold(PlayerGainGoldEvent e) {
@@ -229,7 +241,8 @@ public class Curses implements Listener {
     }
 
     public static void registerCurse(CurseModule item) {
-        curses.add(item);
+        if (!curses.contains(item)) {
+            curses.add(item);
+        }
     }
-
 }

@@ -29,6 +29,7 @@ e45tm3d\pit\api\events\MonsterSpawnEvent.class
 e45tm3d\pit\utils\menus\EnchanceMenu.class
 e45tm3d\pit\utils\enums\curse\CurseMenuItems.class
 e45tm3d\pit\modules\commands\commands\CMDItem.class
+e45tm3d\pit\modules\listeners\player\DataClear.class
 e45tm3d\pit\modules\tasks\world\BlockBreak.class
 e45tm3d\pit\modules\enchance\enchances\normal\None.class
 e45tm3d\pit\utils\lists\ItemLists.class

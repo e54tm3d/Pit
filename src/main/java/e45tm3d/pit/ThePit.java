@@ -21,6 +21,7 @@ import e45tm3d.pit.storage.SQLite;
 import e45tm3d.pit.utils.functions.DatabaseFunction;
 import e45tm3d.pit.utils.lists.MonsterLists;
 import e45tm3d.pit.utils.maps.BlocksMaps;
+import e45tm3d.pit.utils.maps.PlayerMaps;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
@@ -81,8 +82,8 @@ public final class ThePit extends JavaPlugin {
         new Tasks();
         new Listeners();
         new Weapons();
-        new Curses();
         new Buffs();
+        new Curses();
         new Enchances();
         new Monsters();
         new Materials();
@@ -126,6 +127,8 @@ public final class ThePit extends JavaPlugin {
         for (Entity entities : MonsterLists.entities) {
             entities.remove();
         }
+
+        PlayerMaps.clearAllMaps();
 
     }
 

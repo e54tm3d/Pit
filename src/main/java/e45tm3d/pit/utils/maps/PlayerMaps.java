@@ -32,4 +32,50 @@ public class PlayerMaps {
 
     public static Map<UUID, Map<String, String>> enchance = new HashMap<>();
 
+    public static void clearAllMaps() {
+        menu.clear();
+        fight_time.clear();
+        level.clear();
+        exp.clear();
+        kills.clear();
+        deaths.clear();
+        killstreak.clear();
+        helmet_level.clear();
+        chestplate_level.clear();
+        leggings_level.clear();
+        boots_level.clear();
+
+        // 清理嵌套的Map
+        for (Map<String, Integer> map : sword_level.values()) {
+            map.clear();
+        }
+        sword_level.clear();
+
+        for (Map<String, Boolean> map : curse.values()) {
+            map.clear();
+        }
+        curse.clear();
+
+        for (Map<String, String> map : equip_curse.values()) {
+            map.clear();
+        }
+        equip_curse.clear();
+        selected_curse.clear();
+
+        for (Map<String, Boolean> map : buff.values()) {
+            map.clear();
+        }
+        buff.clear();
+
+        for (Map<String, String> map : equip_buff.values()) {
+            map.clear();
+        }
+        equip_buff.clear();
+        selected_buff.clear();
+
+        for (Map<String, String> map : enchance.values()) {
+            map.clear();
+        }
+        enchance.clear();
+    }
 }

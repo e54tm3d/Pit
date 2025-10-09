@@ -33,8 +33,8 @@ import java.util.*;
 
 public class BoneSword extends WeaponModule {
 
-    private Map<UUID, Long> bone_broken = new HashMap<>();
-    private Map<UUID, UUID> killer = new HashMap<>();
+    private final Map<UUID, Long> bone_broken = new HashMap<>();
+    private final Map<UUID, UUID> killer = new HashMap<>();
 
     @Override
     public int getTierPrice(int tier) {
@@ -176,35 +176,34 @@ public class BoneSword extends WeaponModule {
 
                 if (usingItem(p)) {
 
-                    if (User.getWeaponLevel(p, getType()) < 1) {
-                        Messages.WEAPON_LOCKED.sendMessage(p).cooldown(5000);
-                        e.setDamage(1);
-                    }
-
                     Random r = new Random();
 
-                    if (r.nextInt(100) < 10) {
-                        Bukkit.getPluginManager().callEvent(new EntityBoneBrokenEvent(e.getEntity(), e.getDamager()));
-                        bone_broken.put(e.getEntity().getUniqueId(), System.currentTimeMillis());
-                        killer.put(e.getEntity().getUniqueId(), p.getUniqueId());
+                    if (User.getWeaponLevel(p, getType()) >= 3) {
+                        if (r.nextInt(100) < 10) {
+                            Bukkit.getPluginManager().callEvent(new EntityBoneBrokenEvent(e.getEntity(), e.getDamager()));
+                            bone_broken.put(e.getEntity().getUniqueId(), System.currentTimeMillis());
+                            killer.put(e.getEntity().getUniqueId(), p.getUniqueId());
 
 
-                        for (int i = 0; i < 10; i++) {
-                            Item item = e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), new ItemStack(Material.BONE));
-                            item.setItemStack(ItemFunction.addNBTTag(item.getItemStack(), String.valueOf(UUID.randomUUID())));
-                            item.setMetadata("FAKE_BONE", new FixedMetadataValue(ThePit.getInstance(), true));
-                            org.bukkit.util.Vector v = new Vector(r.nextDouble() * 0.2 - 0.1,
-                                    0.42,
-                                    r.nextDouble() * 0.2 - 0.1);
-                            item.setPickupDelay(100);
-                            item.setTicksLived(40);
-                            item.setVelocity(v);
-                            Bukkit.getScheduler().scheduleSyncDelayedTask(ThePit.getInstance(), item::remove, 40);
+                            for (int i = 0; i < 10; i++) {
+                                Item item = e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), new ItemStack(Material.BONE));
+                                item.setItemStack(ItemFunction.addNBTTag(item.getItemStack(), String.valueOf(UUID.randomUUID())));
+                                item.setMetadata("FAKE_BONE", new FixedMetadataValue(ThePit.getInstance(), true));
+                                org.bukkit.util.Vector v = new Vector(r.nextDouble() * 0.2 - 0.1,
+                                        0.42,
+                                        r.nextDouble() * 0.2 - 0.1);
+                                item.setPickupDelay(100);
+                                item.setTicksLived(40);
+                                item.setVelocity(v);
+                                Bukkit.getScheduler().scheduleSyncDelayedTask(ThePit.getInstance(), item::remove, 40);
+                            }
+                            e.getEntity().getWorld().playSound(e.getEntity().getLocation(), Sound.SKELETON_DEATH, 1, 1);
                         }
-                        e.getEntity().getWorld().playSound(e.getEntity().getLocation(), Sound.SKELETON_DEATH, 1, 1);
                     }
 
-                    if (User.getWeaponLevel(p, getType()) >= 2) e.setDamage(e.getDamage() + 2);
+                    if (User.getWeaponLevel(p, getType()) >= 2) {
+                        e.setDamage(e.getDamage() + 2);
+                    }
                 }
             }
         } else if (event instanceof PlayerPickupItemEvent e) {
@@ -218,6 +217,10 @@ public class BoneSword extends WeaponModule {
     @Override
     public void run(WeaponModule task) {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
+
+            long currentTime = System.currentTimeMillis();
+            bone_broken.entrySet().removeIf(entry -> currentTime - entry.getValue() > 5000);
+
             for (Entity entity : Bukkit.getWorld(VariableFunction.getActiveArena()).getEntities()) {
                 if (entity instanceof LivingEntity le) {
                     if (System.currentTimeMillis() - bone_broken.getOrDefault(le.getUniqueId(), 0L) < 5000) {

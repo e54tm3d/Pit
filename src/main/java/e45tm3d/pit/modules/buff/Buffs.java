@@ -10,6 +10,7 @@ import e45tm3d.pit.modules.curse.CurseModule;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -19,24 +20,37 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Buffs implements Listener {
 
-    private static List<BuffModule> buffs;
+    private static List<BuffModule> buffs = new ArrayList<>();
+    private static boolean registered = false;
 
-	public Buffs() {
+    public Buffs() {
         ThePit.getInstance().getLogger().info("Loading buff module...");
+
+        // 取消旧监听器
+        if (registered) {
+            HandlerList.unregisterAll(this);
+            registered = false;
+        }
+
+        // 清理旧Buff
+        buffs.clear();
 
         buffs = Lists.newArrayList(new Regeneration(), new ForgeGoldApple(), new Bulldozer(), new StabilizedProjectile(), new WolfTrainer());
 
+        // 注册新监听器
         Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
+        registered = true;
 
         List<BuffModule> copy = Lists.newArrayList(buffs);
         copy.forEach(this::register);
 
         ThePit.getInstance().getLogger().info("Buff module loaded successfully!");
-	}
+    }
 
     @EventHandler
     public void onPlayerGainGold(PlayerGainGoldEvent e) {
@@ -237,7 +251,8 @@ public class Buffs implements Listener {
     }
 
     public static void registerBuff(BuffModule item) {
-        buffs.add(item);
+        if (!buffs.contains(item)) {
+            buffs.add(item);
+        }
     }
-
 }

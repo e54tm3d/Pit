@@ -3,6 +3,7 @@ package e45tm3d.pit.modules.listeners.player;
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
 import e45tm3d.pit.api.events.PlayerEnchanceEvent;
+import e45tm3d.pit.api.events.PlayerObtainWeaponEvent;
 import e45tm3d.pit.modules.enchance.EnchanceType;
 import e45tm3d.pit.modules.listeners.ListenerModule;
 import e45tm3d.pit.utils.functions.ItemFunction;
@@ -33,10 +34,14 @@ public class WeaponLoader extends ListenerModule {
         } else if (event instanceof PlayerEnchanceEvent e) {
             Bukkit.getScheduler().runTaskLater(ThePit.getInstance(), () -> {
                 updateLore(e.getPlayer());
-            }, 10);
+            }, 2);
         } else if (event instanceof PlayerPickupItemEvent e) {
             Player player = e.getPlayer();
             ItemStack item = e.getItem().getItemStack();
+            updatePickupItemLore(player, item);
+        } else if (event instanceof PlayerObtainWeaponEvent e) {
+            Player player = e.getPlayer();
+            ItemStack item = e.getItemStack();
             updatePickupItemLore(player, item);
         }
     }
@@ -54,21 +59,28 @@ public class WeaponLoader extends ListenerModule {
                     if (normal == null) normal = new ArrayList<>();
                     String enchancement = User.getEnchance(p, "weapon");
                     List<String> enchance = EnchanceMaps.enchances.get(enchancement);
+
+                    // 修复：先清空原有lore和附魔，防止重复叠加
+                    ItemMeta itemMeta = item.getItemMeta();
+                    if (itemMeta == null) continue;
+                    itemMeta.setLore(new ArrayList<>(normal));
+                    itemMeta.removeEnchant(Enchantment.DURABILITY);
+
                     if (enchance != null && !enchancement.equals("none")) {
-                        normal.add("");
+                        List<String> newLore = new ArrayList<>(normal);
+                        newLore.add("");
                         for (String enchances : enchance) {
-                            normal.add(enchances.replaceAll("&", "§"));
-                            if (!item.getItemMeta().getLore().equals(normal)) {
-                                meta.setLore(normal);
-                                meta.addEnchant(Enchantment.DURABILITY, 1, false);
-                                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-                                item.setItemMeta(meta);
-                                contents[i] = item;
-                            }
+                            newLore.add(enchances.replaceAll("&", "§"));
                         }
+                        itemMeta.setLore(newLore);
+                        itemMeta.addEnchant(Enchantment.DURABILITY, 1, false);
+                        itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                        item.setItemMeta(itemMeta);
+                        contents[i] = item;
                     } else if (enchancement.equals("none")) {
-                        meta.removeEnchant(Enchantment.DURABILITY);
-                        item.setItemMeta(meta);
+                        itemMeta.setLore(new ArrayList<>(normal));
+                        itemMeta.removeEnchant(Enchantment.DURABILITY);
+                        item.setItemMeta(itemMeta);
                     }
                 }
             }
@@ -84,20 +96,29 @@ public class WeaponLoader extends ListenerModule {
                 if (meta == null) continue;
                 List<String> normal = meta.getLore();
                 if (normal == null) normal = new ArrayList<>();
+                List<String> newLore = new ArrayList<>(normal);
                 String enchancement = User.getEnchance(p, "weapon");
                 List<String> enchance = EnchanceMaps.enchances.get(enchancement);
+
+                // 修复：先清空原有lore和附魔，防止重复叠加
+                ItemMeta itemMeta = item.getItemMeta();
+                if (itemMeta == null) continue;
+                itemMeta.setLore(new ArrayList<>(normal));
+                itemMeta.removeEnchant(Enchantment.DURABILITY);
+
                 if (enchance != null && !enchancement.equals("none")) {
-                    normal.add("");
+                    newLore.add("");
                     for (String enchances : enchance) {
-                        normal.add(enchances.replaceAll("&", "§"));
+                        newLore.add(enchances.replaceAll("&", "§"));
                     }
-                    meta.setLore(normal);
-                    meta.addEnchant(Enchantment.DURABILITY, 1, false);
-                    meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-                    item.setItemMeta(meta);
+                    itemMeta.setLore(newLore);
+                    itemMeta.addEnchant(Enchantment.DURABILITY, 1, false);
+                    itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                    item.setItemMeta(itemMeta);
                 } else if (enchancement.equals("none")) {
-                    meta.removeEnchant(Enchantment.DURABILITY);
-                    item.setItemMeta(meta);
+                    itemMeta.setLore(new ArrayList<>(normal));
+                    itemMeta.removeEnchant(Enchantment.DURABILITY);
+                    item.setItemMeta(itemMeta);
                 }
             }
         }
