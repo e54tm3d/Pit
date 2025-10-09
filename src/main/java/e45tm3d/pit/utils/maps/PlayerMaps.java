@@ -32,6 +32,8 @@ public class PlayerMaps {
 
     public static Map<UUID, Map<String, String>> enchance = new HashMap<>();
 
+    public static Map<UUID, String> arena = new HashMap<>();
+
     public static void clearAllMaps() {
         menu.clear();
         fight_time.clear();
@@ -44,6 +46,7 @@ public class PlayerMaps {
         chestplate_level.clear();
         leggings_level.clear();
         boots_level.clear();
+        arena.clear();
 
         // 清理嵌套的Map
         for (Map<String, Integer> map : sword_level.values()) {

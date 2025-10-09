@@ -34,7 +34,6 @@ import java.util.*;
 public class BoneSword extends WeaponModule {
 
     private final Map<UUID, Long> bone_broken = new HashMap<>();
-    private final Map<UUID, UUID> killer = new HashMap<>();
 
     @Override
     public int getTierPrice(int tier) {
@@ -182,7 +181,6 @@ public class BoneSword extends WeaponModule {
                         if (r.nextInt(100) < 10) {
                             Bukkit.getPluginManager().callEvent(new EntityBoneBrokenEvent(e.getEntity(), e.getDamager()));
                             bone_broken.put(e.getEntity().getUniqueId(), System.currentTimeMillis());
-                            killer.put(e.getEntity().getUniqueId(), p.getUniqueId());
 
 
                             for (int i = 0; i < 10; i++) {

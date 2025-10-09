@@ -13,7 +13,7 @@ import java.nio.file.Files;
 
 public enum Yaml {
 
-    BUFF("buff"), CURSE("curse"), ENCHANCE("enchance"), ITEMS("items"), WEAPON("weapon"), CONFIG("config"),
+    BUFF("buff"), CURSE("curse"), ENCHANCE("enchance"),WEAPON("weapon"), CONFIG("config"),
     MONSTER("monster"), WEAPON_UPDATE("weapon_update"), ARMOR("armor"), TRASH("trash"), BLOCKS("blocks"), MATERIAL("material"),
     MESSAGES("messages");
 

@@ -1,15 +1,18 @@
 package e45tm3d.pit.utils.functions;
 
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import e45tm3d.pit.utils.lists.ItemLists;
 import e45tm3d.pit.utils.maps.MaterialMaps;
 import e45tm3d.pit.utils.maps.WeaponMaps;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Field;
+import java.util.*;
 
 public class ItemFunction {
 
@@ -63,9 +66,9 @@ public class ItemFunction {
 
     public static ItemStack searchItem(String item) {
 
-        Map<String, ItemStack> allItems = MaterialMaps.material_items;
-        allItems.putAll(WeaponMaps.weapon_items);
+        Map<String, ItemStack> allItems = new HashMap<>();
         allItems.putAll(MaterialMaps.material_items);
+        allItems.putAll(WeaponMaps.weapon_items);
 
         return allItems.getOrDefault(item, null);
     }
@@ -95,5 +98,25 @@ public class ItemFunction {
 
     public static boolean isItem(ItemStack items, String item) {
         return ItemFunction.hasNBTTag(items, item.toLowerCase());
+    }
+
+    public static ItemStack getBase64Head(String value) {
+
+        ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        SkullMeta meta = (SkullMeta) head.getItemMeta();
+        GameProfile profile = new GameProfile(UUID.randomUUID(), "");
+
+        profile.getProperties().put("textures", new Property("textures", value));
+
+        Field profileField;
+        try {
+            profileField = meta.getClass().getDeclaredField("profile");
+            profileField.setAccessible(true);
+            profileField.set(meta, profile);
+        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+            e.printStackTrace();
+        }
+        head.setItemMeta(meta);
+        return head;
     }
 }

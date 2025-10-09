@@ -1,6 +1,7 @@
 package e45tm3d.pit.utils.enums.weapon;
 
 import e45tm3d.pit.api.enums.Yaml;
+import e45tm3d.pit.utils.functions.ItemFunction;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -36,6 +37,15 @@ public enum WeaponMenuItems {
             if (material == null) {
                 // 使用默认材质作为后备
                 return createDefaultItemStack();
+            }
+
+            // 处理自定义头颅
+            if (material.equalsIgnoreCase("custom_head")) {
+                String base64 = Yaml.WEAPON.getConfig().getString("menu.items." + getType() + ".base64-head");
+                if (base64 != null && !base64.isEmpty()) {
+                    ItemStack head = ItemFunction.getBase64Head(base64);
+                    return setupItemMeta(head);
+                }
             }
 
             if (material.contains(":")) {

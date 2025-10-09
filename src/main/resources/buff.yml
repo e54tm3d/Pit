@@ -8,7 +8,8 @@ equiped:
       - ""
       - "&eClick to remove or override"
   regeneration:
-    material: APPLE
+    material: custom_head
+    base64-head: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmMxYzE3OWFkNTE5NTVmMTUyMmM0OGVhOTkzMWYwOWMxNjI3NDFiNDVlMjJlOWQzZmViNjgyYzdlNWVkODI3NCJ9fX0=
     name: "&dRegeneration"
     lore:
       - "&7Your regeneration got forged!"
@@ -88,7 +89,8 @@ menu:
           - "&eClick to cost &6%price% &eand &f5 &cPromethean Fire &eto Unlock"
         unlock:
           - "&eClick to select the buff!"
-      material: APPLE
+      material: custom_head
+      base64-head: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmMxYzE3OWFkNTE5NTVmMTUyMmM0OGVhOTkzMWYwOWMxNjI3NDFiNDVlMjJlOWQzZmViNjgyYzdlNWVkODI3NCJ9fX0=
       name: "&dRegeneration"
       lore:
         - "&7Your regeneration got forged!"

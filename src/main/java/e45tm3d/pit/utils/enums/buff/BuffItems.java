@@ -1,6 +1,7 @@
 package e45tm3d.pit.utils.enums.buff;
 
 import e45tm3d.pit.api.enums.Yaml;
+import e45tm3d.pit.utils.functions.ItemFunction;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -28,10 +29,21 @@ public enum BuffItems {
     public ItemStack getItemStack() {
         try {
             String material = Yaml.BUFF.getConfig().getString("equiped." + getType() + ".material");
+
             if (material == null) {
                 // 使用默认材质作为后备
                 return createDefaultItemStack();
             }
+
+            // 处理自定义头颅
+            if (material.equalsIgnoreCase("custom_head")) {
+                String base64 = Yaml.BUFF.getConfig().getString("equiped." + getType() + ".base64-head");
+                if (base64 != null && !base64.isEmpty()) {
+                    ItemStack head = ItemFunction.getBase64Head(base64);
+                    return setupItemMeta(head);
+                }
+            }
+
 
             if (material.contains(":")) {
                 String[] parts = material.split(":");
@@ -41,7 +53,7 @@ public enum BuffItems {
                     if (materialName.equalsIgnoreCase("DYE")) {
                         materialName = "INK_SACK";
                     }
-                    
+
                     Material mat = Material.getMaterial(materialName);
                     if (mat != null) {
                         try {
@@ -62,17 +74,15 @@ public enum BuffItems {
                 if (material.equalsIgnoreCase("DYE")) {
                     material = "INK_SACK";
                 }
-                
+
                 Material mat = Material.getMaterial(material);
                 if (mat != null) {
                     ItemStack item = new ItemStack(mat, 1);
                     return setupItemMeta(item);
                 }
             }
-            // 默认返回一个安全的物品
             return createDefaultItemStack();
         } catch (Exception e) {
-            // 捕获所有异常并返回默认物品
             e.printStackTrace();
             return createDefaultItemStack();
         }

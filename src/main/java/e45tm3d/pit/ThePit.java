@@ -46,13 +46,14 @@ public final class ThePit extends JavaPlugin {
     @Override
     public void onEnable() {
 
+
+
         instance = this;
 
         Yaml.CONFIG.initConfig();
         Yaml.BUFF.initConfig();
         Yaml.CURSE.initConfig();
         Yaml.ENCHANCE.initConfig();
-        Yaml.ITEMS.initConfig();
         Yaml.WEAPON.initConfig();
         Yaml.WEAPON_UPDATE.initConfig();
         Yaml.ARMOR.initConfig();

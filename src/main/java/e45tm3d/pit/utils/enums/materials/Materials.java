@@ -39,6 +39,22 @@ public enum Materials {
                 return createDefaultItemStack();
             }
 
+            // 处理自定义头颅
+            if (material.equalsIgnoreCase("custom_head")) {
+                String base64 = Yaml.MATERIAL.getConfig().getString("items." + getType() + ".base64-head");
+                if (base64 != null && !base64.isEmpty()) {
+                    ItemStack head = ItemFunction.getBase64Head(base64);
+
+                    if (!Objects.isNull(Yaml.MATERIAL.getConfig().getConfigurationSection("items." + getType() + ".attributes"))) {
+                        for (String keys : Yaml.MATERIAL.getConfig().getConfigurationSection("items." + getType() + ".attributes").getKeys(false)) {
+                            head = ItemFunction.addAttribute(head, "generic." + keys, Yaml.MATERIAL.getConfig().getDouble("items." + getType() + ".attributes." + keys), 0);
+                        }
+                    }
+
+                    return setupItemMeta(head);
+                }
+            }
+
             if (material.contains(":")) {
                 String[] parts = material.split(":");
                 if (parts.length >= 2) {

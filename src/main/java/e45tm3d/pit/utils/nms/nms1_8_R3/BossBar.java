@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 public class BossBar extends BukkitRunnable {
 
     private String title;
-    private HashMap<Player, EntityWither> withers = new HashMap<Player, EntityWither>();
+    private HashMap<Player, EntityWither> withers = new HashMap<>();
 
     public BossBar(String title) {
         this.title = title;

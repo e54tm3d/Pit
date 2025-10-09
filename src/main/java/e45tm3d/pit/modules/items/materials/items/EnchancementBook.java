@@ -1,10 +1,17 @@
 package e45tm3d.pit.modules.items.materials.items;
 
+import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
+import e45tm3d.pit.modules.buff.Buffs;
 import e45tm3d.pit.modules.items.materials.MaterialModule;
 import e45tm3d.pit.utils.enums.materials.Materials;
 import e45tm3d.pit.utils.functions.ItemFunction;
+import e45tm3d.pit.utils.functions.MathFunction;
+import e45tm3d.pit.utils.functions.NMSFunction;
+import net.minecraft.server.v1_8_R3.EnumParticle;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -41,81 +48,25 @@ public class EnchancementBook extends MaterialModule {
                     e.getDead().getWorld().dropItemNaturally(e.getDead().getLocation(), ItemFunction.searchItem(getType()));
                 }
             }
-        }else if (event instanceof PlayerPickupItemEvent e) {
-
-            ItemStack pickup = e.getItem().getItemStack();
-            int toPickup = pickup.getAmount();
-            int maxStack = 64;
-
-            if (!isItem(pickup)) return;
-
-            for (ItemStack item : e.getPlayer().getInventory().getContents()) {
-                if (item == null || item.getType() == Material.AIR) continue;
-                if (isItem(item) && item.getAmount() < maxStack && toPickup > 0) {
-                    int space = maxStack - item.getAmount();
-                    int move = Math.min(space, toPickup);
-                    item.setAmount(item.getAmount() + move);
-                    toPickup -= move;
-                }
-            }
-            while (toPickup > 0) {
-                int add = Math.min(maxStack, toPickup);
-                ItemStack newStack = pickup.clone();
-                newStack.setAmount(add);
-                e.getPlayer().getInventory().addItem(newStack);
-                toPickup -= add;
-            }
-            e.setCancelled(true);
-            e.getItem().remove();
-            e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ITEM_PICKUP, 1, 1);
-
-        } else if (event instanceof InventoryClickEvent e) {
-
-            ItemStack cursor = e.getCursor();
-            ItemStack current = e.getCurrentItem();
-
-            if (cursor == null || cursor.getType() == Material.AIR) return;
-            if (current == null || current.getType() == Material.AIR) return;
-            if (isItem(cursor) && isItem(current)) {
-                int maxStack = 64;
-                int currentAmount = current.getAmount();
-                int cursorAmount = cursor.getAmount();
-                e.setCancelled(true);
-                if (e.getClick() == ClickType.LEFT) {
-                    if (currentAmount < maxStack && cursorAmount > 0) {
-
-                        int space = maxStack - currentAmount;
-                        int toMove = Math.min(space, cursorAmount);
-                        current.setAmount(currentAmount + toMove);
-                        if (cursorAmount - toMove > 0) {
-                            cursor.setAmount(cursorAmount - toMove);
-                            e.setCursor(cursor);
-                        } else {
-                            e.setCursor(null);
-                        }
-                    } else {
-
-                        ItemStack temp = current.clone();
-                        e.setCurrentItem(cursor.clone());
-                        e.setCursor(temp);
-                    }
-                } else if (e.getClick() == ClickType.RIGHT) {
-                    if (currentAmount < maxStack && cursorAmount > 0) {
-                        current.setAmount(currentAmount + 1);
-                        if (cursorAmount - 1 > 0) {
-                            cursor.setAmount(cursorAmount - 1);
-                            e.setCursor(cursor);
-                        } else {
-                            e.setCursor(null);
-                        }
-                    }
-                }
-            }
         }
     }
 
     @Override
     public void run(MaterialModule task) {
-
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (!Objects.isNull(p.getItemInHand())
+                && !Objects.isNull(p.getItemInHand().getItemMeta())) {
+                    if (isItem(p.getItemInHand())) {
+                        Location loc = p.getLocation().add(0, 1, 0);
+                        double offsetX = MathFunction.randomDouble(2, -2);
+                        double offsetY = MathFunction.randomDouble(2, -2);
+                        double offsetZ = MathFunction.randomDouble(2, -2);
+                        loc = loc.add(offsetX, offsetY, offsetZ);
+                        NMSFunction.spawnSingleParticle(EnumParticle.ENCHANTMENT_TABLE, loc, p);
+                    }
+                }
+            }
+        }, 0, 5);
     }
 }

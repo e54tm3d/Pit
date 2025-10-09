@@ -2,6 +2,7 @@ e45tm3d\pit\api\events\PlayerJumpPadEvent.class
 e45tm3d\pit\utils\menus\BuffMenu.class
 e45tm3d\pit\modules\enchance\enchances\leggings\JumpBoost.class
 e45tm3d\pit\modules\listeners\world\ArenaProtect.class
+e45tm3d\pit\utils\lists\ArenaList.class
 e45tm3d\pit\modules\listeners\player\Fighting.class
 e45tm3d\pit\modules\enchance\enchances\helmet\Shield.class
 e45tm3d\pit\modules\enchance\enchances\normal\Regeneration$1.class

@@ -26,6 +26,8 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Monsters implements Listener {
@@ -43,12 +45,16 @@ public class Monsters implements Listener {
 
         monsters.clear();
 
-        monsters = Lists.newArrayList(new LavaSlime(), new Slime(), new LightningCreeper(), new SlimeKing(), new Skeleton());
+        monsters = Lists.newArrayList(new LavaSlime(), new Slime(), new LightningCreeper(), new Skeleton(), new Zombie(),
+
+
+                new SlimeKing());
 
         Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
         registered = true;
 
         List<MonsterModule> copy = Lists.newArrayList(monsters);
+
         copy.forEach(this::register);
 
         ThePit.getInstance().getLogger().info("Monster module loaded successfully!");
