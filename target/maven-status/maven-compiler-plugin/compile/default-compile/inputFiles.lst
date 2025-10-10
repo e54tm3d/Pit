@@ -12,10 +12,12 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerJumpPadEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerMurderEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerObtainWeaponEvent.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerPitLevelChangeEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerUnlockBuffEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerUnlockCurseEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\events\PlayerUpgradeWeaponEvent.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\Items.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\Monster.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\User.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\api\Variables.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\buff\BuffModule.java
@@ -65,12 +67,17 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\EnchancementBook.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\GoldIngot.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\IceBlock.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\LiquidExperience.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\PrometheanFire.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\ResentfulHead.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\RottenFlesh.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\SlimeBall.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\items\Superconductor.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\MaterialModule.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\materials\Materials.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\amulet\ExperienceAmulet.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\amulet\GoldAmulet.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\amulet\MonsterRune.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\bows\ArtemisBow.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\bows\WoodenBow.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\swords\BoneSword.java
@@ -81,6 +88,7 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\items\swords\WoodenSword.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\WeaponModule.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\Weapons.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\items\weapon\WeaponType.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\ListenerModule.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\Listeners.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\ArmorLoader.java
@@ -143,6 +151,7 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\utils\functions\ItemFunction.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\utils\functions\LocationFunction.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\utils\functions\MathFunction.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\utils\functions\MonsterFunction.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\utils\functions\NMSFunction.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\utils\functions\PlayerFunction.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\utils\functions\VariableFunction.java

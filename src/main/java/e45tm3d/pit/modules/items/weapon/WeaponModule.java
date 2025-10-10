@@ -1,28 +1,23 @@
 package e45tm3d.pit.modules.items.weapon;
 
 import e45tm3d.pit.ThePit;
-import e45tm3d.pit.api.User;
-import e45tm3d.pit.api.enums.Messages;
-import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.utils.functions.ItemFunction;
 import e45tm3d.pit.utils.functions.VariableFunction;
 import e45tm3d.pit.utils.lists.ItemLists;
 import e45tm3d.pit.utils.maps.WeaponMaps;
 import e45tm3d.pit.utils.menus.WeaponMenu;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
-import java.util.Objects;
 
 public abstract class WeaponModule {
 
-    public abstract String getType();
+    public abstract String getIdentifier();
+
+    public abstract WeaponType getType();
 
     public abstract ItemStack getMenuItem();
 
@@ -49,7 +44,7 @@ public abstract class WeaponModule {
     public boolean usingItem(Player p) {
         if (!p.getItemInHand().hasItemMeta()) return false;
         if (p.getItemInHand().getItemMeta() == null) return false;
-        return ItemFunction.hasNBTTag(p.getItemInHand(), getType());
+        return ItemFunction.hasNBTTag(p.getItemInHand(), getIdentifier());
     }
 
     public boolean containItemAtLeast(Player p, int amount) {
@@ -58,7 +53,7 @@ public abstract class WeaponModule {
         int count = 0;
 
         for (ItemStack item : p.getInventory().getContents()) {
-            if (ItemFunction.hasNBTTag(item, getType())) {
+            if (ItemFunction.hasNBTTag(item, getIdentifier())) {
                 count += item.getAmount();
                 if (count >= amount) {
                     b = true;
@@ -74,7 +69,7 @@ public abstract class WeaponModule {
         boolean b = false;
 
         for (ItemStack item : p.getInventory().getContents()) {
-            if (ItemFunction.hasNBTTag(item, getType())) {
+            if (ItemFunction.hasNBTTag(item, getIdentifier())) {
                 b = true;
                 break;
             }
@@ -85,26 +80,31 @@ public abstract class WeaponModule {
     public void register() {
 
         ItemStack item = getItem();
-        item = ItemFunction.addNBTTag(item, getType());
+        item = ItemFunction.addNBTTag(item, getIdentifier());
         ItemMeta meta = item.getItemMeta();
         item.setItemMeta(meta);
 
         if (getSlot() >= 0 && getSlot() <= 45) {
 
             for (int i = 1; i <= 4; i++) {
-                WeaponMaps.setTierPrice(getType(), i, getTierPrice(i));
-                WeaponMaps.setTierConsumeItem(getType(), i, getTierConsumeItems(i));
-                WeaponMaps.setTierName(getType(), i, getTierName(i));
-                WeaponMaps.setTierLore(getType(), i, getTierLore(i));
+                WeaponMaps.setTierPrice(getIdentifier(), i, getTierPrice(i));
+                WeaponMaps.setTierConsumeItem(getIdentifier(), i, getTierConsumeItems(i));
+                WeaponMaps.setTierName(getIdentifier(), i, getTierName(i));
+                WeaponMaps.setTierLore(getIdentifier(), i, getTierLore(i));
 
-                WeaponMaps.setTierUpgradeCostFormat(getType(), i, VariableFunction.removeBrackets(getTierUpgradeCostFormat(i)));
-                WeaponMaps.setTierLevelmaxCostFormat(getType(), i, VariableFunction.removeBrackets(getTierLevelmaxCostFormat(i)));
+                WeaponMaps.setTierUpgradeCostFormat(getIdentifier(), i, VariableFunction.removeBrackets(getTierUpgradeCostFormat(i)));
+                WeaponMaps.setTierLevelmaxCostFormat(getIdentifier(), i, VariableFunction.removeBrackets(getTierLevelmaxCostFormat(i)));
             }
 
             WeaponMenu.getInventory().setItem(getSlot(), getMenuItem());
-            WeaponMaps.weapon_slots.put(getType(), getSlot());
-            WeaponMaps.weapon_items.put(getType(), item);
-            ItemLists.weapons.add(getType());
+            WeaponMaps.weapon_slots.put(getIdentifier(), getSlot());
+            WeaponMaps.weapon_items.put(getIdentifier(), item);
+
+            if (getType().equals(WeaponType.NORMAL)) {
+                ItemLists.weapons.add(getIdentifier());
+            } else {
+                ItemLists.amulets.add(getIdentifier());
+            }
 
             run(this);
 

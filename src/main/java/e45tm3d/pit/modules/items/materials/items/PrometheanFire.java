@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class PrometheanFire extends MaterialModule {
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "promethean_fire";
     }
 

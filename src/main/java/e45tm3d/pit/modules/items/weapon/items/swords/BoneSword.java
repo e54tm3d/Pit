@@ -2,12 +2,10 @@ package e45tm3d.pit.modules.items.weapon.items.swords;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
-import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.api.events.EntityBoneBrokenEvent;
-import e45tm3d.pit.api.events.PlayerDeadEvent;
-import e45tm3d.pit.api.events.PlayerMurderEvent;
 import e45tm3d.pit.modules.items.weapon.WeaponModule;
+import e45tm3d.pit.modules.items.weapon.WeaponType;
 import e45tm3d.pit.utils.enums.weapon.WeaponItems;
 import e45tm3d.pit.utils.enums.weapon.WeaponMenuItems;
 import e45tm3d.pit.utils.functions.ItemFunction;
@@ -21,8 +19,6 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -34,6 +30,11 @@ import java.util.*;
 public class BoneSword extends WeaponModule {
 
     private final Map<UUID, Long> bone_broken = new HashMap<>();
+
+    @Override
+    public WeaponType getType() {
+        return WeaponType.NORMAL;
+    }
 
     @Override
     public int getTierPrice(int tier) {
@@ -149,7 +150,7 @@ public class BoneSword extends WeaponModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "bone_sword";
     }
 
@@ -177,7 +178,7 @@ public class BoneSword extends WeaponModule {
 
                     Random r = new Random();
 
-                    if (User.getWeaponLevel(p, getType()) >= 3) {
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 3) {
                         if (r.nextInt(100) < 10) {
                             Bukkit.getPluginManager().callEvent(new EntityBoneBrokenEvent(e.getEntity(), e.getDamager()));
                             bone_broken.put(e.getEntity().getUniqueId(), System.currentTimeMillis());
@@ -199,7 +200,7 @@ public class BoneSword extends WeaponModule {
                         }
                     }
 
-                    if (User.getWeaponLevel(p, getType()) >= 2) {
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 2) {
                         e.setDamage(e.getDamage() + 2);
                     }
                 }
@@ -230,7 +231,7 @@ public class BoneSword extends WeaponModule {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (usingItem(p)) {
-                    if (User.getWeaponLevel(p, getType()) >= 4)
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 4)
                         p.addPotionEffect(PotionEffectType.SPEED.createEffect(100, 1), true);
                 }
             }

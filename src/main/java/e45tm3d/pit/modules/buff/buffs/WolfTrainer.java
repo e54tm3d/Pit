@@ -34,7 +34,7 @@ public class WolfTrainer extends BuffModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "wolf_trainer";
     }
 

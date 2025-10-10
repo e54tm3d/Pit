@@ -2,9 +2,9 @@ package e45tm3d.pit.modules.items.weapon.items.bows;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
-import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.modules.items.weapon.WeaponModule;
+import e45tm3d.pit.modules.items.weapon.WeaponType;
 import e45tm3d.pit.utils.enums.weapon.WeaponItems;
 import e45tm3d.pit.utils.enums.weapon.WeaponMenuItems;
 import org.bukkit.*;
@@ -20,6 +20,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class ArtemisBow extends WeaponModule {
+
+    @Override
+    public WeaponType getType() {
+        return WeaponType.NORMAL;
+    }
 
     @Override
     public int getTierPrice(int tier) {
@@ -135,7 +140,7 @@ public class ArtemisBow extends WeaponModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "artemis_bow";
     }
 
@@ -159,7 +164,7 @@ public class ArtemisBow extends WeaponModule {
         if (event instanceof EntityShootBowEvent e) {
             if (e.getEntity() instanceof Player p) {
                 if (usingItem(p)) {
-                    int weaponLevel = User.getWeaponLevel(p, getType());
+                    int weaponLevel = User.getWeaponLevel(p, getIdentifier());
 
                     if (weaponLevel >= 2) {
                         e.getProjectile().setMetadata("AUTO_AIM", new FixedMetadataValue(ThePit.getInstance(), true));

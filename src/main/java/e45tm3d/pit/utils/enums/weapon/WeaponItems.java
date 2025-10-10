@@ -14,6 +14,11 @@ public enum WeaponItems {
 
     ARTEMIS_BOW("artemis_bow"),
     WOODEN_BOW("wooden_bow"),
+
+    GOLD_AMULET("gold_amulet"),
+    EXPERIENCE_AMULET("experience_amulet"),
+    MONSTER_RUNE("monster_rune"),
+
     DIAMOND_SWORD("diamond_sword"),
     GOLDEN_SWORD("golden_sword"),
     ICE_SWORD("ice_sword"),

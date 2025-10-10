@@ -33,7 +33,6 @@ public class CMDCurse extends CommandModule {
         if (sender instanceof Player p) {
             if (PlayerFunction.isInSpawn(p)) {
                 CurseMenu.open(p);
-                p.getInventory().addItem(ItemFunction.getBase64Head("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmMxYzE3OWFkNTE5NTVmMTUyMmM0OGVhOTkzMWYwOWMxNjI3NDFiNDVlMjJlOWQzZmViNjgyYzdlNWVkODI3NCJ9fX0="));
             } else {
                 Messages.CMD_DENY_USE.sendMessage(p);
             }

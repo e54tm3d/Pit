@@ -2,10 +2,10 @@ package e45tm3d.pit.modules.items.weapon.items.swords;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
-import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.api.events.EntityLightningEvent;
 import e45tm3d.pit.modules.items.weapon.WeaponModule;
+import e45tm3d.pit.modules.items.weapon.WeaponType;
 import e45tm3d.pit.utils.enums.weapon.WeaponItems;
 import e45tm3d.pit.utils.enums.weapon.WeaponMenuItems;
 import org.bukkit.Bukkit;
@@ -24,6 +24,11 @@ import java.util.*;
 public class LightningSword extends WeaponModule {
 
     private final Map<UUID, Long> lightning = new HashMap<>();
+
+    @Override
+    public WeaponType getType() {
+        return WeaponType.NORMAL;
+    }
 
     @Override
     public int getTierPrice(int tier) {
@@ -139,7 +144,7 @@ public class LightningSword extends WeaponModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "lightning_sword";
     }
 
@@ -166,7 +171,7 @@ public class LightningSword extends WeaponModule {
 
                     if (e.getEntity() instanceof LivingEntity entity) {
                         UUID uuid = entity.getUniqueId();
-                        if (User.getWeaponLevel(damager, getType()) >= 2) {
+                        if (User.getWeaponLevel(damager, getIdentifier()) >= 2) {
                             Random r = new Random();
                             if (r.nextInt(100) < 10) {
                                 Bukkit.getPluginManager().callEvent(new EntityLightningEvent(entity));
@@ -179,10 +184,10 @@ public class LightningSword extends WeaponModule {
                         }
                         if (lightning.containsKey(uuid)) {
                             if (System.currentTimeMillis() - lightning.get(entity.getUniqueId()) <= 3000) {
-                                if (User.getWeaponLevel(damager, getType()) >= 3) {
+                                if (User.getWeaponLevel(damager, getIdentifier()) >= 3) {
                                     e.setDamage(e.getDamage() * 1.5);
                                 }
-                                if (User.getWeaponLevel(damager, getType()) >= 4) {
+                                if (User.getWeaponLevel(damager, getIdentifier()) >= 4) {
                                     for (Entity entities : entity.getWorld().getNearbyEntities(entity.getLocation(), 3, 3, 3)) {
                                         if (entities instanceof LivingEntity livingEntity) {
                                             if (livingEntity != damager && !(entity instanceof Wolf wolf && wolf.getOwner().equals(damager))) {

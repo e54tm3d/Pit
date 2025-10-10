@@ -19,7 +19,7 @@ import java.util.List;
 public class Regeneration extends EnchanceModule {
 
     @Override
-    public String getEnchance() {
+    public String getIdentifier() {
         return "regeneration";
     }
 

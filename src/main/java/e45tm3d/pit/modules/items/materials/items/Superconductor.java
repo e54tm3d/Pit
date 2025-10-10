@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 public class Superconductor extends MaterialModule {
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "superconductor";
     }
 

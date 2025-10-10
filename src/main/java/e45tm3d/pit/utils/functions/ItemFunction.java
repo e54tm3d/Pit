@@ -8,6 +8,7 @@ import e45tm3d.pit.utils.maps.WeaponMaps;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
@@ -49,10 +50,15 @@ public class ItemFunction {
         return ItemLists.materials;
     }
 
+    public static List<String> searchAmulets() {
+        return ItemLists.amulets;
+    }
+
     public static List<String> searchAllItems() {
         List<String> items = new ArrayList<>();
         items.addAll(ItemLists.materials);
         items.addAll(ItemLists.weapons);
+        items.addAll(ItemLists.amulets);
         return items;
     }
 
@@ -84,16 +90,31 @@ public class ItemFunction {
     }
 
     public static void consumeItem(Player p, int amount, String item) {
-        for (ItemStack items : p.getInventory().getContents()) {
-            if (isItem(items, item)) {
-                if (Math.max(items.getAmount() - amount, 0) > 0) {
-                    items.setAmount(Math.max(items.getAmount() - amount, 0));
-                } else {
-                    p.getInventory().remove(items);
-                }
+        int remaining = amount;
+        Inventory inv = p.getInventory();
+        ItemStack[] contents = inv.getContents().clone();
+
+        for (int i = 0; i < contents.length; i++) {
+            ItemStack stack = contents[i];
+            if (stack == null || !isItem(stack, item)) {
+                continue;
+            }
+
+            int stackSize = stack.getAmount();
+            if (stackSize <= remaining) {
+                remaining -= stackSize;
+                inv.setItem(i, null);
+            } else {
+                stack.setAmount(stackSize - remaining);
+                inv.setItem(i, stack);
+                remaining = 0;
+            }
+
+            if (remaining == 0) {
                 break;
             }
         }
+        p.updateInventory();
     }
 
     public static boolean isItem(ItemStack items, String item) {

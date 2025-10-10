@@ -30,7 +30,7 @@ public class BloodyCurse extends CurseModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "bloody_curse";
     }
 

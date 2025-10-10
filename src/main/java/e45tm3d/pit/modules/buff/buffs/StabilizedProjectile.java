@@ -29,7 +29,7 @@ public class StabilizedProjectile extends BuffModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "stabilized_projectile";
     }
 

@@ -15,7 +15,7 @@ import java.util.Random;
 public class ResentfulHead extends MaterialModule {
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "resentful_head";
     }
 
@@ -38,7 +38,7 @@ public class ResentfulHead extends MaterialModule {
 
             Random r = new Random();
             if (r.nextInt(100) < 10) {
-                p.getInventory().addItem(ItemFunction.searchItem(getType()));
+                p.getInventory().addItem(ItemFunction.searchItem(getIdentifier()));
             }
         }
     }

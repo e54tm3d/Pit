@@ -1,21 +1,20 @@
 package e45tm3d.pit.api.events;
 
+import e45tm3d.pit.api.User;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class PlayerUpgradeWeaponEvent extends Event implements Cancellable {
+public class PlayerPitLevelChangeEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
     private boolean cancelled = false;
     public Player player;
-    public String weapon;
     public int newLevel;
     public int oldLevel;
 
-    public PlayerUpgradeWeaponEvent(Player player, String weapon, int newLevel, int oldLevel) {
-        this.weapon = weapon;
+    public PlayerPitLevelChangeEvent(Player player, int newLevel, int oldLevel) {
         this.player = player;
         this.newLevel = newLevel;
         this.oldLevel = oldLevel;
@@ -27,10 +26,6 @@ public class PlayerUpgradeWeaponEvent extends Event implements Cancellable {
 
     public int getOldLevel() {
         return oldLevel;
-    }
-
-    public String getWeapon() {
-        return weapon;
     }
 
     public Player getPlayer() {

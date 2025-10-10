@@ -2,12 +2,11 @@ package e45tm3d.pit.modules.items.weapon.items.swords;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
-import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.api.events.PlayerGainGoldEvent;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
-import e45tm3d.pit.modules.buff.Buffs;
 import e45tm3d.pit.modules.items.weapon.WeaponModule;
+import e45tm3d.pit.modules.items.weapon.WeaponType;
 import e45tm3d.pit.utils.enums.weapon.WeaponItems;
 import e45tm3d.pit.utils.enums.weapon.WeaponMenuItems;
 import e45tm3d.pit.utils.functions.ItemFunction;
@@ -25,6 +24,11 @@ import org.bukkit.util.Vector;
 import java.util.*;
 
 public class GoldenSword extends WeaponModule {
+
+    @Override
+    public WeaponType getType() {
+        return WeaponType.NORMAL;
+    }
 
     private final Map<UUID, Long> pick_time = new HashMap<>();
 
@@ -142,7 +146,7 @@ public class GoldenSword extends WeaponModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "golden_sword";
     }
 
@@ -166,7 +170,7 @@ public class GoldenSword extends WeaponModule {
         if (event instanceof PlayerMurderEvent e) {
             if (e.getKiller() instanceof Player p) {
                 if (usingItem(p)) {
-                    if (User.getWeaponLevel(p, getType()) >= 2) {
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 2) {
                         p.setHealth(Math.min(p.getHealth() + 4, p.getMaxHealth()));
                         Player dead = e.getDead();
                         Location loc = dead.getLocation();
@@ -184,7 +188,7 @@ public class GoldenSword extends WeaponModule {
                 }
             }
         } else if (event instanceof PlayerGainGoldEvent e) {
-            if (usingItem(e.getPlayer()) && User.getWeaponLevel(e.getPlayer(), getType()) >= 3) {
+            if (usingItem(e.getPlayer()) && User.getWeaponLevel(e.getPlayer(), getIdentifier()) >= 3) {
                 pick_time.put(e.getPlayer().getUniqueId(), System.currentTimeMillis());
                 e.getPlayer().addPotionEffect(PotionEffectType.SPEED.createEffect(200, 1));
             }

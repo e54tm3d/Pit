@@ -15,7 +15,7 @@ import java.util.List;
 public class Berserker extends EnchanceModule {
 
     @Override
-    public String getEnchance() {
+    public String getIdentifier() {
         return "berserker";
     }
 

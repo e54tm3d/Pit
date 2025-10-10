@@ -2,9 +2,9 @@ package e45tm3d.pit.modules.items.weapon.items.swords;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
-import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.modules.items.weapon.WeaponModule;
+import e45tm3d.pit.modules.items.weapon.WeaponType;
 import e45tm3d.pit.utils.enums.weapon.WeaponItems;
 import e45tm3d.pit.utils.enums.weapon.WeaponMenuItems;
 import e45tm3d.pit.utils.functions.ItemFunction;
@@ -20,6 +20,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class WoodenSword extends WeaponModule {
+
+    @Override
+    public WeaponType getType() {
+        return WeaponType.NORMAL;
+    }
 
     @Override
     public int getTierPrice(int tier) {
@@ -135,7 +140,7 @@ public class WoodenSword extends WeaponModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "wooden_sword";
     }
 
@@ -160,8 +165,8 @@ public class WoodenSword extends WeaponModule {
             Player p = e.getPlayer();
             if (!p.hasPlayedBefore()) {
                 if (!hasItem(p)) {
-                    p.getInventory().addItem(ItemFunction.searchItem(getType()));
-                    User.setWeaponLevel(p, getType(), 1);
+                    p.getInventory().addItem(ItemFunction.searchItem(getIdentifier()));
+                    User.setWeaponLevel(p, getIdentifier(), 1);
                 }
             }
         } else if (event instanceof EntityDamageByEntityEvent e) {
@@ -169,10 +174,10 @@ public class WoodenSword extends WeaponModule {
 
                 if (usingItem(p)) {
 
-                    if (User.getWeaponLevel(p, getType()) >= 2)  {
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 2)  {
                         e.setDamage(e.getDamage() + 1);
                     }
-                    if (User.getWeaponLevel(p, getType()) >= 3)  {
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 3)  {
                         e.setDamage(e.getDamage() + 1);
                     }
                 }
@@ -185,7 +190,7 @@ public class WoodenSword extends WeaponModule {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (usingItem(p)) {
-                    if (User.getWeaponLevel(p, getType()) >= 4)
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 4)
                         p.addPotionEffect(PotionEffectType.SPEED.createEffect(100, 0), true);
                 }
             }

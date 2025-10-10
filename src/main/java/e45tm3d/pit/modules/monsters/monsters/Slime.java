@@ -28,7 +28,7 @@ public class Slime extends MonsterModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "slime";
     }
 

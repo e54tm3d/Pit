@@ -14,7 +14,7 @@ import java.util.Random;
 public class LifeSteal extends EnchanceModule {
 
     @Override
-    public String getEnchance() {
+    public String getIdentifier() {
         return "life_steal";
     }
 

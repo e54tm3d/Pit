@@ -15,7 +15,7 @@ import java.util.Random;
 public class IceBlock extends MaterialModule {
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "ice_block";
     }
 
@@ -33,7 +33,7 @@ public class IceBlock extends MaterialModule {
         if (User.getLevel(p) >= 20) {
             Random r = new Random();
             if (r.nextInt(100) <= 20) {
-                e.getDead().getWorld().dropItemNaturally(e.getDead().getLocation(), ItemFunction.searchItem(getType()));
+                e.getDead().getWorld().dropItemNaturally(e.getDead().getLocation(), ItemFunction.searchItem(getIdentifier()));
             }
         }
     } else if (event instanceof BlockPlaceEvent e) {

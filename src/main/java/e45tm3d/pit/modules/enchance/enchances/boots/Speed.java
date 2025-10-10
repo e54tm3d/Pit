@@ -17,7 +17,7 @@ import java.util.List;
 public class Speed extends EnchanceModule {
 
     @Override
-    public String getEnchance() {
+    public String getIdentifier() {
         return "speed";
     }
 

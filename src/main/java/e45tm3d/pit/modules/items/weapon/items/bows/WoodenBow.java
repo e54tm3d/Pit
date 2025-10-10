@@ -2,9 +2,9 @@ package e45tm3d.pit.modules.items.weapon.items.bows;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
-import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.modules.items.weapon.WeaponModule;
+import e45tm3d.pit.modules.items.weapon.WeaponType;
 import e45tm3d.pit.utils.enums.weapon.WeaponItems;
 import e45tm3d.pit.utils.enums.weapon.WeaponMenuItems;
 import org.bukkit.Bukkit;
@@ -21,6 +21,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class WoodenBow extends WeaponModule {
+
+    @Override
+    public WeaponType getType() {
+        return WeaponType.NORMAL;
+    }
 
     @Override
     public int getTierPrice(int tier) {
@@ -136,7 +141,7 @@ public class WoodenBow extends WeaponModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "wooden_bow";
     }
 
@@ -162,16 +167,16 @@ public class WoodenBow extends WeaponModule {
 
                 if (usingItem(p)) {
 
-                    if (User.getWeaponLevel(p, getType()) == 2) {
+                    if (User.getWeaponLevel(p, getIdentifier()) == 2) {
                         e.getProjectile().setVelocity(e.getProjectile().getVelocity().multiply(1.2));
-                    } else if (User.getWeaponLevel(p, getType()) >= 3) {
+                    } else if (User.getWeaponLevel(p, getIdentifier()) >= 3) {
                         e.getProjectile().setMetadata("DAMAGE", new FixedMetadataValue(ThePit.getInstance(), 1.2));
                     }
                 }
             }
         } else if (event instanceof EntityDamageByEntityEvent e) {
             if (e.getEntity() instanceof Player p) {
-                if (User.getWeaponLevel(p, getType()) >= 4) {
+                if (User.getWeaponLevel(p, getIdentifier()) >= 4) {
                     if (usingItem(p)) {
                         Bukkit.getScheduler().runTaskLaterAsynchronously(ThePit.getInstance(), () -> {
                             Vector vec = p.getVelocity();

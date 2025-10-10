@@ -1,11 +1,11 @@
 package e45tm3d.pit.modules.items.weapon.items.swords;
 
 import e45tm3d.pit.ThePit;
-import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
 import e45tm3d.pit.api.User;
 import e45tm3d.pit.modules.items.weapon.WeaponModule;
+import e45tm3d.pit.modules.items.weapon.WeaponType;
 import e45tm3d.pit.utils.enums.weapon.WeaponItems;
 import e45tm3d.pit.utils.enums.weapon.WeaponMenuItems;
 import org.bukkit.Bukkit;
@@ -19,6 +19,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class DiamondSword extends WeaponModule {
+
+    @Override
+    public WeaponType getType() {
+        return WeaponType.NORMAL;
+    }
 
     @Override
     public int getTierPrice(int tier) {
@@ -134,7 +139,7 @@ public class DiamondSword extends WeaponModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "diamond_sword";
     }
 
@@ -160,7 +165,7 @@ public class DiamondSword extends WeaponModule {
 
                 if (usingItem(p)) {
 
-                    if (User.getWeaponLevel(p, getType()) >= 2)  {
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 2)  {
                         e.setDamage(e.getDamage() + 1);
                     }
                 }
@@ -179,7 +184,7 @@ public class DiamondSword extends WeaponModule {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (usingItem(p)) {
-                    if (User.getWeaponLevel(p, getType()) >= 4)
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 4)
                         p.addPotionEffect(PotionEffectType.SPEED.createEffect(100, 1), true);
                 }
             }

@@ -7,7 +7,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public abstract class MaterialModule {
 
-    public abstract String getType();
+    public abstract String getIdentifier();
 
     public abstract ItemStack getItem();
 
@@ -16,17 +16,17 @@ public abstract class MaterialModule {
     public abstract void run(MaterialModule task);
 
     public boolean isItem(ItemStack item) {
-        return ItemFunction.isItem(item, getType().toLowerCase());
+        return ItemFunction.isItem(item, getIdentifier().toLowerCase());
     }
 
     public void register() {
 
         ItemStack item = getItem();
-        item = ItemFunction.addNBTTag(item, getType());
+        item = ItemFunction.addNBTTag(item, getIdentifier());
         ItemMeta meta = item.getItemMeta();
         item.setItemMeta(meta);
 
-        ItemFunction.registerMaterial(getType().toLowerCase(), item);
+        ItemFunction.registerMaterial(getIdentifier().toLowerCase(), item);
         Materials.registerEnchcance(this);
         run(this);
     }

@@ -1,4 +1,5 @@
 e45tm3d\pit\api\events\PlayerJumpPadEvent.class
+e45tm3d\pit\api\Monster.class
 e45tm3d\pit\utils\menus\BuffMenu.class
 e45tm3d\pit\modules\enchance\enchances\leggings\JumpBoost.class
 e45tm3d\pit\modules\listeners\world\ArenaProtect.class
@@ -6,6 +7,7 @@ e45tm3d\pit\utils\lists\ArenaList.class
 e45tm3d\pit\modules\listeners\player\Fighting.class
 e45tm3d\pit\modules\enchance\enchances\helmet\Shield.class
 e45tm3d\pit\modules\enchance\enchances\normal\Regeneration$1.class
+e45tm3d\pit\api\events\PlayerPitLevelChangeEvent.class
 e45tm3d\pit\utils\maps\PlayerMaps.class
 e45tm3d\pit\modules\listeners\player\NoArrowPickUp.class
 e45tm3d\pit\modules\listeners\player\ArmorLoader$ArmorType$2.class
@@ -18,13 +20,16 @@ e45tm3d\pit\modules\buff\BuffModule.class
 e45tm3d\pit\api\events\PlayerGainGoldEvent.class
 e45tm3d\pit\modules\items\materials\Materials.class
 e45tm3d\pit\utils\enums\buff\BuffMenuItems.class
+e45tm3d\pit\modules\items\materials\items\RottenFlesh.class
 e45tm3d\pit\modules\listeners\player\GainGold.class
 e45tm3d\pit\utils\functions\LocationFunction.class
 e45tm3d\pit\modules\monsters\monsters\Skeleton.class
 e45tm3d\pit\modules\listeners\player\ArmorLoader$ArmorType$3.class
+e45tm3d\pit\modules\items\weapon\items\amulet\GoldAmulet.class
 e45tm3d\pit\modules\listeners\player\SpawnProtect.class
 e45tm3d\pit\utils\maps\BuffMaps.class
 e45tm3d\pit\utils\functions\MathFunction.class
+e45tm3d\pit\utils\functions\MonsterFunction.class
 e45tm3d\pit\api\events\PlayerMurderEvent.class
 e45tm3d\pit\api\events\MonsterSpawnEvent.class
 e45tm3d\pit\utils\menus\EnchanceMenu.class
@@ -65,6 +70,7 @@ e45tm3d\pit\modules\items\weapon\items\bows\ArtemisBow.class
 e45tm3d\pit\modules\enchance\EnchanceModule$1.class
 e45tm3d\pit\api\User.class
 e45tm3d\pit\modules\items\weapon\Weapons.class
+e45tm3d\pit\modules\items\weapon\items\amulet\ExperienceAmulet.class
 e45tm3d\pit\utils\functions\InventoryFunction.class
 e45tm3d\pit\api\enums\Yaml.class
 e45tm3d\pit\utils\lists\CurseLists.class
@@ -106,6 +112,7 @@ e45tm3d\pit\utils\functions\EntityFunction.class
 e45tm3d\pit\modules\curse\curses\ImpregnableFortress.class
 e45tm3d\pit\modules\items\weapon\items\swords\BoneSword.class
 e45tm3d\pit\modules\commands\commands\CMDSpawn.class
+e45tm3d\pit\modules\items\weapon\items\amulet\MonsterRune.class
 e45tm3d\pit\modules\items\weapon\items\swords\LightningSword.class
 e45tm3d\pit\modules\items\materials\items\PrometheanFire.class
 e45tm3d\pit\modules\listeners\world\WeatherChange.class
@@ -132,7 +139,9 @@ e45tm3d\pit\modules\items\weapon\items\swords\DiamondSword.class
 e45tm3d\pit\api\enums\Messages$MessageSender.class
 e45tm3d\pit\modules\commands\commands\CMDMonesterSpawn.class
 e45tm3d\pit\modules\commands\commands\menus\CMDTrash.class
+e45tm3d\pit\modules\items\materials\items\LiquidExperience.class
 e45tm3d\pit\utils\nms\nms1_8_R3\Minecraft1_8_R3.class
+e45tm3d\pit\modules\items\weapon\WeaponType.class
 e45tm3d\pit\modules\listeners\player\ArmorLoader$ArmorType$1.class
 e45tm3d\pit\modules\enchance\enchances\weapon\LifeSteal.class
 e45tm3d\pit\utils\enums\buff\BuffItems.class

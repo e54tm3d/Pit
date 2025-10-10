@@ -17,7 +17,7 @@ import java.util.Random;
 public class Shield extends EnchanceModule {
 
     @Override
-    public String getEnchance() {
+    public String getIdentifier() {
         return "shield";
     }
 

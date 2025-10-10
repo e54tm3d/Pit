@@ -14,7 +14,7 @@ import java.util.List;
 public class DamageAbsorption extends EnchanceModule {
 
     @Override
-    public String getEnchance() {
+    public String getIdentifier() {
         return "damage_absorption";
     }
 

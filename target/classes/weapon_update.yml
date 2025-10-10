@@ -293,3 +293,108 @@ upgrade:
         - "&7You got &fSpeed II&7 when the sword is in your hand."
       upgrade: "&eCost &6%price% &eand &f2 Bone &eto upgrade!"
       levelmax: "&cYou have reached the max level!"
+  gold_amulet:
+    tier_1:
+      price: 1600
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - gold_ingot:1
+      lore:
+        - "&7Unlock Gold Amulet"
+      upgrade:
+        - "&eCost &6%price%&eand &f1 &6Gold Ingot &eto upgrade!"
+    tier_2:
+      price: 3200
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - gold_ingot:1
+      lore:
+        - "&7Gold will be randomly generated around you."
+      upgrade: "&eCost &6%price% &eand &f1 &6Gold Ingot &eto upgrade!"
+    tier_3:
+      price: 6400
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - gold_ingot:1
+      lore:
+        - "&7The frequency of generating gold."
+      upgrade: "&eCost &6%price% &eand &f1 &6Gold Ingot &eto upgrade!"
+    tier_4:
+      price: 10000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - gold_ingot:1
+      lore:
+        - "&7The enemy you kill will drop gold."
+      upgrade: "&eCost &6%price% &eand &f1 &6Gold Ingot &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
+  experience_amulet:
+    tier_1:
+      price: 10000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - liquid_experience:1
+      lore:
+        - "&7Unlock Experience Amulet"
+      upgrade:
+        - "&eCost &6%price%&eand &f1 &aLiuqid Experience &eto upgrade!"
+    tier_2:
+      price: 20000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - liquid_experience:1
+      lore:
+        - "&7Gold will be randomly generated around you."
+      upgrade: "&eCost &6%price% &eand &f1 &aLiuqid Experience &eto upgrade!"
+    tier_3:
+      price: 30000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - liquid_experience:1
+      lore:
+        - "&7The frequency of generating gold."
+      upgrade: "&eCost &6%price% &eand &f1 &aLiuqid Experience &eto upgrade!"
+    tier_4:
+      price: 40000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - liquid_experience:1
+      lore:
+        - "&7The experience of experience orb you pick up will increase."
+      upgrade: "&eCost &6%price% &eand &f1 &aLiuqid Experience &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"
+  monster_rune:
+    tier_1:
+      price: 10000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - rotten_flesh:1
+      lore:
+        - "&7Unlock Monster Rune"
+      upgrade:
+        - "&eCost &6%price%&eand &f1 &4Rotten Flesh &eto upgrade!"
+    tier_2:
+      price: 20000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - rotten_flesh:1
+      lore:
+        - "&7Monsters will not target you when the monsters' max health is lower than 5 &c❤&7."
+      upgrade: "&eCost &6%price% &eand &f1 &4Rotten Flesh &eto upgrade!"
+    tier_3:
+      price: 40000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - rotten_flesh:1
+      lore:
+        - "&7Monsters will not target you when the monsters' max health is lower than yours."
+      upgrade: "&eCost &6%price% &eand &f1 &4Rotten Flesh &eto upgrade!"
+    tier_4:
+      price: 80000
+      name: "&aTier: &f%tier%"
+      consume_items:
+        - rotten_flesh:1
+      lore:
+        - "&7Monsters will not target you when the monsters' max health is lower than your double max health."
+      upgrade: "&eCost &6%price% &eand &f1 &4Rotten Flesh &eto upgrade!"
+      levelmax: "&cYou have reached the max level!"

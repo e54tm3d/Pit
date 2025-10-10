@@ -3,6 +3,7 @@ package e45tm3d.pit.modules.tasks.player;
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
 import e45tm3d.pit.api.enums.Yaml;
+import e45tm3d.pit.api.events.PlayerPitLevelChangeEvent;
 import e45tm3d.pit.modules.tasks.TaskModule;
 import e45tm3d.pit.utils.functions.PlayerFunction;
 import org.bukkit.Bukkit;
@@ -36,6 +37,8 @@ public class LevelUpdate extends TaskModule {
                     PlayerFunction.sendTitle(p, title, subtitle, 0, 60, 0);
 
                     p.playSound(p.getLocation(), Sound.LEVEL_UP, 1f, 1f);
+
+                    Bukkit.getPluginManager().callEvent(new PlayerPitLevelChangeEvent(p, level + 1, level));
 
                     User.setExp(p, exp - 5000);
                     User.setLevel(p, level + 1);

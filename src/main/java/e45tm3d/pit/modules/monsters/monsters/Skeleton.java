@@ -30,7 +30,7 @@ public class Skeleton extends MonsterModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "skeleton";
     }
 

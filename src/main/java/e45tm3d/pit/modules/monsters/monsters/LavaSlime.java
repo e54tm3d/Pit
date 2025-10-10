@@ -29,7 +29,7 @@ public class LavaSlime extends MonsterModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "lava_slime";
     }
 

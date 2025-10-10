@@ -2,10 +2,10 @@ package e45tm3d.pit.modules.items.weapon.items.swords;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.User;
-import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.api.events.EntityFrozenEvent;
 import e45tm3d.pit.modules.items.weapon.WeaponModule;
+import e45tm3d.pit.modules.items.weapon.WeaponType;
 import e45tm3d.pit.utils.enums.weapon.WeaponItems;
 import e45tm3d.pit.utils.enums.weapon.WeaponMenuItems;
 import org.bukkit.*;
@@ -18,6 +18,11 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.*;
 
 public class IceSword extends WeaponModule {
+
+    @Override
+    public WeaponType getType() {
+        return WeaponType.NORMAL;
+    }
 
     private final Map<UUID, Long> forzen = new HashMap<>();
 
@@ -135,7 +140,7 @@ public class IceSword extends WeaponModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "ice_sword";
     }
 
@@ -163,7 +168,7 @@ public class IceSword extends WeaponModule {
 
                     if (e.getEntity() instanceof LivingEntity entity) {
                         UUID uuid = entity.getUniqueId();
-                        if (User.getWeaponLevel(damager, getType()) >= 2) {
+                        if (User.getWeaponLevel(damager, getIdentifier()) >= 2) {
                             Random r = new Random();
                             if (r.nextInt(100) < 10) {
                                 Bukkit.getPluginManager().callEvent(new EntityFrozenEvent(entity, damager));
@@ -172,8 +177,8 @@ public class IceSword extends WeaponModule {
                                 entity.setHealth(Math.min(entity.getHealth() + 1, entity.getMaxHealth()));
                             }
                         }
-                        if (User.getWeaponLevel(damager, getType()) >= 3) e.setDamage(e.getDamage() * 1.2);
-                        if (User.getWeaponLevel(damager, getType()) >= 4) {
+                        if (User.getWeaponLevel(damager, getIdentifier()) >= 3) e.setDamage(e.getDamage() * 1.2);
+                        if (User.getWeaponLevel(damager, getIdentifier()) >= 4) {
                             if (forzen.containsKey(uuid)) {
                                 if (System.currentTimeMillis() - forzen.get(entity.getUniqueId()) <= 3000) {
                                     e.setDamage(e.getDamage() * 2);

@@ -5,6 +5,7 @@ import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.events.PlayerDeadEvent;
 import e45tm3d.pit.api.events.PlayerGainGoldEvent;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
+import e45tm3d.pit.api.events.PlayerPitLevelChangeEvent;
 import e45tm3d.pit.modules.enchance.EnchanceModule;
 import e45tm3d.pit.modules.items.materials.items.*;
 import e45tm3d.pit.utils.functions.ItemFunction;
@@ -36,7 +37,7 @@ public class Materials implements Listener {
         materials.clear();
 
         materials = Lists.newArrayList(new GoldIngot(), new IceBlock(), new PrometheanFire(), new ResentfulHead(), new Superconductor(), new Bone(),
-                new SlimeBall(), new EnchancementBook());
+                new SlimeBall(), new EnchancementBook(), new LiquidExperience(), new RottenFlesh());
 
         List<MaterialModule> copy = Lists.newArrayList(materials);
         copy.forEach(this::register);
@@ -52,7 +53,23 @@ public class Materials implements Listener {
     }
 
     @EventHandler
+    public void onPitLevelChange(PlayerPitLevelChangeEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
+        listen(e);
+    }
+
+    @EventHandler
     public void onCraftItem(CraftItemEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
+        listen(e);
+    }
+
+    @EventHandler
+    public void onProjectileLaunch(ProjectileLaunchEvent e) {
         if (e.isCancelled()) {
             return;
         }

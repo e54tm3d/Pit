@@ -30,7 +30,7 @@ public class KnockbackEnchance extends CurseModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "knockback_enchance";
     }
 

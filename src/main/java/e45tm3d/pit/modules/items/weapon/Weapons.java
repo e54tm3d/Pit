@@ -16,6 +16,9 @@ import e45tm3d.pit.modules.enchance.enchances.normal.None;
 import e45tm3d.pit.modules.enchance.enchances.normal.Regeneration;
 import e45tm3d.pit.modules.enchance.enchances.weapon.Berserker;
 import e45tm3d.pit.modules.enchance.enchances.weapon.LifeSteal;
+import e45tm3d.pit.modules.items.weapon.items.amulet.ExperienceAmulet;
+import e45tm3d.pit.modules.items.weapon.items.amulet.GoldAmulet;
+import e45tm3d.pit.modules.items.weapon.items.amulet.MonsterRune;
 import e45tm3d.pit.modules.items.weapon.items.bows.ArtemisBow;
 import e45tm3d.pit.modules.items.weapon.items.bows.WoodenBow;
 import e45tm3d.pit.modules.items.weapon.items.swords.*;
@@ -56,6 +59,7 @@ public class Weapons implements Listener {
 
         weapons = Lists.newArrayList(new WoodenSword(), new GoldenSword(), new DiamondSword(), new IceSword(), new LightningSword(), new BoneSword(),
 
+                new GoldAmulet(), new ExperienceAmulet(), new MonsterRune(),
 
                 new WoodenBow(), new ArtemisBow());
 
@@ -66,6 +70,14 @@ public class Weapons implements Listener {
         copy.forEach(this::register);
 
         ThePit.getInstance().getLogger().info("Weapon module loaded successfully!");
+    }
+
+    @EventHandler
+    public void onEntityTargetLivingEntity(EntityTargetLivingEntityEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
+        listen(e);
     }
 
     @EventHandler

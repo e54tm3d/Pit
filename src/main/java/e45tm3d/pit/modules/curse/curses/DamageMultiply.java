@@ -25,7 +25,7 @@ public class DamageMultiply extends CurseModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "damage_multiply";
     }
 

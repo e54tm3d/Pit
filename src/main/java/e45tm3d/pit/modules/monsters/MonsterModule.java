@@ -1,12 +1,10 @@
 package e45tm3d.pit.modules.monsters;
 
 import e45tm3d.pit.ThePit;
-import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.api.events.MonsterSpawnEvent;
 import e45tm3d.pit.utils.functions.LocationFunction;
 import e45tm3d.pit.utils.functions.VariableFunction;
 import e45tm3d.pit.utils.lists.MonsterLists;
-import e45tm3d.pit.utils.nms.nms1_8_R3.BossBar;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
@@ -17,7 +15,6 @@ import org.bukkit.metadata.FixedMetadataValue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public abstract class MonsterModule {
 
@@ -25,7 +22,7 @@ public abstract class MonsterModule {
 
     public abstract String getName();
 
-    public abstract String getType();
+    public abstract String getIdentifier();
 
     public abstract EntityType getEntityType();
 
@@ -38,18 +35,18 @@ public abstract class MonsterModule {
     }
 
     public List<Location> getMonsterSpawns() {
-        return LocationFunction.getMonsterSpawns(getType());
+        return LocationFunction.getMonsterSpawns(getIdentifier());
     }
 
     public boolean isType(Entity entity) {
-        return getType(entity).equalsIgnoreCase(getType());
+        return getIdentifier(entity).equalsIgnoreCase(getIdentifier());
     }
 
     public boolean isMonster(Entity entity) {
         return MonsterLists.entities.contains(entity);
     }
 
-    public String getType(Entity entity) {
+    public String getIdentifier(Entity entity) {
         return entity.hasMetadata("type") ? entity.getMetadata("type").get(0).asString() : "";
     }
 
@@ -62,7 +59,7 @@ public abstract class MonsterModule {
         for (Entity entity : Bukkit.getWorld(VariableFunction.getActiveArena()).getEntities()) {
             if (!Objects.isNull(entity) && !Objects.isNull(entity.getMetadata("type"))) {
                 if (entity.hasMetadata("type")) {
-                    if (entity.getMetadata("type").get(0).asString().equals(getType())) {
+                    if (entity.getMetadata("type").get(0).asString().equals(getIdentifier())) {
                         entities.add(entity);
                     }
                 }
@@ -80,9 +77,9 @@ public abstract class MonsterModule {
 
                 Entity entity = loc.getWorld().spawnEntity(loc, getEntityType());
 
-                entity.setMetadata("type", new FixedMetadataValue(ThePit.getInstance(), getType()));
+                entity.setMetadata("type", new FixedMetadataValue(ThePit.getInstance(), getIdentifier()));
 
-                Bukkit.getPluginManager().callEvent(new MonsterSpawnEvent(entity, getType(), getName(), loc));
+                Bukkit.getPluginManager().callEvent(new MonsterSpawnEvent(entity, getIdentifier(), getName(), loc));
 
                 MonsterLists.entities.add(entity);
                 MonsterLists.boss.add(entity);
@@ -93,9 +90,9 @@ public abstract class MonsterModule {
 
             Entity entity = loc.getWorld().spawnEntity(loc, getEntityType());
 
-            entity.setMetadata("type", new FixedMetadataValue(ThePit.getInstance(), getType()));
+            entity.setMetadata("type", new FixedMetadataValue(ThePit.getInstance(), getIdentifier()));
 
-            Bukkit.getPluginManager().callEvent(new MonsterSpawnEvent(entity, getType(), getName(), loc));
+            Bukkit.getPluginManager().callEvent(new MonsterSpawnEvent(entity, getIdentifier(), getName(), loc));
 
             MonsterLists.entities.add(entity);
 
@@ -112,7 +109,7 @@ public abstract class MonsterModule {
 
         for (Entity entity : Bukkit.getWorld(VariableFunction.getActiveArena()).getEntities()) {
             if (entity.hasMetadata("type")) {
-                if (entity.getMetadata("type").get(0).asString().equals(getType())) {
+                if (entity.getMetadata("type").get(0).asString().equals(getIdentifier())) {
                     toRemove.add(entity);
                 }
             }
@@ -125,7 +122,7 @@ public abstract class MonsterModule {
     public void register() {
         run(this);
         Monsters.registerMonster(this);
-        MonsterLists.entityTypes.add(getType());
+        MonsterLists.entityTypes.add(getIdentifier());
     }
 
 }

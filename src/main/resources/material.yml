@@ -15,7 +15,8 @@ items:
     lore:
       - "&7It feels tingly to the touch..."
   resentful_head:
-    material: SKULL_ITEM
+    material: CUSTOM_HEAD
+    base64-head: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWI3ZjU3NjFmNGNhNzI0NTJkYzE4ZWEyMThkYjE0OTAyMGY3ZmNiMTQ4NDMxNTQ3YTBhYWI0NGQ1NGI2Y2M3NCJ9fX0=
     name: "&cResentful Head"
     lore:
       - "&7A head which is resentful to the player."
@@ -39,46 +40,14 @@ items:
     name: "&dEnchancement Book"
     lore:
       - "&7A book which can be used to enchant items."
-menu:
-  gold_ingot:
-    material: GOLD_INGOT
-    name: "&6Gold Ingot"
+  liquid_experience:
+    material: CUSTOM_HEAD
+    base64-head: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzFkNTY4ZTE2YmU2Yzc5ZDY3NGY5N2FjMWU5NDlmOGE4ZjAzZTM4MzdiNmYwYjU2YTUzOWJmYzMzN2YxZWJkIn19fQ==
+    name: "&aLiquid Experience"
     lore:
-      - "&7A hard material."
-      - ""
-      -
-  ice_block:
-    material: ICE
-    name: "&bIce Block"
+      - "&7A flowing experience liquid."
+  rotten_flesh:
+    material: ROTTEN_FLESH
+    name: "&4Rotten Flesh"
     lore:
-      - "&7A cold and fragile material."
-  superconductor:
-    material: PRISMARINE_CRYSTALS
-    name: "&eSuperconductor"
-    lore:
-      - "&7It feels tingly to the touch..."
-  resentful_head:
-    material: SKULL_ITEM
-    name: "&cResentful Head"
-    lore:
-      - "&7A head which is resentful to the player."
-  promethean_fire:
-    material: FIREBALL
-    name: "&cPromethean Fire"
-    lore:
-      - "&7The flame that symbolizes courage and wisdom."
-  bone:
-    material: BONE
-    name: "&fBone"
-    lore:
-      - "&7It's very light to pick up."
-  slime_ball:
-    material: SLIME_BALL
-    name: "&aSlime Ball"
-    lore:
-      - "&7It feels sticky to the touch..."
-  enchancement_book:
-    material: ENCHANTED_BOOK
-    name: "&dEnchancement Book"
-    lore:
-      - "&7A book which can be used to enchant items."
+      - "&7It smells terrible."

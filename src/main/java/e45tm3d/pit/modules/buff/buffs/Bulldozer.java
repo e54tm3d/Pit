@@ -26,7 +26,7 @@ public class Bulldozer extends BuffModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "bulldozer";
     }
 

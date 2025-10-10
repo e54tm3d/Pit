@@ -25,7 +25,7 @@ public class Regeneration extends BuffModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "regeneration";
     }
 

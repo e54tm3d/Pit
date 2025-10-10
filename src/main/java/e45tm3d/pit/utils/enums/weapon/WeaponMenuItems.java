@@ -18,6 +18,11 @@ public enum WeaponMenuItems {
     ICE_SWORD("ice_sword"),
     LIGHTNING_SWORD("lightning_sword"),
     BONE_SWORD("bone_sword"),
+
+    GOLD_AMULET("gold_amulet"),
+    EXPERIENCE_AMULET("experience_amulet"),
+    MONSTER_RUNE("monster_rune"),
+
     WOODEN_BOW("wooden_bow"),
     ARTEMIS_BOW("artemis_bow");
 

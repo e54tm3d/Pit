@@ -12,7 +12,7 @@ import java.util.List;
 public class None extends EnchanceModule {
 
     @Override
-    public String getEnchance() {
+    public String getIdentifier() {
         return "none";
     }
 

@@ -26,7 +26,7 @@ public class Bloodthirsty extends CurseModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "bloodthirsty";
     }
 

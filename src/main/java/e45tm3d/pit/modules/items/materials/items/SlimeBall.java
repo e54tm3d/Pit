@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class SlimeBall extends MaterialModule {
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "slime_ball";
     }
 

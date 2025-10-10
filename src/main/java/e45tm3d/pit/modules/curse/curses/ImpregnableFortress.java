@@ -25,7 +25,7 @@ public class ImpregnableFortress extends CurseModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "impregnable_fortress";
     }
 

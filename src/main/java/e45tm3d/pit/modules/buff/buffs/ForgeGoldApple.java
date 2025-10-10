@@ -34,7 +34,7 @@ public class ForgeGoldApple extends BuffModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "forge_gold_apple";
     }
 

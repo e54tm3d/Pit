@@ -29,7 +29,7 @@ public class Zombie extends MonsterModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "zombie";
     }
 
@@ -48,6 +48,9 @@ public class Zombie extends MonsterModule {
                 }
                 if (r.nextInt(100) <= 5) {
                     Bukkit.getWorld(VariableFunction.getActiveArena()).dropItem(e.getEntity().getLocation(), ItemFunction.searchItem("bone"));
+                }
+                if (r.nextInt(100) <= 50) {
+                    Bukkit.getWorld(VariableFunction.getActiveArena()).dropItem(e.getEntity().getLocation(), ItemFunction.searchItem("rotten_flesh"));
                 }
             }
         }

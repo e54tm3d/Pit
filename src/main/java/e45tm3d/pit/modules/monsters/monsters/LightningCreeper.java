@@ -27,7 +27,7 @@ public class LightningCreeper extends MonsterModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "lightning_creeper";
     }
 

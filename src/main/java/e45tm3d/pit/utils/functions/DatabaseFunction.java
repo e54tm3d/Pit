@@ -290,6 +290,10 @@ public static boolean getCurseStat(Player p, String type) {
         setEnchance(p, "boots", User.getEnchance(p, "boots"));
         setEnchance(p, "weapon", User.getEnchance(p, "weapon"));
 
+        for (String amulets : ItemLists.amulets) {
+            setWeaponLevel(p, amulets, User.getWeaponLevel(p, amulets));
+        }
+
         for (String weapon : ItemLists.weapons) {
             setWeaponLevel(p, weapon, User.getWeaponLevel(p, weapon));
         }
@@ -335,9 +339,14 @@ public static boolean getCurseStat(Player p, String type) {
         User.loadEnchance(p, "boots");
         User.loadEnchance(p, "weapon");
 
+        for (String amulets : ItemLists.amulets) {
+            User.loadWeaponLevel(p, amulets);
+        }
+
         for (String weapon : ItemLists.weapons) {
             User.loadWeaponLevel(p, weapon);
         }
+
         for (String curse : CurseLists.curse) {
             User.loadCurseStat(p, curse);
         }

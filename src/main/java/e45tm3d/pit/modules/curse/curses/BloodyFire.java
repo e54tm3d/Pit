@@ -33,7 +33,7 @@ public class BloodyFire extends CurseModule {
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "bloodyfire";
     }
 
