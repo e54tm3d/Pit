@@ -116,7 +116,7 @@ public class Example extends MonsterModule {//Load MonsterModule
     }
 
     @Override
-    public String getType() {//Set its identification label
+    public String getIdentifier() {//Set its identification label
         return "slime_king";
     }
 
@@ -161,7 +161,7 @@ The enchantments here require the consumption of materials and coins (Vault API)
 public class Example extends EnchanceModule {//Load EnchanceModule
 
     @Override
-    public String getEnchance() {//Set identification label of enchancement
+    public String getIdentifier() {//Set identification label of enchancement
         return "example";
     }
 
@@ -197,6 +197,11 @@ The maximum level of a Weapon is 4, and levels above 4 usually won't be displaye
 
 ```java
 public class WoodenSword extends WeaponModule {//Load WeaponModule
+
+    @Override
+    public WeaponType getType() {
+        return WeaponType.NORMAL;//Set the weapon type if it is "AMULET", enchancements will not impact it
+    }
 
     @Override
     public int getTierPrice(int tier) {//Set the price required to upgrade to a certain level
@@ -267,7 +272,7 @@ public class WoodenSword extends WeaponModule {//Load WeaponModule
     }
 
     @Override
-    public String getType() {
+    public String getIdentifier() {
         return "example";
     }
 
@@ -307,7 +312,7 @@ For example, if the original item of a Material is a certain block, you can prev
 public class Example extends MaterialModule {//Load MaterialModule
 
     @Override
-    public String getType() {//Set identification for this material
+    public String getIdentifier() {//Set identification for this material
         return "gold_ingot";
     }
 
@@ -349,7 +354,7 @@ public class Example extends BuffModule {//Load BuffModule
     }
 
     @Override
-    public String getType() {//Set the identifier for this Buff
+    public String getIdentifier() {//Set the identifier for this Buff
         return "example";
     }
 
@@ -408,7 +413,7 @@ public class Example extends CurseModule {//Load CurseModule
     }
 
     @Override
-    public String getType() {//Set the identifier for this Buff
+    public String getIdentifier() {//Set the identifier for this Buff
         return "example";
     }
 
@@ -462,6 +467,7 @@ Here are multiple API-related Classes provided, which are usually used to handle
 | User  | Obtain various data information of players, such as kills |
 | Variables  | Obtain various variable information of the arena, such as "spawn pos" |
 | Items  | Obtain various variable information of the registered items |
+| Monster  | Obtain various variable information of the Monsters |
 
 # Commands
 
