@@ -55,6 +55,7 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\EnchanceModule.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\Enchances.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\enchances\boots\Speed.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\enchances\chestplate\Bounce.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\enchances\chestplate\DamageAbsorption.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\enchances\helmet\Shield.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\enchance\enchances\leggings\JumpBoost.java
@@ -100,6 +101,8 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\EnchanceTable.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\Fighting.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\GainGold.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\ItemCleaner.java
+F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\ItemProtect.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\JumpPad.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\LevelLoader.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\listeners\player\MenuManager.java
@@ -127,7 +130,6 @@ F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\tasks\player\Tablist.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\tasks\TaskModule.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\tasks\Tasks.java
-F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\tasks\world\ArrowsClear.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\tasks\world\BlockBreak.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\tasks\world\GoldSpawn.java
 F:\Develop\[Projects]\JetBrains\Inteillj IDEA\Minecraft\Plugins\ThePit\src\main\java\e45tm3d\pit\modules\tasks\world\TimeLock.java

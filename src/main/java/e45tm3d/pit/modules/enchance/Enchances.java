@@ -11,6 +11,7 @@ import e45tm3d.pit.modules.buff.buffs.ForgeGoldApple;
 import e45tm3d.pit.modules.buff.buffs.StabilizedProjectile;
 import e45tm3d.pit.modules.buff.buffs.WolfTrainer;
 import e45tm3d.pit.modules.enchance.enchances.boots.Speed;
+import e45tm3d.pit.modules.enchance.enchances.chestplate.Bounce;
 import e45tm3d.pit.modules.enchance.enchances.chestplate.DamageAbsorption;
 import e45tm3d.pit.modules.enchance.enchances.helmet.Shield;
 import e45tm3d.pit.modules.enchance.enchances.leggings.JumpBoost;
@@ -51,7 +52,7 @@ public class Enchances implements Listener {
         enchances.clear();
 
         enchances = Lists.newArrayList(new None(), new Regeneration(), new DamageAbsorption(), new JumpBoost(), new Shield(), new Berserker(),
-                new LifeSteal(), new Speed());
+                new LifeSteal(), new Speed(), new Bounce());
 
         Bukkit.getPluginManager().registerEvents(this, ThePit.getInstance());
         registered = true;

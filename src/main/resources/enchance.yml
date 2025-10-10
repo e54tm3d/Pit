@@ -87,3 +87,7 @@ enchance:
     description:
       - "&7You crave more blood..."
       - "&7You have 10% chance to gain 2 &c❤ &7when hit a enemy."
+  bounce:
+    description:
+      - "&7Elasticity is imparted to your armor."
+      - "&7You have 10% chance to knockback your enemy when enemy hit you."

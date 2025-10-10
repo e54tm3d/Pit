@@ -45,8 +45,9 @@ public class Listeners implements Listener {
         listeners.clear();
 
         listeners = Lists.newArrayList(new ArmorLoader(), new ArmorSlotLock(), new ArrowLoader(), new DatabaseLoader(), new Dead(), new DevelopMode(),
-                new Fighting(), new Saturation(), new GainGold(), new JumpPad(), new LevelLoader(), new MenuManager(), new Murder(),
-                new NoArrowPickUp(), new NoFallDamage(), new ScoreboardRemove(), new SpawnProtect(), new TpLogin(), new EnchanceTable(), new WeaponLoader()
+                new Fighting(), new Saturation(), new GainGold(), new JumpPad(), new LevelLoader(), new MenuManager(), new Murder(), new ItemCleaner(),
+                new NoArrowPickUp(), new NoFallDamage(), new ScoreboardRemove(), new SpawnProtect(), new TpLogin(), new EnchanceTable(), new WeaponLoader(),
+                new ItemProtect()
 
                 , new ArenaProtect(), new WeatherChange());
 

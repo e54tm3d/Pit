@@ -186,17 +186,17 @@ public class MonsterRune extends WeaponModule {
 
             if (entity instanceof LivingEntity livingEntity) {
                 if (e.getTarget() instanceof Player p) {
-                    if (User.getWeaponLevel(p, getIdentifier()) >= 1) {
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 2) {
                         if (livingEntity.getMaxHealth() <= 10) {
                             handleCancelTarget(e);
                         }
                     }
-                    if (User.getWeaponLevel(p, getIdentifier()) >= 2) {
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 3) {
                         if (livingEntity.getMaxHealth() <= 20) {
                             handleCancelTarget(e);
                         }
                     }
-                    if (User.getWeaponLevel(p, getIdentifier()) >= 3) {
+                    if (User.getWeaponLevel(p, getIdentifier()) >= 4) {
                         if (livingEntity.getMaxHealth() <= p.getMaxHealth() * 2) {
                             handleCancelTarget(e);
                         }

@@ -15,8 +15,6 @@ import java.util.Random;
 
 public class Slime extends MonsterModule {
 
-    final int MAX_COUNT = getMonsterSpawns().size();
-
     @Override
     public boolean isBoss() {
         return false;
@@ -59,6 +57,9 @@ public class Slime extends MonsterModule {
     @Override
     public void run(MonsterModule task) {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
+
+            int MAX_COUNT = getMonsterSpawns().size();
+
             if (!Bukkit.getOnlinePlayers().isEmpty() && !getMonsterSpawns().isEmpty() && getMonsters().size() < MAX_COUNT) {
                 org.bukkit.entity.Slime slime = (org.bukkit.entity.Slime) spawnEntity(getMonsterSpawns().get(new Random().nextInt(MAX_COUNT)));
                 slime.setSize(3);

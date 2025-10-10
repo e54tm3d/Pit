@@ -1,8 +1,10 @@
 e45tm3d\pit\api\events\PlayerJumpPadEvent.class
+e45tm3d\pit\modules\enchance\enchances\chestplate\Bounce.class
 e45tm3d\pit\api\Monster.class
 e45tm3d\pit\utils\menus\BuffMenu.class
 e45tm3d\pit\modules\enchance\enchances\leggings\JumpBoost.class
 e45tm3d\pit\modules\listeners\world\ArenaProtect.class
+e45tm3d\pit\modules\listeners\player\ItemCleaner.class
 e45tm3d\pit\utils\lists\ArenaList.class
 e45tm3d\pit\modules\listeners\player\Fighting.class
 e45tm3d\pit\modules\enchance\enchances\helmet\Shield.class
@@ -59,7 +61,6 @@ e45tm3d\pit\utils\menus\second_menus\WeaponUpdateMenu.class
 e45tm3d\pit\utils\enums\weapon\WeaponMenuItems.class
 e45tm3d\pit\modules\commands\commands\menus\CMDWeapon.class
 e45tm3d\pit\utils\nms\nms1_8_R3\BossBar.class
-e45tm3d\pit\modules\tasks\world\ArrowsClear.class
 e45tm3d\pit\modules\items\weapon\items\swords\IceSword.class
 e45tm3d\pit\modules\items\weapon\items\bows\WoodenBow.class
 e45tm3d\pit\api\events\EntityBoneBrokenEvent.class
@@ -158,6 +159,7 @@ e45tm3d\pit\modules\tasks\world\WeatherLock.class
 e45tm3d\pit\modules\enchance\enchances\boots\Speed.class
 e45tm3d\pit\modules\curse\CurseModule.class
 e45tm3d\pit\utils\menus\ArmorMenu.class
+e45tm3d\pit\modules\listeners\player\ItemProtect.class
 e45tm3d\pit\Placeholders.class
 e45tm3d\pit\utils\functions\PlayerFunction.class
 e45tm3d\pit\modules\commands\commands\CMDSetHeight.class

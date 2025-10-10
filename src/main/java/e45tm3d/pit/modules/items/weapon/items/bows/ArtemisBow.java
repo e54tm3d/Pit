@@ -260,7 +260,7 @@ public class ArtemisBow extends WeaponModule {
                                 Vector directionDifference = desiredDirection.subtract(currentVelocity.normalize());
 
                                 // 应用加速度，控制转向的快慢
-                                double accelerationFactor = 0.15; // 加速度因子，值越小转向越慢
+                                double accelerationFactor = 0.2; // 加速度因子，值越小转向越慢
                                 Vector newVelocity = currentVelocity.add(directionDifference.multiply(accelerationFactor));
 
                                 // 保持箭矢原有速度大小

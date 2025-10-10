@@ -17,8 +17,6 @@ import java.util.Random;
 
 public class Skeleton extends MonsterModule {
 
-    final int MAX_COUNT = getMonsterSpawns().size();
-
     @Override
     public boolean isBoss() {
         return false;
@@ -57,6 +55,9 @@ public class Skeleton extends MonsterModule {
     @Override
     public void run(MonsterModule task) {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
+
+            int MAX_COUNT = getMonsterSpawns().size();
+
             if (!Bukkit.getOnlinePlayers().isEmpty() && !getMonsterSpawns().isEmpty() && getMonsters().size() < MAX_COUNT) {
                 org.bukkit.entity.Skeleton skeleton = (org.bukkit.entity.Skeleton) spawnEntity(getMonsterSpawns().get(new Random().nextInt(MAX_COUNT)));
                 skeleton.setMaxHealth(20);

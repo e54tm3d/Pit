@@ -211,7 +211,7 @@ public class MenuManager extends ListenerModule {
                             case 27 -> {
                                 if (User.getWeaponLevel(p, item) >= 1) {
                                     if (!Objects.isNull(WeaponMaps.weapon_items.get(item))) {
-                                        if (!ItemFunction.hasItemAtLease(p, 1, item)) {
+                                        if (!ItemFunction.hasItemAtLease(p, 1, item) && !hasItemInEndChest(item, p)) {
                                             Bukkit.getPluginManager().callEvent(new PlayerObtainWeaponEvent(p, item, ItemFunction.searchItem(item)));
                                             p.getInventory().addItem(ItemFunction.addNBTTag(WeaponMaps.weapon_items.get(item), item));
                                             p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 1, 1);
@@ -773,5 +773,17 @@ public class MenuManager extends ListenerModule {
 
             PlayerMaps.menu.put(uuid, "none");
         }
+    }
+    private boolean hasItemInEndChest(String item, Player p) {
+
+        boolean result = false;
+
+        for (ItemStack items : p.getEnderChest().getContents()) {
+            if (ItemFunction.isItem(items, item)) {
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 }

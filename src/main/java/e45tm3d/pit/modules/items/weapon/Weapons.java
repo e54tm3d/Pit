@@ -132,7 +132,7 @@ public class Weapons implements Listener {
 
     @EventHandler
     public void onPlayerPickupItem(PlayerPickupItemEvent e) {
-        if (e.isCancelled()) {
+        if (e.isCancelled() || handleLocked(e)) {
             return;
         }
         listen(e);
@@ -290,6 +290,32 @@ public class Weapons implements Listener {
         if (!weapons.contains(item)) {
             weapons.add(item);
         }
+    }
+
+    private boolean handleLocked(PlayerPickupItemEvent e) {
+
+        boolean lock = false;
+        Player p = e.getPlayer();
+
+        List<String> list = new ArrayList<>();
+        list.addAll(ItemFunction.searchWeapons());
+        list.addAll(ItemFunction.searchAmulets());
+
+        for (String weapon : list) {
+            if (!Objects.isNull(e.getItem().getItemStack())
+                    && !Objects.isNull(e.getItem().getItemStack().getItemMeta())) {
+                if (ItemFunction.isItem(e.getItem().getItemStack(), weapon)) {
+                    if (User.getWeaponLevel(p, weapon) < 1) {
+                        Messages.WEAPON_LOCKED.sendMessage(p).cooldown(5000);
+                        e.setCancelled(true);
+                        lock = true;
+                        return lock;
+                    }
+                    break;
+                }
+            }
+        }
+        return lock;
     }
 
     private boolean handleLocked(EntityDamageByEntityEvent e) {
