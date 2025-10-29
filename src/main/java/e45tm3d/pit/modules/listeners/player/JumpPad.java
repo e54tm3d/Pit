@@ -44,7 +44,6 @@ public class JumpPad extends ListenerModule {
                     } else {
                         jump.put(p.getUniqueId(), 0L);
                     }
-
                     p.setVelocity(direction);
                 }
             }

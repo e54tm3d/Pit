@@ -152,7 +152,7 @@ public class WoodenBow extends WeaponModule {
 
     @Override
     public ItemStack getItem() {
-        return WeaponItems.WOODEN_SWORD.getItemStack();
+        return WeaponItems.WOODEN_BOW.getItemStack();
     }
 
     @Override

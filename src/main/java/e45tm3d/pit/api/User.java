@@ -274,6 +274,7 @@ public class User {
             PlayerMaps.level.put(p.getUniqueId(), DatabaseFunction.getLevel(p));
         }
     }
+
     public static void updateLevel(Player p) {
         PlayerMaps.level.put(p.getUniqueId(), DatabaseFunction.getLevel(p));
     }
@@ -286,7 +287,7 @@ public class User {
                 PlayerMaps.exp.put(p.getUniqueId(), 0);
             }
         }
-        return  PlayerMaps.exp.get(p.getUniqueId());
+        return PlayerMaps.exp.get(p.getUniqueId());
     }
 
     public static void setExp(Player p, int v) {
@@ -327,7 +328,7 @@ public class User {
         UUID uuid = p.getUniqueId();
 
         if (!PlayerMaps.curse.containsKey(uuid)) {
-                PlayerMaps.curse.put(uuid, new HashMap<>());
+            PlayerMaps.curse.put(uuid, new HashMap<>());
         }
 
         Map<String, Boolean> curseMap = PlayerMaps.curse.get(uuid);
@@ -621,6 +622,4 @@ public class User {
         String v = DatabaseFunction.getEnchance(p, type);
         PlayerMaps.enchance.get(uuid).put(type, v);
     }
-
-
 }

@@ -1,6 +1,7 @@
 package e45tm3d.pit.modules.buff.buffs;
 
 import com.google.common.collect.Lists;
+import e45tm3d.pit.api.User;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.api.events.PlayerMurderEvent;
 import e45tm3d.pit.modules.buff.BuffModule;

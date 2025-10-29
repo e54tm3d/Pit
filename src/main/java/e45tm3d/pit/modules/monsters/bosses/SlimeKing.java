@@ -50,7 +50,7 @@ public class SlimeKing extends MonsterModule {
     @Override
     public void listen(Event event) {
         if (event instanceof SlimeSplitEvent e) {
-            if (e.getEntity().hasMetadata("NO_SPLIT")) {
+            if (e.getEntity().hasMetadata("NO_SPLIT") || isType(e.getEntity())) {
                 e.setCancelled(true);
             }
 
@@ -157,7 +157,7 @@ public class SlimeKing extends MonsterModule {
                     slime.setRemoveWhenFarAway(false);
                 }
             }
-        }, 0, MathFunction.time(0, 0, 20));
+        }, 0, MathFunction.time(0, 30, 0));
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
             if (!getMonsters().isEmpty()) {
@@ -174,7 +174,7 @@ public class SlimeKing extends MonsterModule {
                     }
                 }
             }
-        }, 0, MathFunction.time(0, 30, 0));
+        }, 0, MathFunction.time(0, 0, 20));
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {

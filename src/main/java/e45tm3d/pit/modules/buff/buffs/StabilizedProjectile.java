@@ -70,16 +70,18 @@ public class StabilizedProjectile extends BuffModule {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
             for (Projectile projectile : Bukkit.getWorlds().get(0).getEntitiesByClass(Projectile.class)) {
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    boolean close = projectile.getLocation().distance(player.getLocation().add(0, 1, 0)) < 3;
-                    if (close && !projectile.getShooter().equals(player)) {
+                    if (isEquiped(player)) {
+                        boolean close = projectile.getLocation().distance(player.getLocation().add(0, 1, 0)) < 3;
+                        if (close && !projectile.getShooter().equals(player)) {
 
-                        double acceleration = 0.15;
+                            double acceleration = 0.15;
 
-                        Vector vec = new Vector(
-                                Math.max(0, projectile.getVelocity().getX() - acceleration)
-                                , Math.max(0, projectile.getVelocity().getY() - acceleration)
-                                , Math.max(0, projectile.getVelocity().getZ() - acceleration));
-                        projectile.setVelocity(vec);
+                            Vector vec = new Vector(
+                                    Math.max(0, projectile.getVelocity().getX() - acceleration)
+                                    , Math.max(0, projectile.getVelocity().getY() - acceleration)
+                                    , Math.max(0, projectile.getVelocity().getZ() - acceleration));
+                            projectile.setVelocity(vec);
+                        }
                     }
                 }
             }

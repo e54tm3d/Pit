@@ -9,7 +9,10 @@ import org.bukkit.event.Event;
 import java.util.ArrayList;
 import java.util.List;
 
-public class None extends EnchanceModule {
+public class
+
+
+None extends EnchanceModule {
 
     @Override
     public String getIdentifier() {
