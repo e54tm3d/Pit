@@ -10,6 +10,7 @@ public class PlayerObtainWeaponEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
     private boolean cancelled = false;
+
     public Player player;
     public String item;
     public ItemStack itemStack;

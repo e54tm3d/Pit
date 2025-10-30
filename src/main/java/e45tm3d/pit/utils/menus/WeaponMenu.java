@@ -2,6 +2,8 @@ package e45tm3d.pit.utils.menus;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.enums.Yaml;
+import e45tm3d.pit.utils.ItemBuilder;
+import e45tm3d.pit.utils.PlaceholdersItemBuilder;
 import e45tm3d.pit.utils.maps.PlayerMaps;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -21,36 +23,18 @@ public class WeaponMenu {
 
         p.closeInventory();
 
-        ItemStack close = new ItemStack(Material.BARRIER, 1);
-        ItemMeta closeMeta = close.getItemMeta();
-        closeMeta.setDisplayName(Yaml.WEAPON.getConfig().getString("menu.items.close.name").replaceAll("&", "§"));
-        ArrayList<String> closeLores = new ArrayList<>();
-        if (!Yaml.WEAPON.getConfig().getStringList("menu.items.close.lore").isEmpty()
-                || !Objects.isNull(Yaml.WEAPON.getConfig().getStringList("menu.items.close.lore"))) {
-            for (String lore : Yaml.WEAPON.getConfig().getStringList("menu.items.close.lore")) {
-                closeLores.add(lore.replaceAll("&", "§"));
-            }
-            closeMeta.setLore(closeLores);
-        }
-        close.setItemMeta(closeMeta);
+        PlaceholdersItemBuilder close = new PlaceholdersItemBuilder(new ItemStack(Material.BARRIER), p)
+                .setName(ThePit.setPlaceholderAPI(p, Yaml.WEAPON.getConfig().getString("menu.items.close.name").replaceAll("&", "§")))
+                .setLore(Yaml.WEAPON.getConfig().getStringList("menu.items.close.lore"))
+                .setIdentifier("ui_item");
 
-        ItemStack vault = new ItemStack(Material.EMERALD, 1);
-        ItemMeta vaultMeta = vault.getItemMeta();
-        vaultMeta.setDisplayName(Yaml.WEAPON.getConfig().getString("menu.items.vault.name").replaceAll("&", "§"));
-        ArrayList<String> vaultLores = new ArrayList<>();
-        if (!Yaml.WEAPON.getConfig().getStringList("menu.items.vault.lore").isEmpty()
-                || !Objects.isNull(Yaml.WEAPON.getConfig().getStringList("menu.items.vault.lore"))) {
-            for (String lore : Yaml.WEAPON.getConfig().getStringList("menu.items.vault.lore")) {
-                vaultLores.add(ThePit.setPlaceholderAPI(p, lore
-                        .replaceAll("&", "§")
-                ));
-            }
-            vaultMeta.setLore(vaultLores);
-        }
-        vault.setItemMeta(vaultMeta);
+        PlaceholdersItemBuilder vault = new PlaceholdersItemBuilder(new ItemStack(Material.EMERALD), p)
+                .setName(ThePit.setPlaceholderAPI(p, Yaml.WEAPON.getConfig().getString("menu.items.vault.name").replaceAll("&", "§")))
+                .setLore(Yaml.WEAPON.getConfig().getStringList("menu.items.vault.lore"))
+                .setIdentifier("ui_item");
 
-        inv.setItem(48, vault);
-        inv.setItem(49, close);
+        inv.setItem(48, vault.build());
+        inv.setItem(49, close.build());
 
         p.openInventory(inv);
 

@@ -11,8 +11,10 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.metadata.MetadataValue;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -59,11 +61,17 @@ public abstract class MonsterModule {
         for (Entity entity : Bukkit.getWorld(VariableFunction.getActiveArena()).getEntities()) {
             if (!Objects.isNull(entity) && !Objects.isNull(entity.getMetadata("type"))) {
                 if (entity.hasMetadata("type")) {
-                    if (entity.getMetadata("type").get(0).asString().equals(getIdentifier())) {
-                        entities.add(entity);
+                    if (entity.hasMetadata("type")) {
+                        List<MetadataValue> metadata = entity.getMetadata("type");
+                        if (!metadata.isEmpty() && metadata.get(0).asString().equals(getIdentifier())) {
+                            entities.add(entity);
+                        }
                     }
                 }
             }
+        }
+        if (entities.isEmpty()) {
+            return Collections.emptyList();
         }
         return entities;
     }

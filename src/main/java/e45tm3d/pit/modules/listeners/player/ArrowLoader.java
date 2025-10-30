@@ -59,6 +59,11 @@ public class ArrowLoader extends ListenerModule {
                 }
             }
         } else if (event instanceof EntityShootBowEvent e) {
+
+            Bukkit.getScheduler().scheduleSyncDelayedTask(ThePit.getInstance(), () -> {
+                e.getProjectile().remove();
+            }, 1200);
+
             e.getProjectile().setMetadata("NO_PICKUP_METADATA", new FixedMetadataValue( ThePit.getInstance(), true));
             if (e.getEntity() instanceof Player p) {
                 p.getInventory().setItem(9, new ItemStack(Material.ARROW, 64));

@@ -6,6 +6,7 @@ import e45tm3d.pit.api.events.MonsterSpawnEvent;
 import e45tm3d.pit.modules.monsters.MonsterModule;
 import e45tm3d.pit.utils.functions.ItemFunction;
 import e45tm3d.pit.utils.functions.MathFunction;
+import e45tm3d.pit.utils.functions.PlayerFunction;
 import e45tm3d.pit.utils.lists.MonsterLists;
 import e45tm3d.pit.utils.nms.nms1_8_R3.BossBar;
 import org.bukkit.*;
@@ -116,7 +117,7 @@ public class SlimeKing extends MonsterModule {
                 if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
                     e.setCancelled(true);
                     for (Entity entity : e.getEntity().getNearbyEntities(30, 30, 30)) {
-                        if (entity instanceof Player p) {
+                        if (entity instanceof Player p && !PlayerFunction.isInSpawn(p)) {
                             if (p.getLocation().add(0, -0.05, 0).getBlock().getType().isSolid()) {
                                 p.damage(10);
 

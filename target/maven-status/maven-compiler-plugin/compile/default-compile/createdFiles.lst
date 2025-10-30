@@ -112,6 +112,7 @@ e45tm3d\pit\modules\listeners\player\ArmorSlotLock.class
 e45tm3d\pit\utils\functions\EntityFunction.class
 e45tm3d\pit\modules\curse\curses\ImpregnableFortress.class
 e45tm3d\pit\modules\items\weapon\items\swords\BoneSword.class
+e45tm3d\pit\utils\PlaceholdersItemBuilder.class
 e45tm3d\pit\modules\commands\commands\CMDSpawn.class
 e45tm3d\pit\modules\items\weapon\items\amulet\MonsterRune.class
 e45tm3d\pit\modules\items\weapon\items\swords\LightningSword.class
@@ -193,4 +194,5 @@ e45tm3d\pit\utils\maps\BlocksMaps.class
 e45tm3d\pit\ThePit.class
 e45tm3d\pit\utils\enums\materials\Materials.class
 e45tm3d\pit\modules\commands\commands\menus\CMDArmor.class
+e45tm3d\pit\utils\ItemBuilder.class
 e45tm3d\pit\modules\listeners\player\TpLogin.class

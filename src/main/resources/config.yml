@@ -59,6 +59,7 @@ settings:
   tablist:
     enable: true
     header:
+      - ""
       - "&e&lTHE PIT"
       - ""
       - "&7You are playing the pit"
@@ -67,6 +68,7 @@ settings:
     footer:
       - ""
       - "&6www.easycraft.com"
+      - ""
   scoreboard:
     enable: true
     title: "&6&lTHE PIT"

@@ -10,9 +10,8 @@ public class EntityFunction {
     }
 
     public static String getType(Entity e) {
-        if (!EntityMaps.type.containsKey(e.getUniqueId())) {
-            EntityMaps.type.put(e.getUniqueId(), e.getType().toString().toLowerCase());
-        }
-        return EntityMaps.type.get(e.getUniqueId());
+
+        return EntityMaps.type.getOrDefault(e.getUniqueId(), e.getType().toString().toLowerCase());
+
     }
 }

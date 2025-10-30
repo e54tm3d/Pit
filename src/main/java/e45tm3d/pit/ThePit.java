@@ -1,5 +1,6 @@
 package e45tm3d.pit;
 
+import e45tm3d.pit.api.Variables;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.modules.buff.buffs.WolfTrainer;
 import e45tm3d.pit.modules.commands.commands.*;
@@ -31,6 +32,7 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -45,8 +47,6 @@ public final class ThePit extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
-
 
         instance = this;
 
@@ -123,6 +123,12 @@ public final class ThePit extends JavaPlugin {
             p.closeInventory();
 
             DatabaseFunction.saveDatabase(p);
+        }
+
+        for (Entity entities : Bukkit.getWorld(Variables.getActiveArena()).getEntities()) {
+            if (entities instanceof Projectile) {
+                entities.remove();
+            }
         }
 
         for (Entity entities : MonsterLists.entities) {
