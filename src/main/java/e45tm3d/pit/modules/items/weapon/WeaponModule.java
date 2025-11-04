@@ -5,7 +5,7 @@ import e45tm3d.pit.utils.functions.ItemFunction;
 import e45tm3d.pit.utils.functions.VariableFunction;
 import e45tm3d.pit.utils.lists.ItemLists;
 import e45tm3d.pit.utils.maps.WeaponMaps;
-import e45tm3d.pit.utils.menus.WeaponMenu;
+import e45tm3d.pit.utils.menus.normal_menus.WeaponMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;

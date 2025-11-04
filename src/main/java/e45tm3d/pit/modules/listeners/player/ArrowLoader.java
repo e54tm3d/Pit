@@ -2,6 +2,7 @@ package e45tm3d.pit.modules.listeners.player;
 
 import com.google.common.collect.Maps;
 import e45tm3d.pit.ThePit;
+import e45tm3d.pit.api.User;
 import e45tm3d.pit.modules.listeners.ListenerModule;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -30,11 +31,14 @@ public class ArrowLoader extends ListenerModule {
 
             if (e.getWhoClicked() instanceof Player p) {
 
-                if (!Objects.isNull(p.getInventory().getItem(9)) && !e.getSlotType().equals(InventoryType.SlotType.OUTSIDE)) {
-                    if (p.getInventory().getItem(9).getType().equals(Material.ARROW)) {
-                        if (e.getClickedInventory().getType().equals(InventoryType.PLAYER)) {
-                            if (e.getSlot() == 9) {
-                                e.setCancelled(true);
+                if (User.isPlaying(p)) {
+
+                    if (!Objects.isNull(p.getInventory().getItem(9)) && !e.getSlotType().equals(InventoryType.SlotType.OUTSIDE)) {
+                        if (p.getInventory().getItem(9).getType().equals(Material.ARROW)) {
+                            if (e.getClickedInventory().getType().equals(InventoryType.PLAYER)) {
+                                if (e.getSlot() == 9) {
+                                    e.setCancelled(true);
+                                }
                             }
                         }
                     }
@@ -43,22 +47,29 @@ public class ArrowLoader extends ListenerModule {
         } else if (event instanceof PlayerItemHeldEvent e) {
 
             Player p = e.getPlayer();
-            UUID uuid = p.getUniqueId();
-            ItemStack newItem = p.getInventory().getItem(e.getNewSlot());
 
-            if (newItem != null && newItem.getType() == Material.BOW) {
-                ItemStack oldItemInSlot9 = p.getInventory().getItem(9);
-                if (oldItemInSlot9 == null || oldItemInSlot9.getType() != Material.ARROW) {
-                    lastItem.put(uuid, oldItemInSlot9);
-                }
-                p.getInventory().setItem(9, new ItemStack(Material.ARROW, 64));
-            } else {
-                if (lastItem.containsKey(uuid)) {
-                    p.getInventory().setItem(9, lastItem.get(uuid));
-                    lastItem.remove(uuid);
+            if (User.isPlaying(p)) {
+                UUID uuid = p.getUniqueId();
+                ItemStack newItem = p.getInventory().getItem(e.getNewSlot());
+
+                if (newItem != null && newItem.getType() == Material.BOW) {
+                    ItemStack oldItemInSlot9 = p.getInventory().getItem(9);
+                    if (oldItemInSlot9 == null || oldItemInSlot9.getType() != Material.ARROW) {
+                        lastItem.put(uuid, oldItemInSlot9);
+                    }
+                    p.getInventory().setItem(9, new ItemStack(Material.ARROW, 64));
+                } else {
+                    if (lastItem.containsKey(uuid)) {
+                        p.getInventory().setItem(9, lastItem.get(uuid));
+                        lastItem.remove(uuid);
+                    }
                 }
             }
         } else if (event instanceof EntityShootBowEvent e) {
+
+            if (e.getEntity() instanceof Player p) {
+                if (!User.isPlaying(p)) e.setCancelled(true);
+            }
 
             Bukkit.getScheduler().scheduleSyncDelayedTask(ThePit.getInstance(), () -> {
                 e.getProjectile().remove();

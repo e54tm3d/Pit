@@ -41,7 +41,7 @@ public class Dead extends ListenerModule {
             }, 1);
         } else if (event instanceof EntityDamageByEntityEvent e) {
 
-            if (e.getEntity() instanceof Player p) {
+            if (e.getEntity() instanceof Player p && User.isPlaying(p)) {
 
                 boolean isPlayerDead = p.getHealth() <= e.getFinalDamage() || p.getMaxHealth() <= e.getFinalDamage();
 
@@ -60,7 +60,7 @@ public class Dead extends ListenerModule {
                 }
             }
         } else if (event instanceof EntityDamageEvent e) {
-            if (e.getEntity() instanceof Player p) {
+            if (e.getEntity() instanceof Player p && User.isPlaying(p)) {
                 if (!e.isCancelled()) {
                     if (!e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)
                             && !e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)

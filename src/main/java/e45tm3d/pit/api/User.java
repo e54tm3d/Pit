@@ -4,6 +4,7 @@ import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.utils.functions.DatabaseFunction;
 import e45tm3d.pit.utils.functions.ItemFunction;
 import e45tm3d.pit.utils.functions.PlayerFunction;
+import e45tm3d.pit.utils.lists.PlayerLists;
 import e45tm3d.pit.utils.maps.PlayerMaps;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +18,10 @@ public class User {
 
     public static boolean isDevelopMode(Player p) {
         return PlayerFunction.isDevelopMode(p);
+    }
+
+    public static boolean isPlaying(Player p) {
+        return PlayerLists.playing.contains(p.getUniqueId());
     }
 
     public static int getKills(Player p) {

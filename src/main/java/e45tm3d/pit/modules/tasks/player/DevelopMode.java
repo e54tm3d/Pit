@@ -1,6 +1,7 @@
 package e45tm3d.pit.modules.tasks.player;
 
 import e45tm3d.pit.ThePit;
+import e45tm3d.pit.api.User;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.modules.tasks.TaskModule;
 import e45tm3d.pit.utils.functions.PlayerFunction;
@@ -25,7 +26,7 @@ public class DevelopMode extends TaskModule {
                         }
                     }
                 } else {
-                    if (!p.getGameMode().equals(GameMode.CREATIVE) && !p.getGameMode().equals(GameMode.SPECTATOR)) {
+                    if (!p.getGameMode().equals(GameMode.CREATIVE) && !p.getGameMode().equals(GameMode.SPECTATOR) && User.isPlaying(p)) {
                         p.setAllowFlight(false);
                         p.setCanPickupItems(true);
                     }

@@ -1,6 +1,7 @@
 package e45tm3d.pit.modules.listeners.player;
 
 import e45tm3d.pit.ThePit;
+import e45tm3d.pit.api.User;
 import e45tm3d.pit.api.enums.Messages;
 import e45tm3d.pit.api.enums.Yaml;
 import e45tm3d.pit.api.events.PlayerGainGoldEvent;
@@ -27,20 +28,25 @@ public class GainGold extends ListenerModule {
             Player p = e.getPlayer();
             UUID uuid = p.getUniqueId();
 
-            if (PlayerFunction.isInArena(p)) {
-                if (Yaml.CONFIG.getConfig().getBoolean("settings.gain_gold.enable")) {
-                    if (e.getItem().getItemStack().getType().equals(Material.GOLD_NUGGET)) {
-                        gold = MathFunction.randomDouble(
-                                Yaml.CONFIG.getConfig().getDouble("settings.gain_gold.amount.max"),
-                                Yaml.CONFIG.getConfig().getDouble("settings.gain_gold.amount.min"));
-                        Bukkit.getPluginManager().callEvent(new PlayerGainGoldEvent(p, gold));
-                        ThePit.getEconomy().depositPlayer(p, gold);
-                        p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 2, 0);
-                        Messages.GAIN_GOLD.sendMessage(p);
-                        e.setCancelled(true);
-                        e.getItem().remove();
+            if (User.isPlaying(p)) {
+
+                if (PlayerFunction.isInArena(p)) {
+                    if (Yaml.CONFIG.getConfig().getBoolean("settings.gain_gold.enable")) {
+                        if (e.getItem().getItemStack().getType().equals(Material.GOLD_NUGGET)) {
+                            gold = MathFunction.randomDouble(
+                                    Yaml.CONFIG.getConfig().getDouble("settings.gain_gold.amount.max"),
+                                    Yaml.CONFIG.getConfig().getDouble("settings.gain_gold.amount.min"));
+                            Bukkit.getPluginManager().callEvent(new PlayerGainGoldEvent(p, gold));
+                            ThePit.getEconomy().depositPlayer(p, gold);
+                            p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 2, 0);
+                            Messages.GAIN_GOLD.sendMessage(p);
+                            e.setCancelled(true);
+                            e.getItem().remove();
+                        }
                     }
                 }
+            } else {
+                e.setCancelled(true);
             }
         }
     }

@@ -1,0 +1,96 @@
+items:
+  player_selector:
+    name: "&aPlayer Selector"
+    lore:
+      - "&7Select a player to spectate."
+      - ""
+      - "&eLeft-click to select next player."
+      - "&eRight-click to open menu."
+  spectating_setting:
+    name: "&fSpectating Setting"
+    lore:
+      - "&7Toggle spectating setting."
+      - ""
+      - "&eLeft-click to open menu."
+  left_game:
+    name: "&cLeft Game"
+    lore:
+      - "&7Leave the game."
+      - ""
+      - "&eLeft-click to leave the game."
+menus:
+  player_selector:
+    title: "Player Selector"
+    players:
+      name: "&a%player%"
+      lore:
+        - "&7Interact to teleport or spectate a player!"
+        - ""
+        - "&eLeft-Click to teleport this player."
+        - "&eRight-Click to spectate this player."
+  spectating_setting:
+    title: "Spectating Setting"
+    items:
+      night_vision:
+        name: "&dNight Vision"
+        lore:
+          - "&7Toggle the night vision."
+          - ""
+          - "&eClick to toggle!"
+      speed_i:
+        name: "&fSpeed I"
+        lore:
+          - "&7Toggle the &fSpeed I&7"
+          - ""
+          - "&eClick to toggle!"
+      speed_ii:
+        name: "&fSpeed II"
+        lore:
+          - "&7Toggle the &fSpeed II&7."
+          - ""
+          - "&eClick to toggle!"
+      speed_iii:
+        name: "&fSpeed III"
+        lore:
+          - "&7Toggle the &fSpeed III&7."
+          - ""
+          - "&eClick to toggle!"
+      speed_iv:
+        name: "&fSpeed IV"
+        lore:
+          - "&7Toggle the &fSpeed IV&."
+          - ""
+          - "&eClick to toggle!"
+      flight:
+        name: "&fFlight Mode"
+        lore:
+          - "&7Toggle the Flight Mode."
+          - ""
+          - "&eClick to toggle!"
+      alway_flight:
+        name: "&fAlway Flight"
+        lore:
+          - "&7Toggle the Alway Flight Mode."
+          - ""
+          - "&eClick to toggle!"
+      jump_boost_iii:
+        name: "&aJump Boost III"
+        lore:
+          - "&7Toggle the &aJump Boost III"
+          - ""
+          - "&eClick to toggle!"
+      jump_boost_v:
+        name: "&aJump Boost V"
+        lore:
+          - "&7Toggle the &aJump Boost V"
+          - ""
+          - "&eClick to toggle!"
+      reset:
+        name: "&fReset"
+        lore:
+          - "&7Reset all settings."
+          - ""
+          - "&eClick to toggle!"
+      close:
+        name: "&cClose"
+        lore: [ ]

@@ -26,25 +26,32 @@ public class ArmorLoader extends ListenerModule {
     @Override
     public void listen(Event event) {
         if (event instanceof InventoryCloseEvent e) {
-            handleInventoryClose(e);
+            if (User.isPlaying((Player) e.getPlayer())) {
+                handleInventoryClose(e);
+            }
         } else if (event instanceof PlayerJoinEvent e) {
             handlePlayerJoin(e);
         } else if (event instanceof PlayerPickupItemEvent e) {
-            handlePlayerPickupItem(e);
+            if (User.isPlaying(e.getPlayer())) {
+                handlePlayerPickupItem(e);
+            }
         }
     }
 
     private void handleInventoryClose(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
-        UUID playerId = player.getUniqueId();
 
-        String menuType = PlayerMaps.menu.getOrDefault(playerId, "none");
-        PlayerMaps.menu.putIfAbsent(playerId, "none");
+        if (User.isPlaying(player)) {
+            UUID playerId = player.getUniqueId();
 
-        if ("armor".equals(menuType)) {
-            applyPlayerArmor(player);
-        } else if ("enchance".equals(menuType)) {
-            applyArmorEnchants(player);
+            String menuType = PlayerMaps.menu.getOrDefault(playerId, "none");
+            PlayerMaps.menu.putIfAbsent(playerId, "none");
+
+            if ("armor".equals(menuType)) {
+                applyPlayerArmor(player);
+            } else if ("enchance".equals(menuType)) {
+                applyArmorEnchants(player);
+            }
         }
     }
 
@@ -52,9 +59,12 @@ public class ArmorLoader extends ListenerModule {
         event.setJoinMessage(null);
         Player player = event.getPlayer();
 
-        clearAllArmorSlots(player);
-        applyPlayerArmor(player);
-        applyArmorEnchants(player);
+        if (User.isPlaying(player)) {
+
+            clearAllArmorSlots(player);
+            applyPlayerArmor(player);
+            applyArmorEnchants(player);
+        }
     }
 
     private void clearAllArmorSlots(Player player) {

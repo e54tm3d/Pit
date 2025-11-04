@@ -15,7 +15,7 @@ public enum Yaml {
 
     BUFF("buff"), CURSE("curse"), ENCHANCE("enchance"),WEAPON("weapon"), CONFIG("config"),
     MONSTER("monster"), WEAPON_UPDATE("weapon_update"), ARMOR("armor"), TRASH("trash"), BLOCKS("blocks"), MATERIAL("material"),
-    MESSAGES("messages");
+    MESSAGES("messages"), SPECTATING("spectating");
 
     String file;
 

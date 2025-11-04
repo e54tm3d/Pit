@@ -2,13 +2,13 @@ package e45tm3d.pit.modules.monsters.bosses;
 
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.api.enums.Yaml;
-import e45tm3d.pit.api.events.MonsterSpawnEvent;
 import e45tm3d.pit.modules.monsters.MonsterModule;
 import e45tm3d.pit.utils.functions.ItemFunction;
 import e45tm3d.pit.utils.functions.MathFunction;
+import e45tm3d.pit.utils.functions.NMSFunction;
 import e45tm3d.pit.utils.functions.PlayerFunction;
 import e45tm3d.pit.utils.lists.MonsterLists;
-import e45tm3d.pit.utils.nms.nms1_8_R3.BossBar;
+import e45tm3d.pit.utils.nms.Bossbar;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.Event;
@@ -20,13 +20,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
-import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 
 public class SlimeKing extends MonsterModule {
 
-    BossBar boss = new BossBar("");
+    Bossbar boss = NMSFunction.newBossbar("");
 
     @Override
     public boolean isBoss() {

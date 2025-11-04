@@ -8,9 +8,38 @@ import org.bukkit.Location;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.util.Vector;
 
 public class PlayerFunction {
+
+    public static void setInventory(Player p, PlayerInventory inv) {
+        if (p == null || inv == null) {
+            return;
+        }
+
+        PlayerInventory targetInv = p.getInventory();
+
+        // 首先获取源背包的内容
+        ItemStack[] mainContents = inv.getContents();
+        ItemStack[] armorContents = inv.getArmorContents();
+
+        // 只有在内容不为null时才进行设置操作
+        if (mainContents != null) {
+            targetInv.setContents(mainContents);
+        } else {
+            targetInv.clear();
+        }
+        
+        if (armorContents != null) {
+            targetInv.setArmorContents(armorContents);
+        } else {
+            targetInv.setArmorContents(null);
+        }
+
+        p.updateInventory();
+    }
 
     public static void spawnSingleParticle(EnumParticle particle, Location location, Player player) {
         NMSFunction.spawnSingleParticle(particle, location, player);
@@ -79,5 +108,7 @@ public class PlayerFunction {
         Vector direction = loc.getDirection().multiply(blocks);
         return loc.add(direction);
     }
+
+
 
 }

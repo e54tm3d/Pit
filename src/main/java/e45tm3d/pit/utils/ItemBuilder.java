@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.utils.functions.NMSFunction;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -170,6 +171,15 @@ public class ItemBuilder {
     public ItemBuilder setIdentifier(String identifier) {
 
         item = NMSFunction.addNBTTag(item, identifier);
+        return this;
+    }
+
+    public ItemBuilder addEnchancement(Enchantment enchantment, int level) {
+
+        ItemMeta meta = item.getItemMeta();
+        meta.addEnchant(enchantment, level, true);
+
+        item.setItemMeta(meta);
         return this;
     }
 

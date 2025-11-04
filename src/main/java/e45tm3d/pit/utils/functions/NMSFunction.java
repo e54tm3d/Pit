@@ -1,12 +1,16 @@
 package e45tm3d.pit.utils.functions;
 
 import e45tm3d.pit.ThePit;
-import e45tm3d.pit.utils.nms.nms1_8_R3.BossBar;
+import e45tm3d.pit.utils.nms.Bossbar;
+import e45tm3d.pit.utils.nms.nms1_8_R3.Bossbar1_8_R3;
 import e45tm3d.pit.utils.nms.nms1_8_R3.Minecraft1_8_R3;
+import e45tm3d.pit.utils.nms.RightClickHandle;
+import e45tm3d.pit.utils.nms.nms1_8_R3.NMSRightClickHook1_8_R3;
 import net.minecraft.server.v1_8_R3.EnumParticle;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 
 public class NMSFunction {
 
@@ -53,4 +57,15 @@ public class NMSFunction {
     public static void sendActionBar(Player player, String message) {
         if (ThePit.minecraft_server_version.contains("1.8")) Minecraft1_8_R3.sendActionBar(player, message);
     }
+
+    public static RightClickHandle newNMSRightClickHook(Plugin plugin) {
+        if (ThePit.minecraft_server_version.contains("1.8")) return new NMSRightClickHook1_8_R3(plugin);
+        return null;
+    }
+
+    public static Bossbar newBossbar(String title) {
+        if (ThePit.minecraft_server_version.contains("1.8")) return new Bossbar1_8_R3(title);
+        return null;
+    }
+
 }

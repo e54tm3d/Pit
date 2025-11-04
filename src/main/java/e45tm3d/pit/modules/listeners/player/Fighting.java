@@ -18,7 +18,7 @@ public class Fighting extends ListenerModule {
             if (!e.isCancelled()) {
                 if (e.getDamager() instanceof Player p) {
 
-                    if (!e.isCancelled() && !PlayerFunction.isInSpawn(p)) {
+                    if (!e.isCancelled() && !PlayerFunction.isInSpawn(p) && User.isPlaying(p)) {
                         if (PlayerMaps.fight_time.containsKey(p.getUniqueId())) {
                             PlayerMaps.fight_time.put(p.getUniqueId(), System.currentTimeMillis());
                         } else {

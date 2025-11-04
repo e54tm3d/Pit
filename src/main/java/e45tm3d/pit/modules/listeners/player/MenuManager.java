@@ -14,18 +14,19 @@ import e45tm3d.pit.utils.maps.BuffMaps;
 import e45tm3d.pit.utils.maps.CurseMaps;
 import e45tm3d.pit.utils.maps.PlayerMaps;
 import e45tm3d.pit.utils.maps.WeaponMaps;
-import e45tm3d.pit.utils.menus.*;
+import e45tm3d.pit.utils.menus.normal_menus.*;
 import e45tm3d.pit.utils.menus.second_menus.WeaponUpdateMenu;
+import e45tm3d.pit.utils.menus.spectating_menus.SpectatingSettings;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
 
@@ -53,7 +54,7 @@ public class MenuManager extends ListenerModule {
                         switch (e.getSlot()) {
                             case 10 -> {
                                 if (level_helmet < 5) {
-                                    if (money > Yaml.ARMOR.getConfig().getDouble("menu.items.helmet.costs.tier_" + (level_helmet + 1)) ) {
+                                    if (money > Yaml.ARMOR.getConfig().getDouble("menu.items.helmet.costs.tier_" + (level_helmet + 1))) {
                                         ThePit.getEconomy().withdrawPlayer(p, Yaml.ARMOR.getConfig().getDouble("menu.items.helmet.costs.tier_" + (level_helmet + 1)));
                                         User.setHelmetLevel(p, level_helmet + 1);
                                         p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -750,6 +751,111 @@ public class MenuManager extends ListenerModule {
                                         Messages.CANNOT_AFFORD.sendMessage(p);
                                         p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
                                     }
+                                }
+                            }
+                        }
+                    } else if (PlayerMaps.menu.get(uuid).equals("spectating_settings")) {
+                        if (e.getClickedInventory().getType().equals(InventoryType.CHEST)) {
+                            e.setCancelled(true);
+                            switch (e.getSlot()) {
+                                case 2 -> {
+                                    PlayerMaps.night_vision.put(uuid, !PlayerMaps.night_vision.getOrDefault(uuid, false));
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    SpectatingSettings.open(p);
+                                }
+                                case 3 -> {
+                                    PlayerMaps.speed.put(uuid, 1);
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    SpectatingSettings.open(p);
+                                }
+                                case 4 -> {
+                                    PlayerMaps.speed.put(uuid, 2);
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    SpectatingSettings.open(p);
+                                }
+                                case 5 -> {
+                                    PlayerMaps.speed.put(uuid, 3);
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    SpectatingSettings.open(p);
+                                }
+                                case 6 -> {
+                                    PlayerMaps.speed.put(uuid, 4);
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    SpectatingSettings.open(p);
+                                }
+                                case 11 -> {
+                                    if (PlayerMaps.flight.getOrDefault(uuid, false)) {
+                                        PlayerMaps.always_flight.put(uuid, false);
+                                    }
+                                    PlayerMaps.flight.put(uuid, !PlayerMaps.flight.getOrDefault(uuid, false));
+                                    p.setAllowFlight(PlayerMaps.flight.getOrDefault(uuid, false));
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    SpectatingSettings.open(p);
+                                }
+                                case 12 -> {
+                                    // 切换always_flight状态
+                                    boolean newAlwaysFlightValue = !PlayerMaps.always_flight.getOrDefault(uuid, false);
+                                    PlayerMaps.always_flight.put(uuid, newAlwaysFlightValue);
+                                    
+                                    // 播放声音
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    
+                                    // 如果开启了always_flight，自动开启flight
+                                    if (newAlwaysFlightValue) {
+                                        PlayerMaps.flight.put(uuid, true);
+                                        p.setAllowFlight(true);
+                                    } else {
+                                        // 如果关闭了always_flight，关闭flight
+                                        PlayerMaps.flight.put(uuid, false);
+                                        p.setAllowFlight(false);
+                                    }
+                                    
+                                    // 重新打开菜单以更新UI
+                                    SpectatingSettings.open(p);
+                                }
+                                case 13 -> {
+                                    PlayerMaps.jump_boost.put(uuid, 3);
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    SpectatingSettings.open(p);
+                                }
+                                case 14 -> {
+                                    PlayerMaps.jump_boost.put(uuid, 5);
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
+                                    SpectatingSettings.open(p);
+                                }
+                                case 21 -> {
+                                    PlayerMaps.night_vision.put(uuid, false);
+                                    PlayerMaps.speed.put(uuid, 0);
+                                    PlayerMaps.flight.put(uuid, true);
+                                    PlayerMaps.always_flight.put(uuid, false);
+                                    PlayerMaps.jump_boost.put(uuid, 0);
+                                    p.setAllowFlight(true);
+                                    p.setFlying(true);
+                                    p.removePotionEffect(PotionEffectType.NIGHT_VISION);
+                                    p.removePotionEffect(PotionEffectType.SPEED);
+                                    p.removePotionEffect(PotionEffectType.JUMP);
+                                    p.playSound(p.getLocation(), Sound.DRINK, 1, 1);
+                                    SpectatingSettings.open(p);
+                                }
+                                case 22 -> {
+                                    p.closeInventory();
+                                }
+                            }
+                        }
+                    } else if (PlayerMaps.menu.get(uuid).equals("player_selector")) {
+                        if (e.getClickedInventory().getType().equals(InventoryType.CHEST)) {
+                            int slot = e.getSlot();
+                            Player selected = PlayerMaps.playing.get(uuid).get(slot);
+                            if (e.getClick().equals(ClickType.LEFT)) {
+                                if (!Objects.isNull(selected)) {
+                                    p.teleport(selected);
+                                    PlayerMaps.spectating_selected.put(uuid, selected);
+                                }
+                            } else if (e.getClick().equals(ClickType.RIGHT)) {
+                                if (!Objects.isNull(selected)) {
+                                    PlayerMaps.spectating_selected.put(uuid, selected);
+                                    p.setGameMode(GameMode.SPECTATOR);
+                                    p.setSpectatorTarget(PlayerMaps.spectating_selected.get(uuid));
                                 }
                             }
                         }

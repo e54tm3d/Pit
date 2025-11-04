@@ -1,3 +1,6 @@
+proxy:
+  lobby:
+    - "lobby_1"
 storage:
   type: sqlite
   mysql:

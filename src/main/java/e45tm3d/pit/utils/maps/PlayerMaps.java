@@ -1,7 +1,10 @@
 package e45tm3d.pit.utils.maps;
 
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -10,6 +13,14 @@ public class PlayerMaps {
 
     public static Map<UUID, String> menu = new HashMap<>();
     public static Map<UUID, Long> fight_time = new HashMap<>();
+    public static Map<UUID, Player> spectating_selected = new HashMap<>();
+    public static Map<UUID, ArrayList<Player>> playing = new HashMap<>();
+
+    public static Map<UUID, Boolean> night_vision = new HashMap<>();
+    public static Map<UUID, Integer> speed = new HashMap<>();
+    public static Map<UUID, Integer> jump_boost = new HashMap<>();
+    public static Map<UUID, Boolean> flight = new HashMap<>();
+    public static Map<UUID, Boolean> always_flight = new HashMap<>();
 
     public static Map<UUID, Integer> level = new HashMap<>();
     public static Map<UUID, Integer> exp = new HashMap<>();
@@ -35,6 +46,13 @@ public class PlayerMaps {
     public static Map<UUID, String> arena = new HashMap<>();
 
     public static void clearAllMaps() {
+        playing.clear();
+        night_vision.clear();
+        speed.clear();
+        jump_boost.clear();
+        flight.clear();
+        always_flight.clear();
+        spectating_selected.clear();
         menu.clear();
         fight_time.clear();
         level.clear();

@@ -4,13 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import e45tm3d.pit.ThePit;
-import e45tm3d.pit.api.events.PlayerDeadEvent;
-import e45tm3d.pit.api.events.PlayerEnchanceEvent;
-import e45tm3d.pit.api.events.PlayerMurderEvent;
-import e45tm3d.pit.api.events.PlayerObtainWeaponEvent;
-import e45tm3d.pit.modules.items.weapon.WeaponModule;
-import e45tm3d.pit.modules.items.weapon.items.bows.ArtemisBow;
-import e45tm3d.pit.modules.items.weapon.items.bows.WoodenBow;
+import e45tm3d.pit.api.events.*;
 import e45tm3d.pit.modules.items.weapon.items.swords.*;
 import e45tm3d.pit.modules.listeners.player.*;
 import e45tm3d.pit.modules.listeners.world.*;
@@ -47,7 +41,7 @@ public class Listeners implements Listener {
         listeners = Lists.newArrayList(new ArmorLoader(), new ArmorSlotLock(), new ArrowLoader(), new DatabaseLoader(), new Dead(), new DevelopMode(),
                 new Fighting(), new Saturation(), new GainGold(), new JumpPad(), new LevelLoader(), new MenuManager(), new Murder(), new ItemCleaner(),
                 new NoArrowPickUp(), new NoFallDamage(), new ScoreboardRemove(), new SpawnProtect(), new TpLogin(), new EnchanceTable(), new WeaponLoader(),
-                new ItemProtect()
+                new ItemProtect(), new PreplayerMatch(), new PlayerCleaner(), new SpectatingMode()
 
                 , new ArenaProtect(), new WeatherChange());
 
@@ -55,6 +49,43 @@ public class Listeners implements Listener {
         registered = true;
 
         ThePit.getInstance().getLogger().info("Listener module loaded successfully!");
+    }
+
+    @EventHandler
+    public void onRight(PlayerRightClickEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
+        listen(e);
+    }
+
+    @EventHandler
+    public void onGameModeChange(PlayerGameModeChangeEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
+        listen(e);
+    }
+
+    @EventHandler
+    public void onToggleSneak(PlayerToggleSneakEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
+        listen(e);
+    }
+
+    @EventHandler
+    public void onEntityTarget(EntityTargetEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
+        listen(e);
+    }
+
+    @EventHandler
+    public void onPlayerConnect(PlayerConnectEvent e) {
+        listen(e);
     }
 
     @EventHandler

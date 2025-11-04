@@ -2,6 +2,7 @@ package e45tm3d.pit.api.enums;
 
 import e45tm3d.pit.modules.listeners.player.GainGold;
 import e45tm3d.pit.modules.listeners.player.Murder;
+import e45tm3d.pit.modules.tasks.player.SpectatingMode;
 import e45tm3d.pit.utils.functions.ItemFunction;
 import e45tm3d.pit.utils.functions.PlayerFunction;
 import e45tm3d.pit.utils.lists.MonsterLists;
@@ -47,6 +48,9 @@ public enum Messages {
     ENCHANCE_SUCCESS("enchance_success"),
     ENCHANCE_FAILURE("enchance_failure"),
     UPGRADE_SWORD("upgrade_sword"),
+    SPECTATING("spectating"),
+    ONLY_STAFF("only_staff"),
+    SPECTATING_TARGET("spectating_target"),
     KILL("kill"),
     KILLSTREAK("killstreak"),
     BACKPACK_FULL("backpack_full"),
@@ -100,6 +104,12 @@ public enum Messages {
             case CMD_ITEM_NOT_FOUND -> {
                 return Yaml.MESSAGES.getConfig().getString(msg)
                         .replaceAll("%items%", String.join(", ", Arrays.toString(ItemFunction.searchAllItems().toArray(new String[0])).toLowerCase()))
+                        .replaceAll("&", "§");
+            }
+            case SPECTATING_TARGET -> {
+                return Yaml.MESSAGES.getConfig().getString(msg)
+                        .replaceAll("%target%", SpectatingMode.tagrte)
+                        .replaceAll("%distance%", SpectatingMode.dist)
                         .replaceAll("&", "§");
             }
             default -> {
@@ -166,6 +176,10 @@ public enum Messages {
             case CMD_ITEM_NOT_FOUND -> p.sendMessage(getMessage()
                     .replaceAll("%items%", String.join(", ", Arrays.toString(ItemFunction.searchAllItems().toArray(new String[0])).toLowerCase())).replaceAll("[\\[\\]]", "")
                     .replaceAll("&", "§"));
+            case SPECTATING_TARGET -> p.sendMessage(getMessage()
+                        .replaceAll("%target%", SpectatingMode.tagrte)
+                        .replaceAll("%distance%", SpectatingMode.dist)
+                        .replaceAll("&", "§"));
             default -> p.sendMessage(getMessage());
         }
     }
@@ -189,6 +203,10 @@ public enum Messages {
                     .replaceAll("&", "§"));
             case CMD_ITEM_NOT_FOUND -> PlayerFunction.sendActionBar(p, getMessage()
                     .replaceAll("%items%", String.join(", ", Arrays.toString(ItemFunction.searchAllItems().toArray(new String[0])).toLowerCase()))
+                    .replaceAll("&", "§"));
+            case SPECTATING_TARGET ->  PlayerFunction.sendActionBar(p, getMessage()
+                    .replaceAll("%target%", SpectatingMode.tagrte)
+                    .replaceAll("%distance%", SpectatingMode.dist)
                     .replaceAll("&", "§"));
             default -> PlayerFunction.sendActionBar(p, getMessage());
         }

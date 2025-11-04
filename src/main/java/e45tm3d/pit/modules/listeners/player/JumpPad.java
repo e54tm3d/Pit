@@ -27,7 +27,7 @@ public class JumpPad extends ListenerModule {
     public void listen(Event event) {
         if (event instanceof PlayerMoveEvent e) {
             Player p = e.getPlayer();
-            if (!User.isDevelopMode(p) && VariableFunction.isInSpawn(p.getLocation())) {
+            if (!User.isDevelopMode(p) && VariableFunction.isInSpawn(p.getLocation()) && User.isPlaying(p)) {
                 if (hasBlockNearby(p, Material.SLIME_BLOCK)) {
 
                     Location front = PlayerFunction.getBlockFrontOfEntity(p, 5.0);

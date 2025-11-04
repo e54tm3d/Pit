@@ -29,7 +29,7 @@ public class Tasks {
         tasks.clear();
 
         tasks = Lists.newArrayList(new BlockBreak(), new GoldSpawn(), new DevelopMode(), new Tablist(), new Scoreboard(), new LevelUpdate(),
-                new TimeLock(), new WeatherLock());
+                new TimeLock(), new WeatherLock(), new SpectatingMode());
 
         List<TaskModule> copy = Lists.newArrayList(tasks);
         copy.forEach(this::register);

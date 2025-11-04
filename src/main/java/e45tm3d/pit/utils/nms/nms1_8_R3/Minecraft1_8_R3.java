@@ -203,6 +203,54 @@ public class Minecraft1_8_R3 {
         }
     }
 
+    public static void spawnItemExplosion(Location location, org.bukkit.inventory.ItemStack item, int amount, double speed, double radius) {
+        if (location == null || item == null || amount <= 0) {
+            return;
+        }
+
+        World world = location.getWorld();
+        if (world == null) {
+            return;
+        }
+
+        WorldServer worldServer = ((CraftWorld) world).getHandle();
+        net.minecraft.server.v1_8_R3.ItemStack nmsItem = CraftItemStack.asNMSCopy(item);
+
+        // 计算要生成的物品堆叠数量
+        int maxStackSize = item.getMaxStackSize();
+        int remainingAmount = amount;
+
+        while (remainingAmount > 0) {
+            int stackSize = Math.min(remainingAmount, maxStackSize);
+            remainingAmount -= stackSize;
+
+            // 创建物品实体
+            EntityItem entityItem = new EntityItem(
+                    worldServer,
+                    location.getX(),
+                    location.getY(),
+                    location.getZ(),
+                    nmsItem.cloneItemStack() // 修复这里，使用cloneItemStack方法
+            );
+
+            // 随机生成飞散方向
+            double randomX = (Math.random() - 0.5) * 2 * radius;
+            double randomY = 0.5 + Math.random() * radius;
+            double randomZ = (Math.random() - 0.5) * 2 * radius;
+
+            // 设置物品飞散的速度和方向
+            entityItem.motX = randomX * speed;
+            entityItem.motY = randomY * speed;
+            entityItem.motZ = randomZ * speed;
+
+            // 设置物品的拾取延迟
+            entityItem.pickupDelay = 10;
+
+            // 生成物品
+            worldServer.addEntity(entityItem, CreatureSpawnEvent.SpawnReason.CUSTOM);
+        }
+    }
+
     private static String escapeJson(String input) {
         StringBuilder sb = new StringBuilder();
         sb.append("{\"text\":\"");
@@ -269,54 +317,6 @@ public class Minecraft1_8_R3 {
         java.lang.reflect.Field field = object.getClass().getDeclaredField(fieldName);
         field.setAccessible(true);
         field.set(object, value);
-    }
-
-    public static void spawnItemExplosion(Location location, org.bukkit.inventory.ItemStack item, int amount, double speed, double radius) {
-        if (location == null || item == null || amount <= 0) {
-            return;
-        }
-
-        World world = location.getWorld();
-        if (world == null) {
-            return;
-        }
-
-        WorldServer worldServer = ((CraftWorld) world).getHandle();
-        net.minecraft.server.v1_8_R3.ItemStack nmsItem = CraftItemStack.asNMSCopy(item);
-
-        // 计算要生成的物品堆叠数量
-        int maxStackSize = item.getMaxStackSize();
-        int remainingAmount = amount;
-
-        while (remainingAmount > 0) {
-            int stackSize = Math.min(remainingAmount, maxStackSize);
-            remainingAmount -= stackSize;
-
-            // 创建物品实体
-            EntityItem entityItem = new EntityItem(
-                    worldServer,
-                    location.getX(),
-                    location.getY(),
-                    location.getZ(),
-                    nmsItem.cloneItemStack() // 修复这里，使用cloneItemStack方法
-            );
-
-            // 随机生成飞散方向
-            double randomX = (Math.random() - 0.5) * 2 * radius;
-            double randomY = 0.5 + Math.random() * radius;
-            double randomZ = (Math.random() - 0.5) * 2 * radius;
-
-            // 设置物品飞散的速度和方向
-            entityItem.motX = randomX * speed;
-            entityItem.motY = randomY * speed;
-            entityItem.motZ = randomZ * speed;
-
-            // 设置物品的拾取延迟
-            entityItem.pickupDelay = 10;
-
-            // 生成物品
-            worldServer.addEntity(entityItem, CreatureSpawnEvent.SpawnReason.CUSTOM);
-        }
     }
 
 }

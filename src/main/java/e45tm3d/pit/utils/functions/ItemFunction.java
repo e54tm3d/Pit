@@ -5,8 +5,10 @@ import com.mojang.authlib.properties.Property;
 import e45tm3d.pit.utils.lists.ItemLists;
 import e45tm3d.pit.utils.maps.MaterialMaps;
 import e45tm3d.pit.utils.maps.WeaponMaps;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -138,6 +140,17 @@ public class ItemFunction {
             e.printStackTrace();
         }
         head.setItemMeta(meta);
+        return head;
+    }
+
+    public static ItemStack getNameHead(String name) {
+
+        OfflinePlayer thePlayer = Bukkit.getOfflinePlayer(name);
+        ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        SkullMeta meta = (SkullMeta) head.getItemMeta();
+        meta.setOwner(thePlayer.getName());
+        head.setItemMeta(meta);
+
         return head;
     }
 }

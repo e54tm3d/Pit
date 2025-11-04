@@ -1,6 +1,7 @@
 package e45tm3d.pit.modules.listeners.player;
 
 import e45tm3d.pit.ThePit;
+import e45tm3d.pit.api.User;
 import e45tm3d.pit.modules.listeners.ListenerModule;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Item;

@@ -1,6 +1,7 @@
 package e45tm3d.pit.utils.nms.nms1_8_R3;
 
 import e45tm3d.pit.ThePit;
+import e45tm3d.pit.utils.nms.Bossbar;
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
@@ -11,16 +12,17 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-public class BossBar extends BukkitRunnable {
+public class Bossbar1_8_R3 extends BukkitRunnable implements Bossbar {
 
     private String title;
     private HashMap<Player, EntityWither> withers = new HashMap<>();
 
-    public BossBar(String title) {
+    public Bossbar1_8_R3(String title) {
         this.title = title;
         runTaskTimer(ThePit.getInstance(), 0, 10);
     }
 
+    @Override
     public void addPlayer(Player p) {
         // 检查玩家是否已经有对应的bossbar实例，防止创建多个
         if (!withers.containsKey(p)) {
@@ -35,6 +37,7 @@ public class BossBar extends BukkitRunnable {
         }
     }
 
+    @Override
     public void removePlayer(Player p) {
         EntityWither wither = withers.remove(p);
         if (wither != null) {
@@ -43,6 +46,7 @@ public class BossBar extends BukkitRunnable {
         }
     }
 
+    @Override
     public void setTitle(String title) {
         this.title = title;
         for (Entry<Player, EntityWither> entry : withers.entrySet()) {
@@ -53,6 +57,7 @@ public class BossBar extends BukkitRunnable {
         }
     }
 
+    @Override
     public void setProgress(double progress) {
         for (Entry<Player, EntityWither> entry : withers.entrySet()) {
             EntityWither wither = entry.getValue();
@@ -62,6 +67,7 @@ public class BossBar extends BukkitRunnable {
         }
     }
 
+    @Override
     public Location getWitherLocation(Location l) {
         return l.add(l.getDirection().multiply(60));
     }

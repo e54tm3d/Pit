@@ -1,8 +1,7 @@
 name: ThePit
 version: '1.0-SNAPSHOT'
 main: e45tm3d.pit.ThePit
-api-version: '1.21'
-authors: [ E45t_M3d ]
+author: E45t_M3d
 depend: [Vault, PlaceholderAPI, LevelLibrary]
 commands:
   test:

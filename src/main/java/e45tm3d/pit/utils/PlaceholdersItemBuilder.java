@@ -3,6 +3,7 @@ package e45tm3d.pit.utils;
 import e45tm3d.pit.ThePit;
 import e45tm3d.pit.utils.functions.NMSFunction;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -145,6 +146,15 @@ public class PlaceholdersItemBuilder {
 
         ItemMeta meta = item.getItemMeta();
         meta.addItemFlags(flags);
+
+        item.setItemMeta(meta);
+        return this;
+    }
+
+    public PlaceholdersItemBuilder addEnchancement(Enchantment enchantment, int level) {
+
+        ItemMeta meta = item.getItemMeta();
+        meta.addEnchant(enchantment, level, true);
 
         item.setItemMeta(meta);
         return this;
