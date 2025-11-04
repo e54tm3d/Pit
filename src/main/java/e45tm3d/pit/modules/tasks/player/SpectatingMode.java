@@ -27,7 +27,12 @@ public class SpectatingMode extends TaskModule {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ThePit.getInstance(), () -> {
             for (Player spectator : Bukkit.getOnlinePlayers()) {
                 if (!User.isPlaying(spectator)) {
+
                     UUID uuid = spectator.getUniqueId();
+
+                    for (Player p : PlayerLists.getPlayingPlayers()) {
+                        p.hidePlayer(spectator);
+                    }
 
                     if (PlayerMaps.spectating_selected.containsKey(uuid)) {
                         ArrayList<Player> playing = PlayerLists.getPlayingPlayers();
